@@ -1,9 +1,10 @@
-import Meta from "./Meta";
+import Meta from "../Meta";
+import "./Layout.module.scss";
 const Layout = ({ children }) => {
   return (
     <>
       <Meta />
-      <h1>Layout</h1>
+      <h1 className="title">Layout</h1>
       <div>
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis fuga, officiis ducimus laboriosam

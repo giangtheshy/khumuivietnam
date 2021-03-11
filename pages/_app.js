@@ -1,7 +1,7 @@
 import "../scss/index.scss";
-import Layout from "../components/Layout";
+import Layout from "../components/Layout/Layout";
 import { Provider } from "react-redux";
-import { createWrapper } from "next-redux-wrapper";
+import { wrapper } from "../store/store";
 import store from "../store/store";
 import { getPosts } from "../store/actions/post.action";
 import { useDispatch } from "react-redux";
@@ -20,7 +20,5 @@ const MyApp = ({ Component, pageProps }) => {
     </Provider>
   );
 };
-const makeStore = () => store;
-const wrapper = createWrapper(makeStore);
 
 export default wrapper.withRedux(MyApp);

@@ -1,8 +1,11 @@
 import Link from "next/link";
 import Meta from "../components/Meta";
 import { useSelector } from "react-redux";
+import { useRouter } from "next/router";
+
 const about = () => {
   const posts = useSelector((state) => state.post.posts);
+  const router = useRouter();
   return (
     <div>
       <Meta title="About" />
@@ -10,7 +13,7 @@ const about = () => {
       <Link href="/">Home</Link>
       {posts?.map((post) => (
         <article key={post._id}>
-          <h1>{post.title}</h1>
+          <h1 onClick={() => router.push(`/post/${post._id}`)}>{post.title}</h1>
           <img src={post.photoURL} alt={post.title} />
         </article>
       ))}

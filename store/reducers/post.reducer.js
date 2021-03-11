@@ -5,12 +5,17 @@ const initState = {
   loading: false,
   error: null,
 };
-export default (state = initState, action) => {
+const post = (state = initState, action) => {
   switch (action.type) {
     case types.GET_POST:
       return { ...state, posts: action.payload };
+    case types.GET_SINGLE_POST:
+      return { ...state, post: action.payload };
 
+    case types.SET_LOADING:
+      return { ...state, loading: action.payload };
     default:
       return state;
   }
 };
+export default post;
