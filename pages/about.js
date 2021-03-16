@@ -1,9 +1,10 @@
 import Link from "next/link";
 import Meta from "../components/Meta";
-import { useSelector } from "react-redux";
 import { useRouter } from "next/router";
 import { wrapper } from "../store/store";
 import { getPosts } from "../store/actions/post.action";
+import * as apis from '../apis';
+import * as types from '../store/types'
 const about = ({ posts }) => {
   const router = useRouter();
   return (
@@ -23,8 +24,10 @@ const about = ({ posts }) => {
     </div>
   );
 };
-export const getStaticProps = wrapper.getStaticProps(({ store }) => {
-  store.dispatch(getPosts());
+export const getStaticProps = wrapper.getStaticProps(async({ store }) => {
+  // store.dispatch(getPosts());
+  const { data } = await apis.getPosts()
+  store.dispatch({ type:types.GET_POST,payload:data});
   return { props: { posts: store.getState().post.posts } };
 });
 
