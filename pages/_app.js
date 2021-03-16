@@ -9,9 +9,9 @@ import { useEffect } from "react";
 
 const MyApp = ({ Component, pageProps }) => {
   const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(getPosts());
-  }, []);
+  // useEffect(() => {
+  //   dispatch(getPosts());
+  // }, []);
   return (
     <Provider store={store}>
       <Layout>

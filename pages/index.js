@@ -1,8 +1,8 @@
 import Head from "next/head";
 import Link from "next/link";
-import axios from "../apis/axios";
 import { wrapper } from "../store/store";
 import "../scss/Home.module.scss";
+import { getPosts } from "../store/actions/post.action";
 
 export default function Home({ name }) {
   return (
@@ -17,8 +17,7 @@ export default function Home({ name }) {
     </div>
   );
 }
-export const getStaticProps = wrapper.getStaticProps(async ({ store }) => {
-  const { data } = await axios.get("/api/posts");
-  store.dispatch({ type: "GET_POST", payload: data });
+export const getStaticProps = wrapper.getStaticProps(({ store }) => {
+  store.dispatch(getPosts());
   return { props: { name: store.getState().post } };
 });

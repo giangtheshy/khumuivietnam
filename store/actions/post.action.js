@@ -12,14 +12,15 @@ export const getPosts = () => async (dispatch) => {
 export const getSinglePost = (id) => async (dispatch) => {
   try {
     if (id) {
-      dispatch({ type: types.SET_LOADING, payload: true });
       const { data } = await apis.getSinglePost(id);
-      dispatch({ type: types.SET_LOADING, payload: false });
-      dispatch({ type: types.GET_SINGLE_POST, payload: data });
+      dispatch({ type: types.GET_SINGLE_POST, payload: { post: data } });
     } else {
       dispatch({ type: types.GET_SINGLE_POST, payload: {} });
     }
   } catch (error) {
     console.log(error);
   }
+};
+export const setLoading = (type) => (dispatch) => {
+  dispatch({ type: types.SET_LOADING, payload: type });
 };
