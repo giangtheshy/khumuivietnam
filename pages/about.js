@@ -2,8 +2,9 @@ import Link from "next/link";
 import Meta from "../components/Meta";
 import { useSelector } from "react-redux";
 import { useRouter } from "next/router";
-const about = () => {
-  const posts = useSelector((state) => state.post.posts);
+import { wrapper } from "../store/store";
+import { getPosts } from "../store/actions/post.action";
+const about = ({ posts }) => {
   const router = useRouter();
   return (
     <div>
@@ -22,5 +23,9 @@ const about = () => {
     </div>
   );
 };
+export const getStaticProps = wrapper.getStaticProps(({ store }) => {
+  store.dispatch(getPosts());
+  return { props: { posts: store.getState().post.posts } };
+});
 
 export default about;
