@@ -3,13 +3,17 @@ import Meta from "../components/Meta";
 import { useRouter } from "next/router";
 import { wrapper } from "../store/store";
 import { getPosts } from "../store/actions/post.action";
-import * as apis from '../apis';
-import * as types from '../store/types'
+import * as apis from "../apis";
+import * as types from "../store/types";
 const about = ({ posts }) => {
   const router = useRouter();
   return (
     <div>
-      <Meta title="About" />
+      <Meta
+        title="About"
+        keywords="Oldwatchfan,Oldwatchfan shop, Oldwatchfan team"
+        description="Oldwatchfan is the best shop"
+      />
       <h2>about</h2>
       <Link href="/">Home</Link>
       {posts?.map((post) => (
@@ -24,10 +28,10 @@ const about = ({ posts }) => {
     </div>
   );
 };
-export const getStaticProps = wrapper.getStaticProps(async({ store }) => {
+export const getStaticProps = wrapper.getStaticProps(async ({ store }) => {
   // store.dispatch(getPosts());
-  const { data } = await apis.getPosts()
-  store.dispatch({ type:types.GET_POST,payload:data});
+  const { data } = await apis.getPosts();
+  store.dispatch({ type: types.GET_POST, payload: data });
   return { props: { posts: store.getState().post.posts } };
 });
 

@@ -5,15 +5,15 @@ import "../scss/Home.module.scss";
 
 export default function Home({ name }) {
   return (
-    <div>
+    <main>
       <Meta
-        title="HD2Gsmart"
-        keywords="HD2Gsmart,HD2Gsmart shop, HD2Gsmart team"
-        description="HD2Gsmart is the best shop"
+        title="Oldwatchfan shop"
+        keywords="Oldwatchfan,Oldwatchfan shop, Oldwatchfan team"
+        description="Oldwatchfan is the best shop"
       />
 
       <h1>Home page</h1>
-      <Link href="/about">About</Link>
-    </div>
+      <p>Oldwatchfan là thương hiệu tốt nhất để lựa chọn smart watch</p>
+    </main>
   );
 }

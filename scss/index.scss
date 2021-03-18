@@ -1,3 +1,22 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
+@import "./config";
+* {
+  padding: 0;
+  margin: 0;
+  letter-spacing: 1px;
+  box-sizing: border-box;
+  font-family: "Open Sans", sans-serif;
+  outline: none;
+}
+.clr-main {
+  color: $mainColor;
+}
+.clr-secondary {
+  color: $secondaryColor;
+}
+.bold {
+  font-weight: bold;
+}
 body {
   background: green;
 }

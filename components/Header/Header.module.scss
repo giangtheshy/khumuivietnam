@@ -1,0 +1,42 @@
+@import "../../scss/config";
+.header {
+  height: 3rem;
+  background: $mainColor;
+  display: flex;
+  align-items: center;
+  padding-left: 3rem;
+  justify-content: space-between;
+  .navCenter {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-radius: 5rem 0 0 5rem;
+    height: 100%;
+    background: #fff;
+    padding: 1rem;
+    .input {
+      position: absolute;
+      left: -24rem;
+      top: 0.5rem;
+      width: 25rem;
+      border: none;
+      padding: 0.5rem;
+      border-radius: 0.5rem;
+      box-shadow: 0 0 10px 1px rgb(122, 122, 122);
+    }
+    .navBar {
+      display: flex;
+
+      a {
+        padding: 0 2rem;
+        text-decoration: none;
+        color: #000;
+        cursor: pointer;
+        vertical-align: middle;
+        display: flex;
+        align-items: center;
+      }
+    }
+  }
+}

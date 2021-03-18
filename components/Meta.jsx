@@ -13,8 +13,8 @@ const Meta = ({ title, description, keywords }) => {
   );
 };
 Meta.defaultProps = {
-  title: "Web next",
-  description: "this page is make exercise tutorial",
-  keywords: "web dev,programing,website,tutorial",
+  title: "Oldwatchfan",
+  description: "Oldwatchfan is the best shop",
+  keywords: "Oldwatchfan,Oldwatchfan shop, Oldwatchfan team",
 };
 export default Meta;
