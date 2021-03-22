@@ -8,7 +8,12 @@ const about = ({ posts }) => {
   const router = useRouter();
   return (
     <div>
-      <Meta title="About" keywords="XkmShop,XkmShop shop, XkmShop team" description="XkmShop is the best shop" />
+      <Meta
+        title="XkmShop - Chuyên các sản phẩm xịt khử mùi tốt nhất Việt Nam"
+        keywords="XkmShop,XkmShop shop, XkmShop team"
+        keywords="XkmShop,XkmShop shop, XkmShop team"
+        description="XkmShop is the best shop"
+      />
       <h2>about</h2>
       <Link href="/">Home</Link>
       {posts?.map((post) => (
