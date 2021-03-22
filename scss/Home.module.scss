@@ -1,3 +1,62 @@
+@import "./config";
 .main {
-  color: red;
+  .bannerSection {
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    height: 50vh;
+    margin: 2rem auto;
+  }
+  .newProduct {
+    width: 90%;
+    margin: 5rem auto;
+    background: #fff;
+    box-shadow: 0 0 7px 2px #bbb;
+    .header {
+      border-bottom: 1px solid $mainColor;
+      margin-bottom: 1rem;
+      background: #f0ffff;
+      .title {
+        background: $mainColor;
+        width: 18rem;
+        color: #fff;
+        font-size: 1rem;
+        padding: 0.5rem;
+        clip-path: polygon(0% 0%, 75% 0%, 70% 50%, 75% 100%, 0% 100%);
+      }
+    }
+  }
+  .bestSeller {
+    @extend .newProduct;
+    .title {
+      display: flex;
+      align-items: center;
+      .icon {
+        color: #fdde57;
+        font-size: 1.5rem;
+        margin-right: 0.5rem;
+      }
+    }
+  }
+  .famousBrand {
+    background: #fff;
+    padding: 1rem;
+    margin-bottom: 2rem;
+    height: 17rem;
+    .header {
+      border-bottom: 1px solid #eee;
+      margin-bottom: 1rem;
+      .title {
+        text-align: center;
+        text-transform: uppercase;
+        border-bottom: 2px solid $mainColor;
+      }
+    }
+  }
+}
+@media (min-width: 368px) and (max-width: 768px) {
+  .bannerSection {
+    flex-direction: column;
+    height: auto !important;
+  }
 }

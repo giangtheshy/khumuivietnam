@@ -13,8 +13,8 @@ const Meta = ({ title, description, keywords }) => {
   );
 };
 Meta.defaultProps = {
-  title: "Oldwatchfan",
-  description: "Oldwatchfan is the best shop",
-  keywords: "Oldwatchfan,Oldwatchfan shop, Oldwatchfan team",
+  title: "XkmShop",
+  description: "XkmShop is the best shop",
+  keywords: "XkmShop,XkmShop shop, XkmShop team",
 };
 export default Meta;

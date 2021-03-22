@@ -1,11 +1,24 @@
 @import "../../scss/config";
 .header {
   height: 3rem;
+  width: 100vw;
   background: $mainColor;
   display: flex;
   align-items: center;
   padding-left: 3rem;
   justify-content: space-between;
+  box-shadow: 0 1px 8px 2px rgb(88, 88, 88);
+  .btnBar {
+    display: none;
+    border: 2px solid #fff;
+    background: transparent;
+    color: #fff;
+    font-size: 1.3rem;
+    border-radius: 0.3rem;
+    padding: 0.2rem 0.5rem;
+    cursor: pointer;
+    margin-right: 1rem;
+  }
   .navCenter {
     position: relative;
     display: flex;
@@ -13,13 +26,13 @@
     align-items: center;
     border-radius: 5rem 0 0 5rem;
     height: 100%;
+    width: 55%;
     background: #fff;
-    padding: 1rem;
     .input {
       position: absolute;
-      left: -24rem;
+      left: -57%;
       top: 0.5rem;
-      width: 25rem;
+      width: 60%;
       border: none;
       padding: 0.5rem;
       border-radius: 0.5rem;
@@ -27,8 +40,13 @@
     }
     .navBar {
       display: flex;
-
-      a {
+      justify-content: space-evenly;
+      width: 100%;
+      .itemNav,
+      button {
+        position: relative;
+        border: none;
+        background-color: transparent;
         padding: 0 2rem;
         text-decoration: none;
         color: #000;
@@ -36,6 +54,89 @@
         vertical-align: middle;
         display: flex;
         align-items: center;
+        font-size: 1rem;
+        padding: 1rem 0;
+        &:hover {
+          color: $secondaryColor;
+          .accountDetails {
+            transform: translateY(0%);
+            visibility: visible;
+            opacity: 1;
+          }
+        }
+        .accountDetails {
+          position: absolute;
+          top: 3rem;
+          right: 0rem;
+          width: 10rem;
+          z-index: 2;
+          background: #fff;
+          border-radius: 0.5rem;
+          box-shadow: 0 0 5px 1px #bbb;
+          transform: translateY(50%);
+          visibility: hidden;
+          opacity: 0;
+          transition: $mainTransition;
+          button {
+            padding: 0.5rem 1rem;
+            margin-bottom: 0.5rem;
+            margin-top: 0.5rem;
+            transition: $mainTransition;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            &:hover {
+              color: $mainColor;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+@media (min-width: 768px) and (max-width: 950px) {
+  .header {
+    padding-left: 1rem;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .header {
+    padding-left: 1rem;
+
+    .btnBar {
+      display: block;
+    }
+    .navCenter {
+      position: absolute;
+      top: 3rem;
+      right: 0;
+      width: 20rem;
+      height: 90vh;
+      flex-direction: column;
+      padding: 3rem;
+      transform: translateX(100%);
+      visibility: hidden;
+      opacity: 0;
+      transition: $mainTransition;
+      box-shadow: 0 0 8px 2px #bbb;
+      &.show {
+        transform: translateX(0%);
+        visibility: visible;
+        opacity: 1;
+      }
+      .input {
+        position: unset;
+        width: 100%;
+        margin-bottom: 1rem;
+      }
+      .navBar {
+        flex-direction: column;
+        justify-content: center;
+        .accountDetails {
+          left: 0;
+          right: unset;
+        }
       }
     }
   }

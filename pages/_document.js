@@ -4,8 +4,8 @@ class MyDocument extends Document {
     return (
       <Html lang="en">
         <Head>
-          <meta name="keywords" content="Oldwatchfan,Oldwatchfan shop, Oldwatchfan team" />
-          <meta name="description" content="Oldwatchfan is the best shop" />
+          <meta name="keywords" content="XkmShop,XkmShop shop, XkmShop team" />
+          <meta name="description" content="XkmShop is the best shop" />
           <meta charSet="utf-8" />
         </Head>
         <body>

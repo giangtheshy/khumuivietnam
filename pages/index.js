@@ -1,19 +1,56 @@
 import Meta from "../components/Meta";
-import Link from "next/link";
+import Slides from "../components/Banner/Slides/Slides";
+import Events from "../components/Banner/Events/Events";
+import styles from "../scss/Home.module.scss";
+import { wrapper } from "../store/store";
+import * as apis from "../apis";
+import * as types from "../store/types";
+import Products from "../utils/components/Products/Products";
+import ProductSlider from "../components/ProductSlider/ProductSlider";
+import BrandSlider from "../components/ProductSlider/BrandSlider";
+import { FaMedal } from "react-icons/fa";
 
-import "../scss/Home.module.scss";
-
-export default function Home({ name }) {
+export default function Home({ products }) {
+  console.log(products);
   return (
-    <main>
+    <main className={styles.main}>
       <Meta
-        title="Oldwatchfan shop"
-        keywords="Oldwatchfan,Oldwatchfan shop, Oldwatchfan team"
-        description="Oldwatchfan is the best shop"
+        title="XkmShop - Chuyên các sản phẩm xịt khử mùi tốt nhất Việt Nam"
+        keywords="XkmShop,XkmShop shop, XkmShop team"
+        description="XkmShop is the best shop"
       />
 
-      <h1>Home page</h1>
-      <p>Oldwatchfan là thương hiệu tốt nhất để lựa chọn smart watch</p>
+      <section className={styles.bannerSection}>
+        <Slides />
+        <Events />
+      </section>
+      <section className={styles.newProduct}>
+        <div className={styles.header}>
+          <h2 className={styles.title}>Sản phẩm mới</h2>
+        </div>
+        {/* <Products products={products} /> */}
+        <ProductSlider products={products} />
+      </section>
+      <section className={styles.bestSeller}>
+        <div className={styles.header}>
+          <h2 className={styles.title}>
+            <FaMedal className={styles.icon} />
+            Bán nhiều nhất
+          </h2>
+        </div>
+        <Products products={products} />
+      </section>
+      <section className={styles.famousBrand}>
+        <div className={styles.header}>
+          <h2 className={styles.title}>Thương hiệu nỗi tiếng</h2>
+        </div>
+        <BrandSlider products={products} />
+      </section>
     </main>
   );
 }
+export const getStaticProps = wrapper.getStaticProps(async ({ store }) => {
+  const { data } = await apis.getPosts();
+  store.dispatch({ type: types.GET_POST, payload: data });
+  return { props: { products: store.getState().post.posts } };
+});

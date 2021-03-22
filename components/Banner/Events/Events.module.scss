@@ -1,0 +1,75 @@
+@import "../../../scss/config";
+.eventsSection {
+  height: 100%;
+  width: 100%;
+  margin-left: 1rem;
+  .eventsCenter {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: #fff;
+    height: 65%;
+    margin-bottom: 2%;
+    .eventsHeader {
+      border-bottom: 1px solid #eee;
+      h2 {
+        background: $mainColor;
+        width: 70%;
+        color: #fff;
+        font-size: 1rem;
+        padding: 0.5rem;
+        clip-path: polygon(0% 0%, 75% 0%, 70% 50%, 75% 100%, 0% 100%);
+      }
+    }
+    .eventsContainer {
+      width: 110% !important;
+      height: 100%;
+      overflow-y: scroll;
+      overflow-x: hidden;
+      .eventItem {
+        display: flex;
+        border-bottom: 1px solid #eee;
+        cursor: pointer;
+        &:hover {
+          .title {
+            color: $mainColor;
+          }
+        }
+        .eventImg {
+          width: 30%;
+          height: 5rem;
+          object-fit: cover;
+        }
+        .eventDetails {
+          .title {
+            font-size: 0.8rem;
+            width: 250px;
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+          }
+          .timer {
+            margin-top: 1rem;
+            color: #ccc;
+            font-size: 0.8rem;
+          }
+        }
+      }
+    }
+  }
+  .eventAds {
+    z-index: 1;
+    height: 33%;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+}
+@media only screen and (max-width: 768px) {
+  .eventsSection {
+    margin-left: unset;
+  }
+}

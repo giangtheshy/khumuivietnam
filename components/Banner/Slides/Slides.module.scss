@@ -1,0 +1,19 @@
+.slideContainer {
+  width: 70%;
+  height: 100%;
+  box-shadow: 0 1px 5px 2px #bbb;
+  .slideItem {
+    height: 100%;
+    img {
+      height: 50vh;
+      width: 100%;
+      object-fit: cover;
+    }
+  }
+}
+@media (min-width: 368px) and (max-width: 768px) {
+  .slideContainer {
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+}
