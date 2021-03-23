@@ -1,0 +1,10 @@
+.starsContainer {
+  display: flex;
+  align-items: center;
+  .stars {
+    color: #bbb;
+    &.active {
+      color: #feb10d;
+    }
+  }
+}

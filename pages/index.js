@@ -11,7 +11,6 @@ import BrandSlider from "../components/ProductSlider/BrandSlider";
 import { FaMedal } from "react-icons/fa";
 
 export default function Home({ products }) {
-  console.log(products);
   return (
     <main className={styles.main}>
       <Meta

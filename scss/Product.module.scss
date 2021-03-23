@@ -1,0 +1,278 @@
+@import "./config";
+.productPage {
+  width: 90%;
+  margin: 1rem auto;
+  .backLink {
+    display: flex;
+    align-items: center;
+    font-size: 0.8rem;
+    a {
+      text-decoration: none;
+      color: #000;
+      transition: $mainTransition;
+      &:hover {
+        color: $mainColor;
+        font-weight: bold;
+      }
+    }
+  }
+  .productCenter {
+    display: flex;
+    background: #fff;
+    box-shadow: 0 0 7px 2px #bbb;
+    padding: 1rem;
+    margin: 2rem 0;
+    .imgCenter {
+      width: 40%;
+      margin-right: 1rem;
+      .mainImg {
+        width: 100%;
+        img {
+          object-fit: cover;
+        }
+        display: grid;
+        place-items: center;
+      }
+      .imgSlider {
+        width: 100%;
+      }
+    }
+    .productControl {
+      width: 100%;
+      .headerCenter {
+        display: flex;
+        align-items: center;
+        padding-bottom: 1rem;
+        border-bottom: 1px solid #eee;
+        .title {
+          text-transform: capitalize;
+        }
+        .evaluate {
+          border-left: 1px solid $mainColor;
+          display: flex;
+          align-items: center;
+          margin-left: 1rem;
+          padding: 0 1rem;
+          small {
+            padding-left: 1rem;
+            color: $mainBlue;
+            cursor: pointer;
+            &:hover {
+              color: $mainColor;
+            }
+          }
+        }
+      }
+      .contentCenter {
+        display: flex;
+        border-bottom: 1px dashed $mainColor;
+        padding-bottom: 3rem;
+        .contentLeft {
+          width: 50%;
+          margin-right: 1rem;
+          .price {
+            display: flex;
+            align-items: center;
+            padding: 1rem 0.5rem;
+            font-size: 1.5rem;
+            border-bottom: 1px solid #eee;
+            margin-bottom: 0.5rem;
+            img {
+              margin-right: 1rem;
+            }
+          }
+          .contentDetails {
+            line-height: 2.3;
+            .infoTitle {
+              display: flex;
+              align-items: center;
+              span {
+                font-size: 0.9rem;
+                padding-right: 0.5rem;
+              }
+              .icon {
+                color: $mainColor;
+                margin-right: 1rem;
+              }
+            }
+            .btnCenter {
+              display: flex;
+              align-items: center;
+              margin-top: 1rem;
+              .quantityBtn {
+                box-shadow: 0 0 5px 1px #ccc;
+                width: 40%;
+                height: 3rem;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                button {
+                  background: transparent;
+                  border: none;
+                  padding: 0 1rem;
+                  font-size: 1.5rem;
+                  display: grid;
+                  place-items: center;
+                  cursor: pointer;
+                }
+              }
+              .btnAddCart {
+                width: 50%;
+                height: 3rem;
+                background-image: linear-gradient(to left, $secondaryColor, $mainColor);
+                color: #fff;
+                font-weight: bold;
+                border: none;
+                font-size: 1.1rem;
+                text-transform: capitalize;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                cursor: pointer;
+                transition: $mainTransition;
+                border-top-right-radius: 0.3rem;
+                border-bottom-right-radius: 0.3rem;
+                &:hover {
+                  background-image: linear-gradient(to right, $secondaryColor, $mainColor);
+                }
+              }
+            }
+          }
+        }
+        .contentRight {
+          position: relative;
+          width: 45%;
+          border: 1px dashed #ccc;
+          padding: 1rem;
+          margin-top: 1rem;
+          background: #fffdf9;
+          &::before {
+            content: "";
+            position: absolute;
+            top: -0.5rem;
+            right: -0.2rem;
+            background-image: url("https://bizweb.dktcdn.net/100/021/944/themes/705389/assets/sale-bagde.png?1556989133393");
+            width: 5rem;
+            height: 5rem;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+          }
+
+          .headerContentRight {
+            color: $mainColor;
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 1.2rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 0.4rem;
+            margin-bottom: 1rem;
+          }
+          .detailsContentRight {
+            ul {
+              list-style-type: none;
+              line-height: 2;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+@media (min-width: 768px) and (max-width: 1024px) {
+  .productPage {
+    .productCenter {
+      .imgCenter {
+        width: 55%;
+        img {
+          width: 100%;
+        }
+      }
+      .productControl {
+        .headerCenter {
+          flex-direction: column;
+          justify-content: flex-start;
+        }
+        .contentCenter {
+          flex-direction: column;
+          .contentLeft {
+            width: 100%;
+          }
+          .contentRight {
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+}
+@media (min-width: 368px) and (max-width: 768px) {
+  .productPage {
+    .productCenter {
+      flex-direction: column;
+      .imgCenter {
+        width: 100%;
+        img {
+          width: 100%;
+        }
+      }
+      .productControl {
+        .headerCenter {
+          flex-direction: column;
+          justify-content: flex-start;
+        }
+        .contentCenter {
+          flex-direction: column;
+          .contentLeft {
+            width: 100%;
+          }
+          .contentRight {
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+}
+@media only screen and (max-width: 368px) {
+  .productPage {
+    .productCenter {
+      flex-direction: column;
+      .imgCenter {
+        width: 100%;
+        img {
+          width: 100%;
+        }
+      }
+      .productControl {
+        .headerCenter {
+          flex-direction: column;
+          justify-content: flex-start;
+          .title {
+            font-size: 1.2rem;
+          }
+        }
+        .contentCenter {
+          flex-direction: column;
+          .contentLeft {
+            width: 100%;
+            .price {
+              padding: 1rem 0;
+              img {
+                margin: unset;
+              }
+            }
+            .btnCenter {
+              .quantityBtn {
+                width: 50% !important;
+              }
+            }
+          }
+          .contentRight {
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+}

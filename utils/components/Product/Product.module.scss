@@ -4,7 +4,6 @@
   max-width: 16rem;
   margin: 1rem;
   overflow: hidden;
-  cursor: pointer;
   padding: 0.5rem;
   transition: $mainTransition;
   border: 1px solid #ccc;
@@ -56,6 +55,10 @@
     .iconCart {
       @extend .iconHeart;
       top: 3.5rem !important;
+    }
+    .iconFind {
+      @extend .iconHeart;
+      top: 6rem !important;
     }
   }
   .details {

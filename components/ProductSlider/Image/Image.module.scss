@@ -1,0 +1,31 @@
+@import "../../../scss/config";
+.imageIcon {
+  border: 1px solid #eee;
+  margin: 0 0.2rem;
+  cursor: pointer;
+  &:hover {
+    border: 1px solid $mainColor;
+  }
+  img {
+    width: 100%;
+    object-fit: cover;
+  }
+}
+@media (min-width: 368px) and (max-width: 768px) {
+  .imageIcon {
+    display: grid;
+    place-items: center;
+    img {
+      width: 6rem;
+    }
+  }
+}
+@media only screen and (max-width: 368px) {
+  .imageIcon {
+    display: grid;
+    place-items: center;
+    img {
+      width: 6rem;
+    }
+  }
+}

@@ -8,7 +8,7 @@ import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 
 const MyApp = ({ Component, pageProps }) => {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   // useEffect(() => {
   //   dispatch(getPosts());
   // }, []);

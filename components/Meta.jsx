@@ -13,7 +13,7 @@ const Meta = ({ title, description, keywords }) => {
   );
 };
 Meta.defaultProps = {
-  title: "XkmShop",
+  title: "XkmShop - Chuyên các sản phẩm xịt khử mùi tốt nhất Việt Nam",
   description: "XkmShop is the best shop",
   keywords: "XkmShop,XkmShop shop, XkmShop team",
 };
