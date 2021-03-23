@@ -54,7 +54,7 @@
     }
   }
 }
-@media (min-width: 368px) and (max-width: 768px) {
+@media only screen and (max-width: 768px) {
   .bannerSection {
     flex-direction: column;
     height: auto !important;

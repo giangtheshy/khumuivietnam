@@ -11,7 +11,7 @@
     }
   }
 }
-@media (min-width: 368px) and (max-width: 768px) {
+@media only screen and (max-width: 768px) {
   .slideContainer {
     width: 100%;
     margin-bottom: 1rem;
