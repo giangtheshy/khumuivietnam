@@ -9,7 +9,7 @@ const Meta = ({ title, description, keywords }) => {
       <meta property="og:description" content={description} />
       <meta charSet="utf-8" />
       <link rel="icon" href="/favicon.ico" />
-      <meta name="google-site-verification" content="8PkTaxm3xNf6t-UQvK6qTaO8cbAo7bVOY8IYVuFty0o" />
+      <meta name="google-site-verification" content="rnNS94UXgTKub_flILvvdXFyxxJchtJuF6PkAOcWnPY" />
       <title>{title}</title>
     </Head>
   );
