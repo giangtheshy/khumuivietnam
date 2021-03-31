@@ -14,9 +14,9 @@ export default function Home({ products }) {
   return (
     <main className={styles.main}>
       <Meta
-        title="XkmShop - Chuyên các sản phẩm xịt khử mùi tốt nhất Việt Nam"
-        keywords="XkmShop,XkmShop shop, XkmShop team"
-        description="XkmShop is the best shop"
+        title="khumuivietnam.com - Chuyên các sản phẩm xịt khử mùi tốt nhất Việt Nam"
+        keywords="khumuivietnam.com,khumuivietnam.com shop, khumuivietnam.com team"
+        description="khumuivietnam.com is the best shop"
       />
 
       <section className={styles.bannerSection}>

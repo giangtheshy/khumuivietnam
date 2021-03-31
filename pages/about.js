@@ -9,10 +9,10 @@ const about = ({ posts }) => {
   return (
     <div>
       <Meta
-        title="XkmShop - Chuyên các sản phẩm xịt khử mùi tốt nhất Việt Nam"
-        keywords="XkmShop,XkmShop shop, XkmShop team"
-        keywords="XkmShop,XkmShop shop, XkmShop team"
-        description="XkmShop is the best shop"
+        title="khumuivietnam.com - Chuyên các sản phẩm xịt khử mùi tốt nhất Việt Nam"
+        keywords="khumuivietnam.com,khumuivietnam.com shop, khumuivietnam.com team"
+        keywords="khumuivietnam.com,khumuivietnam.com shop, khumuivietnam.com team"
+        description="khumuivietnam.com is the best shop"
       />
       <h2>about</h2>
       <Link href="/">Home</Link>
