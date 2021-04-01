@@ -8,10 +8,7 @@ const Logo = () => {
   return (
     <div className={styles.logo} onClick={() => router.push("/")} title="XkmShop">
       <FaShoppingCart className={styles.icon} />
-      <span>
-        <span className=" bold">Xkm</span>
-        Shop
-      </span>
+      <span>khumuivietnam</span>
     </div>
   );
 };
