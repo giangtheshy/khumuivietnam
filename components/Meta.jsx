@@ -4,9 +4,10 @@ const Meta = ({ title, description, keywords }) => {
   return (
     <Head>
       <meta name="viewport" content="width=device-width, initial-scale=1" />
-      <meta name="keywords" content={keywords} />
-      <meta name="description" content={description} />
+      <meta key="keywords" name="keywords" content={keywords} />
+      <meta key="description" name="description" content={description} />
       <meta property="og:description" content={description} />
+      <meta key="robots" name="robots" content="index,dofollow" />
       <meta charSet="utf-8" />
       <link rel="icon" href="/favicon.ico" />
       <meta name="google-site-verification" content="rnNS94UXgTKub_flILvvdXFyxxJchtJuF6PkAOcWnPY" />
