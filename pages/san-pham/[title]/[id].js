@@ -50,7 +50,7 @@ const Post = ({ product, loading }) => {
           <div className={styles.mainImg}>
             <img
               src={product.images[index]}
-              alt="xkmShop"
+              alt="khumuivietnam.com "
             />
           </div>
           <div className={styles.imgSlider}>
@@ -70,7 +70,7 @@ const Post = ({ product, loading }) => {
               <div className={styles.price}>
                 <img
                   src="https://bizweb.dktcdn.net/100/021/944/themes/723706/assets/hot_price.png?1616296243114"
-                  alt="xkmShop"
+                  alt="khumuivietnam.com "
                 />
                 <span className="bold clr-main">{product.price.toLocaleString('en-US', {
                   style: 'currency',

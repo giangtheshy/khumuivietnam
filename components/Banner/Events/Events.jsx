@@ -12,8 +12,8 @@ const Events = () => {
           <article className={styles.eventItem}>
             <img
               src="https://adminbeauty.hvnet.vn/Upload/Files/Paula's-Choice-Daily-Skin-Clearing-Treatment-Extra.jpg?width=350&height=391&v=15042020"
-              alt="XkmShop"
-              title="XkmShop"
+              alt="khumuivietnam.com "
+              title="khumuivietnam.com "
               className={styles.eventImg}
             />
             <div className={styles.eventDetails}>
@@ -27,8 +27,8 @@ const Events = () => {
           <article className={styles.eventItem}>
             <img
               src="https://adminbeauty.hvnet.vn/Upload/Files/Paula's-Choice-Daily-Skin-Clearing-Treatment-Extra.jpg?width=350&height=391&v=15042020"
-              alt="XkmShop"
-              title="XkmShop"
+              alt="khumuivietnam.com "
+              title="khumuivietnam.com "
               className={styles.eventImg}
             />
             <div className={styles.eventDetails}>
@@ -42,8 +42,8 @@ const Events = () => {
           <article className={styles.eventItem}>
             <img
               src="https://adminbeauty.hvnet.vn/Upload/Files/Paula's-Choice-Daily-Skin-Clearing-Treatment-Extra.jpg?width=350&height=391&v=15042020"
-              alt="XkmShop"
-              title="XkmShop"
+              alt="khumuivietnam.com "
+              title="khumuivietnam.com "
               className={styles.eventImg}
             />
             <div className={styles.eventDetails}>
@@ -60,7 +60,7 @@ const Events = () => {
         <img
           src="https://bizweb.dktcdn.net/100/021/944/themes/723706/assets/banner_under_slider.png?1616296243114"
           alt="image ads"
-          title="XkmShop"
+          title="khumuivietnam.com "
         />
       </div> */}
     </div>
