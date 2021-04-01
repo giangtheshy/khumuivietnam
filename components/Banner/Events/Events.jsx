@@ -18,7 +18,8 @@ const Events = () => {
             />
             <div className={styles.eventDetails}>
               <h3 className={styles.title}>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id recusandae aliquam temporibus esse sunt eum
+                khumuivietnam.com chuyên bán các loại xịt khử mùi tốt và rẻ nhất dành cho mọi cấp bậc,lứa tuổi. Cam đoan
+                không tốt không nhận tiền!
               </h3>
               <p className={styles.timer}>22-28/0222</p>
             </div>
@@ -32,7 +33,8 @@ const Events = () => {
             />
             <div className={styles.eventDetails}>
               <h3 className={styles.title}>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id recusandae aliquam temporibus esse sunt eum
+                khumuivietnam.com chuyên bán các loại xịt khử mùi tốt và rẻ nhất dành cho mọi cấp bậc,lứa tuổi. Cam đoan
+                không tốt không nhận tiền!
               </h3>
               <p className={styles.timer}>22-28/0222</p>
             </div>
@@ -46,7 +48,8 @@ const Events = () => {
             />
             <div className={styles.eventDetails}>
               <h3 className={styles.title}>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id recusandae aliquam temporibus esse sunt eum
+                khumuivietnam.com chuyên bán các loại xịt khử mùi tốt và rẻ nhất dành cho mọi cấp bậc,lứa tuổi. Cam đoan
+                không tốt không nhận tiền!
               </h3>
               <p className={styles.timer}>22-28/0222</p>
             </div>
