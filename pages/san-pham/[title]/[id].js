@@ -24,7 +24,7 @@ const Post = ({ product, loading }) => {
   if (loading) return <h1>Loading...</h1>;
   return (
     <div className={styles.productPage}>
-      <Meta />
+      <Meta title={`${product.title} | Siêu rẻ và tốt nhất! | khumuivietnam.com`} description={`${product.title} : ${product.uses} | Siêu rẻ và tốt nhất!  | khumuivietnam.com`} keywords={`${product.title},${product.title} rẻ nhất,khumuivietnam,khumuivietnam.com,khumuivietnam shop`} />
       <div className={styles.backLink}>
         <Link href={`/`} className={styles.linkItem}>
           Trang chủ
