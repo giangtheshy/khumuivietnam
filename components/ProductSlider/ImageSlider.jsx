@@ -25,13 +25,13 @@ function SamplePrevArrow(props) {
     />
   );
 }
-const ImageSlider = ({ products }) => {
+const ImageSlider = ({ images, setIndex }) => {
   const settings = {
     dots: false,
     speed: 500,
     slidesToShow: 5,
     slidesToScroll: 5,
-    infinite: true,
+    infinite: false,
     arrows: true,
     autoplay: true,
     autoplaySpeed: 3000,
@@ -70,11 +70,12 @@ const ImageSlider = ({ products }) => {
   };
   return (
     <Slider {...settings}>
-      {products.map((product) => (
+      {images.map((image, index) => (
         <Image
-          key={product._id}
-          title={product.title}
-          image="https://adminbeauty.hvnet.vn/Upload/Files/Avatar-SP-Web(1)(1)-Recovered-Recovered(11).jpg?width=350&height=391&v=15042020"
+          key={index}
+          title="khumuivietnam.com - Chuyên các sản phẩm xịt khử mùi tốt nhất Việt Nam"
+          image={image}
+          onClick={() => setIndex(index)}
         />
       ))}
     </Slider>

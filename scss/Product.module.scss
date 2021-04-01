@@ -18,16 +18,20 @@
   }
   .productCenter {
     display: flex;
+    height: auto;
     background: #fff;
     box-shadow: 0 0 7px 2px #bbb;
     padding: 1rem;
     margin: 2rem 0;
     .imgCenter {
       width: 40%;
+      height: auto;
       margin-right: 1rem;
       .mainImg {
         width: 100%;
+        margin-bottom: 2rem;
         img {
+          width: 100%;
           object-fit: cover;
         }
         display: grid;
@@ -38,7 +42,7 @@
       }
     }
     .productControl {
-      width: 100%;
+      width: 60%;
       .headerCenter {
         display: flex;
         align-items: center;
@@ -217,6 +221,7 @@
         }
       }
       .productControl {
+        width: 100%;
         .headerCenter {
           flex-direction: column;
           justify-content: flex-start;
@@ -245,6 +250,7 @@
         }
       }
       .productControl {
+        width: 100%;
         .headerCenter {
           flex-direction: column;
           justify-content: flex-start;

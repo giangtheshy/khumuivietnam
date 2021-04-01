@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 
 import { IoMdArrowDropright } from "react-icons/io";
@@ -6,7 +6,6 @@ import { VscCheck } from "react-icons/vsc";
 import { FaWarehouse, FaCartPlus, FaGift } from "react-icons/fa";
 import { SiBrandDotAi, SiAdguard, SiSellfy } from "react-icons/si";
 
-import { useSelector } from "react-redux";
 import styles from "../../../scss/Product.module.scss";
 import { wrapper } from "../../../store/store";
 import axios from "../../../apis/axios";
@@ -16,9 +15,12 @@ import * as types from "../../../store/types";
 import Meta from "../../../components/Meta";
 import Stars from "../../../utils/components/Stars/Stars";
 import ImageSlider from "../../../components/ProductSlider/ImageSlider";
-const Post = ({ post, loading }) => {
+const Post = ({ product, loading }) => {
   const router = useRouter();
-  const posts = useSelector((state) => state.post.posts);
+  const [index, setIndex] = useState(0)
+  const handleIndex = (id) => {
+    setIndex(id)
+  }
   if (loading) return <h1>Loading...</h1>;
   return (
     <div className={styles.productPage}>
@@ -33,33 +35,33 @@ const Post = ({ post, loading }) => {
         </Link>
         <IoMdArrowDropright />
         <Link
-          href={`/san-pham/${post.title
+          href={`/san-pham/${product.title
             .normalize("NFD")
             .replace(/[\u0300-\u036f]/g, "")
             .replace(/\s+/g, "-")
-            .toLowerCase()}/${post._id}`}
+            .toLowerCase()}/${product._id}`}
           className={styles.linkItem}
         >
-          {post.title}
+          {product.title}
         </Link>
       </div>
       <section className={styles.productCenter}>
         <div className={styles.imgCenter}>
           <div className={styles.mainImg}>
             <img
-              src="https://adminbeauty.hvnet.vn/Upload/Files/Avatar-SP-Web(1)(1)-Recovered-Recovered(11).jpg?width=350&height=391&v=15042020"
+              src={product.images[index]}
               alt="xkmShop"
             />
           </div>
           <div className={styles.imgSlider}>
-            <ImageSlider products={posts} />
+            <ImageSlider images={product.images} setIndex={handleIndex} />
           </div>
         </div>
         <div className={styles.productControl}>
           <div className={styles.headerCenter}>
-            <h1 className={styles.title}>Daily ExtraStrength</h1>
+            <h1 className={styles.title}>{product.title}</h1>
             <div className={styles.evaluate}>
-              <Stars stars={4} />
+              <Stars stars={product.evaluate} />
               <small className="clr-secondary">Đánh giá sản phẩm</small>
             </div>
           </div>
@@ -70,29 +72,32 @@ const Post = ({ post, loading }) => {
                   src="https://bizweb.dktcdn.net/100/021/944/themes/723706/assets/hot_price.png?1616296243114"
                   alt="xkmShop"
                 />
-                <span className="bold clr-main">500.0550</span>
-                <sup className="bold clr-main">đ</sup>
+                <span className="bold clr-main">{product.price.toLocaleString('en-US', {
+                  style: 'currency',
+                  currency: 'VND',
+                })}</span>
+
               </div>
               <div className={styles.contentDetails}>
                 <div className={styles.infoTitle}>
                   <SiBrandDotAi className={styles.icon} />
                   <span className="bold">Thương hiệu : </span>
-                  <span className="bold clr-blue">Xixaomi </span>
+                  <span className="bold clr-blue">{product.brand} </span>
                 </div>
                 <div className={styles.infoTitle}>
                   <SiAdguard className={styles.icon} />
                   <span className="bold">Bảo hành : </span>
-                  <span className="bold ">3 tháng </span>
+                  <span className="bold ">{product.guarantee} tháng </span>
                 </div>
                 <div className={styles.infoTitle}>
                   <FaWarehouse className={styles.icon} />
                   <span className="bold">Tồn kho : </span>
-                  <span className="bold ">35 </span>
+                  <span className="bold ">{product.inventory} </span>
                 </div>
                 <div className={styles.infoTitle}>
                   <SiSellfy className={styles.icon} />
                   <span className="bold">Đã bán : </span>
-                  <span className="bold ">55 </span>
+                  <span className="bold ">{product.sold} </span>
                 </div>
                 <div className={styles.btnCenter}>
                   <div className={styles.quantityBtn}>
@@ -141,13 +146,13 @@ const Post = ({ post, loading }) => {
 export const getStaticProps = wrapper.getStaticProps(async ({ store, params }) => {
   const id = params.id;
 
-  const { data } = await apis.getSinglePost(id);
-  store.dispatch({ type: types.GET_SINGLE_POST, payload: { post: data } });
+  const { data } = await apis.getProduct(id);
+  store.dispatch({ type: types.GET_PRODUCT, payload: data });
 
-  return { props: { post: store.getState().post.post, loading: store.getState().post.loading } };
+  return { props: { product: store.getState().product.product, loading: store.getState().product.loading } };
 });
 export const getStaticPaths = async () => {
-  const { data } = await axios.get("/api/posts");
+  const { data } = await apis.getProducts();
   const paths = data.map((post) => ({
     params: {
       id: post._id,

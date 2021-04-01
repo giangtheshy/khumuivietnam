@@ -56,13 +56,13 @@ const Events = () => {
           </article>
         </div>
       </div>
-      <div className={styles.eventAds}>
+      {/* <div className={styles.eventAds}>
         <img
           src="https://bizweb.dktcdn.net/100/021/944/themes/723706/assets/banner_under_slider.png?1616296243114"
           alt="image ads"
           title="XkmShop"
         />
-      </div>
+      </div> */}
     </div>
   );
 };

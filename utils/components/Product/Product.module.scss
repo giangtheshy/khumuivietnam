@@ -63,10 +63,16 @@
   }
   .details {
     .title {
-      color: gray;
       text-transform: capitalize;
-      &:hover {
-        color: $mainColor;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      a {
+        color: gray;
+
+        &:hover {
+          color: $mainColor;
+        }
       }
     }
     .detailsBottom {

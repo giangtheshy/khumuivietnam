@@ -1,3 +1,3 @@
 import axios from "./axios";
-export const getPosts = () => axios.get("/api/posts");
-export const getSinglePost = (id) => axios.get(`/api/post/${id}`);
+export const getProducts = () => axios.get("/api/products/getProducts");
+export const getProduct = (id) => axios.get(`/api/products/getProduct/${id}`);

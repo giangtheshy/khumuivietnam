@@ -49,7 +49,7 @@ export default function Home({ products }) {
   );
 }
 export const getStaticProps = wrapper.getStaticProps(async ({ store }) => {
-  const { data } = await apis.getPosts();
-  store.dispatch({ type: types.GET_POST, payload: data });
-  return { props: { products: store.getState().post.posts } };
+  const { data } = await apis.getProducts();
+  store.dispatch({ type: types.GET_PRODUCTS, payload: data });
+  return { props: { products: store.getState().product.products } };
 });

@@ -36,7 +36,7 @@ const ProductSlider = ({ products }) => {
         },
       },
       {
-        breakpoint: 350,
+        breakpoint: 422,
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
@@ -51,9 +51,9 @@ const ProductSlider = ({ products }) => {
           key={product._id}
           _id={product._id}
           title={product.title}
-          photoURL={product.photoURL}
-          price="100.000"
-          sold="55"
+          image={product.images[0]}
+          price={product.price}
+          sold={product.sold}
         />
       ))}
     </Slider>
