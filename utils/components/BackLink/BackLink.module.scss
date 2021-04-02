@@ -1,0 +1,15 @@
+@import "../../../scss/config";
+.backLink {
+  display: flex;
+  align-items: center;
+  font-size: 0.8rem;
+  a {
+    text-decoration: none;
+    color: #000;
+    transition: $mainTransition;
+    &:hover {
+      color: $mainColor;
+      font-weight: bold;
+    }
+  }
+}

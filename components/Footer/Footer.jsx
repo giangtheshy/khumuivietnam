@@ -46,7 +46,7 @@ const Footer = () => {
               <HiPhone /> Điện thoại: <span className="bold clr-main">0326245445</span>
             </p>
             <p>
-              <MdEmail /> Email: <span className="bold clr-main">nhockrong98@gmail.com</span>
+              <MdEmail /> Email: <span className="bold clr-main">admindater@khumuivietnam.com</span>
             </p>
           </div>
         </div>
@@ -54,7 +54,7 @@ const Footer = () => {
       <div className={styles.botFooter}>
         <p>Kết nối với chúng tôi</p>
         <div className={styles.socialIcons}>
-          <a href="https://www.facebook.com/">
+          <a href="https://www.facebook.com/SEO-Everything-111885114330912">
             <FaFacebook className={`${styles.icon} ${styles.facebook}`} /> Facebook
           </a>
           <a href="https://www.instagram.com/">

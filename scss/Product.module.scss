@@ -2,20 +2,7 @@
 .productPage {
   width: 90%;
   margin: 1rem auto;
-  .backLink {
-    display: flex;
-    align-items: center;
-    font-size: 0.8rem;
-    a {
-      text-decoration: none;
-      color: #000;
-      transition: $mainTransition;
-      &:hover {
-        color: $mainColor;
-        font-weight: bold;
-      }
-    }
-  }
+  
   .productCenter {
     display: flex;
     height: auto;

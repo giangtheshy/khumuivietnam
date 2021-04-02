@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 
-import { IoMdArrowDropright } from "react-icons/io";
+
 import { VscCheck } from "react-icons/vsc";
 import { FiHeart } from "react-icons/fi";
 import { FaWarehouse, FaCartPlus, FaGift } from "react-icons/fa";
@@ -16,6 +16,7 @@ import * as types from "../../../store/types";
 import Meta from "../../../components/Meta";
 import Stars from "../../../utils/components/Stars/Stars";
 import ImageSlider from "../../../components/ProductSlider/ImageSlider";
+import BackLink from '../../../utils/components/BackLink/BackLink';
 const Product = ({ product, loading }) => {
   const router = useRouter();
   const [index, setIndex] = useState(0)
@@ -26,26 +27,14 @@ const Product = ({ product, loading }) => {
   return (
     <div className={styles.productPage}>
       <Meta title={`${product.title} | Siêu rẻ và tốt nhất! | khumuivietnam.com`} description={`${product.title} : ${product.uses} | Siêu rẻ và tốt nhất!  | khumuivietnam.com`} keywords={`${product.title},${product.title} rẻ nhất,khumuivietnam,khumuivietnam.com,khumuivietnam shop`} />
-      <div className={styles.backLink}>
-        <Link href={`/`} className={styles.linkItem}>
-          Trang chủ
-        </Link>
-        <IoMdArrowDropright />
-        <Link href={`/san-pham`} className={styles.linkItem}>
-          Sản phẩm
-        </Link>
-        <IoMdArrowDropright />
-        <Link
-          href={`/san-pham/${product.title
-            .normalize("NFD")
-            .replace(/[\u0300-\u036f]/g, "")
-            .replace(/\s+/g, "-")
-            .toLowerCase()}/${product._id}`}
-          className={styles.linkItem}
-        >
-          {product.title}
-        </Link>
-      </div>
+      <BackLink list={[{ href: '/', text: "Trang chủ" }, { href: '/san-pham', text: "Sản phẩm" }, {
+        href: `/san-pham/${product.title
+          .normalize("NFD")
+          .replace(/[\u0300-\u036f]/g, "")
+          .replace(/\s+/g, "-")
+          .toLowerCase()}/${product._id}`, text: product.title
+      }]} />
+
       <section className={styles.productCenter}>
         <div className={styles.imgCenter}>
           <div className={styles.mainImg}>

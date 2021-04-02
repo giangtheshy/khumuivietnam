@@ -1,0 +1,18 @@
+.about {
+  width: 90%;
+  margin: 1rem auto;
+  .title {
+    color: red;
+  }
+  .description {
+    color: green;
+  }
+  .container {
+    .title {
+      color: red;
+    }
+    .description {
+      color: green;
+    }
+  }
+}
