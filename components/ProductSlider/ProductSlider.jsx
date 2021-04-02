@@ -11,7 +11,7 @@ const ProductSlider = ({ products }) => {
     speed: 500,
     slidesToShow: 5,
     slidesToScroll: 5,
-    infinite: true,
+    infinite: false,
     arrows: false,
     responsive: [
       {

@@ -3,9 +3,9 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import styles from "./Product.module.scss";
 import { FaRegHeart, FaCartPlus } from "react-icons/fa";
-import { FiSearch } from "react-icons/fi";
+import { BsHeartFill } from "react-icons/bs";
 
-const Product = ({ image, title, price, sold, _id }) => {
+const Product = ({ image, title, price, sold, _id, favorites }) => {
   const router = useRouter();
   return (
     <article className={styles.product}>
@@ -39,7 +39,12 @@ const Product = ({ image, title, price, sold, _id }) => {
               currency: "VND",
             })}
           </p>
-          <p className={styles.sold}>Đã bán: {sold}</p>
+          <div className={styles.detailsBottomRight}>
+            <p className={styles.fav}>
+              <BsHeartFill className={styles.iconFav}/> {favorites?.length || 0}
+            </p>
+            <p className={styles.sold}>Đã bán: {sold}</p>
+          </div>
         </div>
       </div>
     </article>

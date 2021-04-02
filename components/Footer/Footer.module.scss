@@ -1,0 +1,163 @@
+@import "../../scss/config";
+.footer {
+  background: #fff;
+  width: 100%;
+  padding: 2rem;
+  .topFooter {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
+    line-height: 1.8;
+    .left {
+      width: 50%;
+    }
+    .centerRight {
+      display: flex;
+      justify-content: space-evenly;
+      width: 50%;
+      .center {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        a {
+          color: $darkBlue;
+          text-decoration: none;
+          transition: $mainTransition;
+          font-weight: bold;
+          &:hover {
+            color: $mainColor;
+            text-decoration: underline;
+          }
+        }
+      }
+      .right {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+    }
+  }
+  .botFooter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    p {
+      text-align: center;
+      font-weight: bold;
+      font-size: 1.2rem;
+      text-transform: uppercase;
+      border-bottom: 1px solid $mainColor;
+      padding-bottom: 1rem;
+      width: 80%;
+      margin-bottom: 1rem;
+    }
+    .socialIcons {
+      display: flex;
+      a {
+        background: transparent;
+        border: none;
+        margin: 0.5rem 1rem;
+        font-size: 1.2rem;
+        display: flex;
+        align-items: center;
+        font-weight: bold;
+        text-decoration: none;
+        color: #000;
+        transition: $mainTransition;
+        &:hover {
+          color: $mainColor;
+          .icon {
+            transform: scale(1.2);
+          }
+        }
+        .icon {
+          transition: $mainTransition;
+        }
+        .instagram {
+          color: #c32aa3;
+          margin-right: 0.5rem;
+          font-size: 1.8rem;
+        }
+        .facebook {
+          @extend .instagram;
+          color: #3b5998;
+        }
+        .youtube {
+          @extend .instagram;
+          color: #ff0000;
+        }
+        .twitter {
+          @extend .instagram;
+          color: #1da1f2;
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 768px) and (max-width: 950px) {
+  .footer {
+    .topFooter {
+      flex-direction: column;
+      .left {
+        width: 100%;
+        display: grid;
+        place-items: center;
+        margin-bottom: 1rem;
+      }
+      .centerRight {
+        width: 100%;
+      }
+    }
+  }
+}
+
+@media (min-width: 450px) and (max-width: 768px) {
+  .footer {
+    .topFooter {
+      flex-direction: column;
+      .left {
+        width: 100%;
+        display: grid;
+        place-items: center;
+        margin-bottom: 1rem;
+      }
+      .centerRight {
+        width: 100%;
+      }
+    }
+    .botFooter {
+      .socialIcons {
+        display: inline-block;
+      }
+    }
+  }
+}
+@media only screen and (max-width: 450px) {
+  .footer {
+    .topFooter {
+      flex-direction: column;
+      .left {
+        width: 100%;
+        display: grid;
+        place-items: center;
+        margin-bottom: 1rem;
+      }
+      .centerRight {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        .center {
+          margin-bottom: 1rem;
+        }
+      }
+    }
+    .botFooter {
+      .socialIcons {
+        display: inline-block;
+      }
+    }
+  }
+}

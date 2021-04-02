@@ -1,6 +1,6 @@
 @import "../../../scss/config";
 .product {
-  height: 18rem;
+  height: 21rem;
   max-width: 16rem;
   margin: 1rem;
   overflow: hidden;
@@ -78,16 +78,26 @@
     .detailsBottom {
       display: flex;
       justify-content: space-between;
+      align-items: center;
       .price {
         color: $mainColor;
         .textUpper {
           color: rgb(24, 182, 24);
         }
       }
-      .sold {
-        color: #bbb;
-        font-size: 0.8rem;
-        vertical-align: sub;
+      .detailsBottomRight {
+        .fav {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          color: #bbb;
+          font-size: 0.8rem;
+        }
+        .sold {
+          color: #bbb;
+          font-size: 0.8rem;
+          vertical-align: sub;
+        }
       }
     }
   }

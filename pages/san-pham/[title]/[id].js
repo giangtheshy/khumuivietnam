@@ -3,6 +3,7 @@ import Link from "next/link";
 
 import { IoMdArrowDropright } from "react-icons/io";
 import { VscCheck } from "react-icons/vsc";
+import { FiHeart } from "react-icons/fi";
 import { FaWarehouse, FaCartPlus, FaGift } from "react-icons/fa";
 import { SiBrandDotAi, SiAdguard, SiSellfy } from "react-icons/si";
 
@@ -15,7 +16,7 @@ import * as types from "../../../store/types";
 import Meta from "../../../components/Meta";
 import Stars from "../../../utils/components/Stars/Stars";
 import ImageSlider from "../../../components/ProductSlider/ImageSlider";
-const Post = ({ product, loading }) => {
+const Product = ({ product, loading }) => {
   const router = useRouter();
   const [index, setIndex] = useState(0)
   const handleIndex = (id) => {
@@ -50,11 +51,12 @@ const Post = ({ product, loading }) => {
           <div className={styles.mainImg}>
             <img
               src={product.images[index]}
-              alt="khumuivietnam.com "
+              alt={`khumuivietnam.com - ${product.title}`}
+              title={`khumuivietnam.com - ${product.title}`}
             />
           </div>
           <div className={styles.imgSlider}>
-            <ImageSlider images={product.images} setIndex={handleIndex} />
+            <ImageSlider images={product.images} title={product.title} setIndex={handleIndex} />
           </div>
         </div>
         <div className={styles.productControl}>
@@ -83,6 +85,11 @@ const Post = ({ product, loading }) => {
                   <SiBrandDotAi className={styles.icon} />
                   <span className="bold">Thương hiệu : </span>
                   <span className="bold clr-blue">{product.brand} </span>
+                </div>
+                <div className={styles.infoTitle}>
+                  <FiHeart className={styles.icon} />
+                  <span className="bold">Lượt thích : </span>
+                  <span className="bold ">{product.guarantee}{product.favorites} người </span>
                 </div>
                 <div className={styles.infoTitle}>
                   <SiAdguard className={styles.icon} />
@@ -139,6 +146,25 @@ const Post = ({ product, loading }) => {
           </div>
         </div>
       </section>
+      <section className={styles.details}>
+        <div className={styles.tab}>
+          <span>Mô tả sản phẩm</span>
+        </div>
+        <div className={styles.heading}>
+          <h2>{`${product.title} - bán tại khumuivietnam.com`}</h2>
+          <img src={product.images[0]} alt={product.title} title={`${product.title} - khumuivietnam.com`} />
+        </div>
+        <div className={styles.uses}>
+          <h6>Công dụng</h6>
+          <p>{product.uses}</p>
+          <img src={product.images[1]} alt={product.title} title={`${product.title} - khumuivietnam.com`} />
+        </div>
+        <div className={styles.otherInfo}>
+          <h6>Thông tin khác</h6>
+          <p>{product.otherInfo}</p>
+          <img src={product.images[2]} alt={product.title} title={`${product.title} - khumuivietnam.com`} />
+        </div>
+      </section>
     </div>
   );
 };
@@ -165,4 +191,4 @@ export const getStaticPaths = async () => {
   }));
   return { paths, fallback: false };
 };
-export default Post;
+export default Product;

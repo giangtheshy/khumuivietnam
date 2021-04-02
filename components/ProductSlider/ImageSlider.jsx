@@ -25,7 +25,7 @@ function SamplePrevArrow(props) {
     />
   );
 }
-const ImageSlider = ({ images, setIndex }) => {
+const ImageSlider = ({ images, setIndex, title }) => {
   const settings = {
     dots: false,
     speed: 500,
@@ -71,12 +71,7 @@ const ImageSlider = ({ images, setIndex }) => {
   return (
     <Slider {...settings}>
       {images.map((image, index) => (
-        <Image
-          key={index}
-          title="khumuivietnam.com - Chuyên các sản phẩm xịt khử mùi tốt nhất Việt Nam"
-          image={image}
-          onClick={() => setIndex(index)}
-        />
+        <Image key={index} title={`khumuivietnam.com - ${title}`} image={image} onClick={() => setIndex(index)} />
       ))}
     </Slider>
   );

@@ -26,17 +26,26 @@
     align-items: center;
     border-radius: 5rem 0 0 5rem;
     height: 100%;
-    width: 55%;
+    width: 50%;
     background: #fff;
-    .input {
+    .form {
       position: absolute;
-      left: -57%;
+      left: -62%;
       top: 0.5rem;
-      width: 60%;
-      border: none;
-      padding: 0.5rem;
-      border-radius: 0.5rem;
-      box-shadow: 0 0 10px 1px rgb(122, 122, 122);
+      width: 65%;
+      .iconSearch {
+        position: absolute;
+        top: 0.5rem;
+        left: 0.5rem;
+        color: $mainColor;
+      }
+      .input {
+        width: 100%;
+        border: none;
+        padding: 0.5rem 0.5rem 0.5rem 2rem;
+        border-radius: 0.5rem;
+        box-shadow: 0 0 10px 1px rgb(122, 122, 122);
+      }
     }
     .navBar {
       display: flex;
@@ -47,7 +56,6 @@
         position: relative;
         border: none;
         background-color: transparent;
-        padding: 0 2rem;
         text-decoration: none;
         color: #000;
         cursor: pointer;
@@ -56,13 +64,18 @@
         align-items: center;
         font-size: 1rem;
         padding: 1rem 0;
+        transition: $mainTransition;
         &:hover {
           color: $secondaryColor;
+          transform: scale(1.1);
           .accountDetails {
             transform: translateY(0%);
             visibility: visible;
             opacity: 1;
           }
+        }
+        .icon {
+          margin: 0 0.5rem;
         }
         .accountDetails {
           position: absolute;
@@ -95,9 +108,16 @@
     }
   }
 }
-@media (min-width: 768px) and (max-width: 950px) {
+@media (min-width: 768px) and (max-width: 1024px) {
   .header {
     padding-left: 1rem;
+    .navCenter {
+      width: 55%;
+      .form {
+        left: -57%;
+        width: 60%;
+      }
+    }
   }
 }
 @media only screen and (max-width: 768px) {
@@ -126,8 +146,10 @@
         visibility: visible;
         opacity: 1;
       }
-      .input {
-        position: unset;
+      .form {
+        position: relative;
+        left: 0;
+        top: 0;
         width: 100%;
         margin-bottom: 1rem;
       }
