@@ -4,3 +4,10 @@ export const SET_LOADING = "SET_LOADING";
 
 export const GET_POSTS = "GET_POSTS";
 export const GET_POST = "GET_POST";
+
+export const LOGIN = "LOGIN";
+export const REGISTER = "REGISTER";
+export const LOGOUT = "LOGOUT";
+export const CHECK_LOGIN = "CHECK_LOGIN";
+export const LOGIN_GOOGLE = "LOGIN_GOOGLE";
+

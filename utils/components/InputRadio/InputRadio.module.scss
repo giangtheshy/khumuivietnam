@@ -1,0 +1,76 @@
+@import "../../../scss/config";
+.input__box {
+  display: flex;
+  position: relative;
+  align-items: center;
+  padding-left: 29px;
+  cursor: pointer;
+  font-size: 1rem;
+  height: 2rem;
+  margin: 0.5rem 1rem;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  &:hover {
+    &_input {
+      border: 2px $mainColor solid;
+    }
+    &_mark {
+      border: 2px $mainColor solid;
+    }
+  }
+  &_input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+    &:checked ~ .input__box_mark {
+      border: 2px $mainColor solid;
+      background-color: $mainColor;
+      &::after {
+        visibility: visible;
+      }
+      &::before {
+        visibility: visible;
+      }
+    }
+  }
+  &_mark {
+    position: absolute;
+    top: 0.4rem;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    border: 1px solid #ccc;
+    background-color: #fff;
+
+    &::after {
+      content: "";
+      width: 1rem;
+      height: 1rem;
+      border-radius: 50%;
+      position: absolute;
+      top: -0rem;
+      left: 0rem;
+      font-size: 0.7rem;
+      background: white;
+      visibility: hidden;
+    }
+    &::before {
+      content: "";
+      width: 0.5rem;
+      height: 0.5rem;
+      border-radius: 50%;
+      position: absolute;
+      top: 0.25rem;
+      left: 0.25rem;
+      font-size: 0.7rem;
+      background: $mainColor;
+      visibility: hidden;
+      z-index: 1;
+    }
+  }
+}

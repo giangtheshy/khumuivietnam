@@ -67,7 +67,6 @@
         transition: $mainTransition;
         &:hover {
           color: $secondaryColor;
-          transform: scale(1.1);
           .accountDetails {
             transform: translateY(0%);
             visibility: visible;
@@ -76,6 +75,17 @@
         }
         .icon {
           margin: 0 0.5rem;
+        }
+        .avatar {
+          width: 2.5rem;
+          height: 2.5rem;
+          border-radius: 50%;
+          object-fit: cover;
+          border: 1px solid #eee;
+          margin-right: 0.5rem;
+        }
+        .userName {
+          display: none;
         }
         .accountDetails {
           position: absolute;
@@ -102,6 +112,22 @@
             &:hover {
               color: $mainColor;
             }
+          }
+        }
+        .accountBox {
+          position: absolute;
+          top: 4rem;
+          right: 0;
+          width: 10rem;
+          background: #fff;
+          border-radius: 0.5rem;
+          z-index: 2;
+          button {
+            width: 75%;
+            display: flex;
+            margin: 0 auto;
+            align-items: center;
+            justify-content: space-between;
           }
         }
       }
@@ -156,9 +182,14 @@
       .navBar {
         flex-direction: column;
         justify-content: center;
-        .accountDetails {
-          left: 0;
-          right: unset;
+        .itemNav {
+          .userName {
+            display: block;
+          }
+          .accountDetails {
+            left: 0;
+            right: unset;
+          }
         }
       }
     }

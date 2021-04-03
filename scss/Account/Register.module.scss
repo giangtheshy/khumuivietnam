@@ -1,4 +1,164 @@
+@import "../../scss/config";
 .register {
   width: 90%;
   margin: 1rem auto;
+  &__wrapper {
+    margin-top: 2rem;
+    padding: 1rem;
+    background: #fff;
+    border-radius: 0.5rem;
+    display: flex;
+    &_left {
+      width: 60%;
+      padding: 0 10%;
+      &_header {
+        border-bottom: 2px solid #eee;
+        padding-bottom: 1rem;
+        margin-bottom: 1.5rem;
+        position: relative;
+        &::before {
+          content: "";
+          position: absolute;
+          left: 40%;
+          bottom: -2px;
+          width: 20%;
+          height: 2px;
+          background: $mainColor;
+        }
+        h1 {
+          font-style: inherit;
+          font-size: 1.2rem;
+          text-transform: uppercase;
+          text-align: center;
+        }
+      }
+      &_center {
+        display: flex;
+        flex-direction: column;
+        form {
+          margin-bottom: 1rem;
+          display: grid;
+          place-items: center;
+          .avatar {
+            width: 5rem;
+            height: 5rem;
+            border-radius: 0.5rem;
+            object-fit: cover;
+          }
+          .imgCenter {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            height: 6rem;
+            margin: 1rem 0;
+          }
+        }
+
+        a {
+          font-weight: bold;
+          font-size: 0.8rem;
+          text-align: center;
+          padding-bottom: 1rem;
+          margin: 0rem auto;
+          cursor: pointer;
+          width: 10rem;
+          text-decoration: none;
+          color: #000;
+          &:hover {
+            color: $darkBlue;
+          }
+        }
+      }
+      &_footer {
+        text-align: center;
+        font-size: 0.8rem;
+        a {
+          color: $darkBlue;
+          text-decoration: none;
+          font-weight: bold;
+          &:hover {
+            color: $mainColor;
+          }
+        }
+      }
+    }
+    &_right {
+      width: 40%;
+      height: 30rem;
+      background-image: linear-gradient(to left, rgba(255, 255, 255, 0.8), #bbb),
+        url("https://cdn.tgdd.vn/Files/2019/05/02/1164502/nhung-loai-xit-khu-mui-tot-nhat-hien-nay-ma-ban-khong-nen-bo-qua-2_800x500.jpg");
+      background-repeat: no-repeat;
+      background-position: right;
+      background-attachment: fixed;
+      background-size: contain;
+    }
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .register {
+    &__wrapper {
+      flex-direction: column;
+      &_left {
+        width: 80%;
+        margin: 1rem auto;
+      }
+      &_right {
+        width: 80%;
+        margin: 1rem auto;
+      }
+    }
+  }
+}
+
+@media (min-width: 640px) and (max-width: 768px) {
+  .register {
+    &__wrapper {
+      flex-direction: column;
+      &_left {
+        width: 100%;
+        margin: 1rem auto;
+      }
+      &_right {
+        width: 100%;
+        margin: 1rem auto;
+      }
+    }
+  }
+}
+@media (min-width: 368px) and (max-width: 640px) {
+  .register {
+    &__wrapper {
+      flex-direction: column;
+      &_left {
+        width: 100%;
+        margin: 1rem auto;
+      }
+      &_right {
+        width: 100%;
+        margin: 1rem auto;
+        height: 20rem;
+        background-size: cover;
+      }
+    }
+  }
+}
+@media only screen and (max-width: 368px) {
+  .register {
+    width: 100%;
+    &__wrapper {
+      flex-direction: column;
+      padding: 0.5rem;
+      &_left {
+        width: 100%;
+        margin: 1rem auto;
+      }
+      &_right {
+        width: 100%;
+        margin: 1rem auto;
+        height: 20rem;
+        background-size: cover;
+      }
+    }
+  }
 }

@@ -1,0 +1,25 @@
+.file__box {
+  position: relative;
+  width: 6rem;
+  height: 6rem;
+  border: 1px dashed #ccc;
+  cursor: pointer;
+  border-radius: 0.5rem;
+  margin-left: 1rem;
+  &_icon {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    place-items: center;
+    .icon {
+      width: 3rem;
+      height: 3rem;
+      color: rgb(87, 192, 87);
+    }
+  }
+  &_file {
+    width: 0;
+    opacity: 0;
+    position: absolute;
+  }
+}

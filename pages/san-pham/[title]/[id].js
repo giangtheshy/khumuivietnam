@@ -153,7 +153,9 @@ const Product = ({ product, loading }) => {
         <div className={styles.otherInfo}>
           <h6>Thông tin khác</h6>
           <p>{product.otherInfo}</p>
-          <img src={product.images[2]} alt={product.title} title={`${product.title} - khumuivietnam.com`} />
+          {product.images[2] &&
+            <img src={product.images[2]} alt={product.title} title={`${product.title} - khumuivietnam.com`} />
+          }
         </div>
       </section>
     </div>
