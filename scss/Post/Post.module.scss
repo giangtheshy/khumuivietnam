@@ -1,4 +1,136 @@
+@import "../../scss/config";
 .post {
   width: 90%;
   margin: 1rem auto;
+  .postWrapper {
+    display: flex;
+    margin-top: 2rem;
+    .postCenter {
+      width: 70%;
+      background: #fff;
+      border-radius: 0.5rem;
+      padding: 2rem;
+      .header {
+        margin-bottom: 2rem;
+        border-bottom: 1px solid #eee;
+        padding-bottom: 1rem;
+        .title {
+          padding-bottom: 1rem;
+        }
+        .timer {
+          color: #ccc;
+          font-size: 0.8rem;
+        }
+      }
+      .introduce {
+        font-size: 0.9rem;
+        text-indent: 2rem;
+        line-height: 1.8;
+        margin-bottom: 3rem;
+      }
+      .paragraph {
+        .heading {
+          font-size: 1.1rem;
+          color: $darkBlue;
+          margin-bottom: 2rem;
+        }
+        .paraItem {
+          padding: 1rem 2rem;
+          a {
+            color: $mainGreen;
+            font-size: 1rem;
+            transition: $mainTransition;
+            cursor: pointer;
+            font-weight: bold;
+            text-decoration: none;
+            &:hover {
+              color: rgba($mainGreen, 0.8);
+              text-decoration: underline;
+            }
+          }
+          .content {
+            display: flex;
+            margin: 1.5rem 0;
+            img {
+              width: 40%;
+            }
+            .text {
+              width: 60%;
+            }
+          }
+        }
+      }
+    }
+  }
+  .newPost {
+    width: 30%;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .post {
+    .postWrapper {
+      .postCenter {
+        width: 100%;
+      }
+    }
+    .newPost {
+      display: none;
+    }
+  }
+}
+@media (min-width: 450px) and (max-width: 768px) {
+  .post {
+    .postWrapper {
+      .postCenter {
+        width: 100%;
+        .paragraph {
+          .paraItem {
+            .content {
+              flex-direction: column;
+              text-align: center;
+              img {
+                width: 100%;
+              }
+              .text {
+                width: 100%;
+              }
+            }
+          }
+        }
+      }
+    }
+    .newPost {
+      display: none;
+    }
+  }
+}
+@media only screen and (max-width: 768px) {
+  .post {
+    width: 100%;
+    .postWrapper {
+      .postCenter {
+        width: 100%;
+        padding: 2rem 0.5rem;
+        .paragraph {
+          .paraItem {
+            padding: 1rem 0.5rem;
+            .content {
+              flex-direction: column;
+              text-align: center;
+              img {
+                width: 100%;
+              }
+              .text {
+                width: 100%;
+              }
+            }
+          }
+        }
+      }
+    }
+    .newPost {
+      display: none;
+    }
+  }
 }

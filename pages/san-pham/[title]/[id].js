@@ -32,6 +32,8 @@ const Product = ({ product, loading }) => {
           .normalize("NFD")
           .replace(/[\u0300-\u036f]/g, "")
           .replace(/\s+/g, "-")
+          .replace(/đ/g, "d")
+          .replace(/Đ/g, "D")
           .toLowerCase()}/${product._id}`, text: product.title
       }]} />
 
@@ -168,13 +170,15 @@ export const getStaticProps = wrapper.getStaticProps(async ({ store, params }) =
 });
 export const getStaticPaths = async () => {
   const { data } = await apis.getProducts();
-  const paths = data.map((post) => ({
+  const paths = data.map((product) => ({
     params: {
-      id: post._id,
-      title: post.title
+      id: product._id,
+      title: product.title
         .normalize("NFD")
         .replace(/[\u0300-\u036f]/g, "")
         .replace(/\s+/g, "-")
+        .replace(/đ/g, "d")
+        .replace(/Đ/g, "D")
         .toLowerCase(),
     },
   }));

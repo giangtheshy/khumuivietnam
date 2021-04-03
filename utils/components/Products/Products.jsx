@@ -13,6 +13,7 @@ const Products = ({ products }) => {
           image={product.images[0]}
           price={product.price}
           sold={product.sold}
+          evaluate={product.evaluate}
         />
       ))}
     </div>

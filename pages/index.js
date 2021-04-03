@@ -1,3 +1,6 @@
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { getPosts } from '../store/actions/post.action';
 import Meta from "../components/Meta";
 import Slides from "../components/Banner/Slides/Slides";
 import Events from "../components/Banner/Events/Events";
@@ -11,6 +14,11 @@ import BrandSlider from "../components/ProductSlider/BrandSlider";
 import { FaMedal } from "react-icons/fa";
 
 export default function Home({ products }) {
+  const posts = useSelector(state => state.post.posts)
+  const dispatch = useDispatch()
+  useEffect(() => {
+    dispatch(getPosts())
+  }, [])
   return (
     <main className={styles.main}>
       <Meta
@@ -21,7 +29,7 @@ export default function Home({ products }) {
 
       <section className={styles.bannerSection}>
         <Slides />
-        <Events />
+        <Events posts={posts} />
       </section>
       <section className={styles.newProduct}>
         <div className={styles.header}>
@@ -51,5 +59,6 @@ export default function Home({ products }) {
 export const getStaticProps = wrapper.getStaticProps(async ({ store }) => {
   const { data } = await apis.getProducts();
   store.dispatch({ type: types.GET_PRODUCTS, payload: data });
+
   return { props: { products: store.getState().product.products } };
 });

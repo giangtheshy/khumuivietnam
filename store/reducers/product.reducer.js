@@ -11,9 +11,9 @@ const product = (state = initState, action) => {
     case HYDRATE:
       const nextState = {
         ...state,
-        ...action.payload.post,
+        ...action.payload.product,
       };
-      if (state.products.length > 0) nextState.products = state.products;
+      if (nextState.products.length === 0) nextState.products = state.products;
 
       return nextState;
     case types.GET_PRODUCTS:
