@@ -45,6 +45,7 @@ export const loginGoogle = (user, setCookies) => async (dispatch) => {
   try {
     const { data } = await api.loginGoogle(user);
     setCookies("user", data.token, { path: "/" });
+    console.log(data);
     dispatch({ type: types.LOGIN_GOOGLE, payload: data });
   } catch (error) {
     console.log(error);

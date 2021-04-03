@@ -22,7 +22,7 @@ const Login = () => {
   const handleSuccess = async (res) => {
     const { name, imageUrl, email, googleId } = res.profileObj;
     const token = res.tokenId;
-    dispatch(loginGoogle({ name, imageUrl, googleId, email, token }));
+    dispatch(loginGoogle({ name, imageUrl, googleId, email, token }, setCookies));
     router.push("/");
   };
   const handleFailure = () => {
