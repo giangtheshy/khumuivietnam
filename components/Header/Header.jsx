@@ -28,7 +28,7 @@ const Header = () => {
     dispatch(logoutUser());
   };
   return (
-    <header className={styles.header}>
+    <header className={styles.header} id="header">
       <div className={styles.logoSection}>
         <Logo />
       </div>

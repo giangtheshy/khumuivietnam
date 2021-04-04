@@ -4,7 +4,7 @@ import InputRadio from "../../utils/components/InputRadio/InputRadio";
 import { BsFilterLeft } from "react-icons/bs";
 import { RiArrowDownSLine } from "react-icons/ri";
 
-const Filter = ({ heading, products }) => {
+const Filter = ({ heading, products, onChange, type, value }) => {
   const [hideFilter, setHideFilter] = useState(true);
   return (
     <div className={styles.filter}>
@@ -20,7 +20,7 @@ const Filter = ({ heading, products }) => {
       </div>
       <div className={`${styles.selector} `} style={hideFilter ? { height: 0 } : { height: products.length * 50 }}>
         {products.map((product, index) => {
-          return <InputRadio value={product} key={index} name={heading} />;
+          return <InputRadio value={product} key={index} name={type} checked={value === product} onChange={onChange} />;
         })}
       </div>
     </div>

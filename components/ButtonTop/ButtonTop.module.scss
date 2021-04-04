@@ -1,0 +1,45 @@
+@import "../../scss/config";
+.btn_to_top {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  border: 1px solid $mainColor;
+  border-radius: 50%;
+  width: 2rem;
+  height: 2rem;
+  display: grid;
+  place-items: center;
+  background: #fff;
+  color: $mainColor;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: $mainTransition;
+  z-index: 3;
+  &::after {
+    content: "";
+    width: 2.5rem;
+    height: 2.5rem;
+    border: 2px solid $mainColor;
+    position: absolute;
+    top: -0.41rem;
+    left: -0.41rem;
+    border-radius: 50%;
+  }
+  &:hover {
+    background: $mainColor;
+    border: 1px solid #fff;
+    box-shadow: 0 0 5px 2px $mainColor;
+    color: #fff;
+  }
+  .icon {
+    animation: btn 1s infinite ease-in-out;
+  }
+  @keyframes btn {
+    from {
+      transform: translateY(0.2rem);
+    }
+    to {
+      transform: translateY(-0.2rem) scale(1.2);
+    }
+  }
+}

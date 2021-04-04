@@ -2,6 +2,7 @@
 .products__page {
   width: 90%;
   margin: 1rem auto;
+  overflow: hidden;
   .filter__btn {
     position: absolute;
     top: 0.3rem;
@@ -57,9 +58,22 @@
       &__heading {
         text-transform: uppercase;
         border-bottom: 2px solid $mainColor;
-        padding-bottom: 0.5rem;
         color: $darkBlue;
         text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0.5rem 1rem;
+        .icon {
+          font-size: 1.3rem;
+          color: #000;
+          transition: $mainTransition;
+          cursor: pointer;
+          &:hover {
+            color: $mainColor;
+            transform: rotate(180deg) scale(1.2);
+          }
+        }
       }
     }
   }
