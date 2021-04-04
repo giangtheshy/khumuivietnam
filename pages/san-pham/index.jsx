@@ -18,7 +18,7 @@ const ProductsPage = ({ products }) => {
   const handleChangeFilterHead = (e) => {
     setFilterHead(e.target.value);
   };
-  
+
   const handleProducts = (type) => {
     const array = [...new Set(products.map((product) => product[`${type}`]))];
     return array;
@@ -61,7 +61,7 @@ const ProductsPage = ({ products }) => {
       <BackLink
         list={[
           { href: "/", text: "Trang chủ" },
-          { href: "/gioi-thieu", text: "Sản phẩm" },
+          { href: "/san-pham", text: "Sản phẩm" },
         ]}
       />
       <div className={styles.title}>
