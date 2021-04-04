@@ -8,6 +8,7 @@ import BackLink from '../../utils/components/BackLink/BackLink';
 import Products from '../../utils/components/Products/Products';
 import Filter from '../../components/Filter/Filter';
 import InputRadio from '../../utils/components/InputRadio/InputRadio';
+import Meta from '../../components/Meta';
 const ProductsPage = ({ products }) => {
   const [filterHead, setFilterHead] = useState("")
   const [showFilter, setShowFilter] = useState(false)
@@ -19,6 +20,7 @@ const ProductsPage = ({ products }) => {
     return array
   }
   return <div className={styles.products__page}>
+    <Meta keywords={products.map(product => product.title).join(', ')} />
     <BackLink list={[{ href: '/', text: "Trang chủ" }, { href: '/gioi-thieu', text: "Sản phẩm" }]} />
     <div className={styles.title}><h1>Sản phẩm xịt khử mùi việt nam</h1></div>
     <button className={styles.filter__btn} title="Bộ lọc" onClick={() => setShowFilter(!showFilter)}><RiFilter3Line className={styles.icon} /></button>
