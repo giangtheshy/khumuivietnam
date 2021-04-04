@@ -1,4 +1,123 @@
-.products {
+@import "../scss/config";
+.products__page {
   width: 90%;
   margin: 1rem auto;
+  .filter__btn {
+    position: absolute;
+    top: 0.3rem;
+    right: 4rem;
+    border: 2px solid #fff;
+    background: transparent;
+    border-radius: 0.3rem;
+    padding: 0.1rem;
+    cursor: pointer;
+    display: none;
+    .icon {
+      color: #fff;
+      font-size: 1.8rem;
+    }
+  }
+  .title {
+    margin: 3rem auto;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid $mainColor;
+    h1 {
+      text-align: center;
+      text-transform: uppercase;
+      font-size: 1.3rem;
+      color: $darkBlue;
+    }
+  }
+  .content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    .products {
+      width: 70%;
+      background-color: #fff;
+      border-radius: 0.5rem;
+      &__filter {
+        display: flex;
+        margin: 1rem;
+        align-items: center;
+        background: #f5f5dc;
+        padding: 0.3rem;
+        border-radius: 0.5rem;
+        &_group {
+          display: flex;
+        }
+      }
+    }
+    .filters {
+      background-color: #fff;
+      border-radius: 0.5rem;
+      padding: 1rem;
+      width: 28%;
+      transition: $mainTransition;
+      &__heading {
+        text-transform: uppercase;
+        border-bottom: 2px solid $mainColor;
+        padding-bottom: 0.5rem;
+        color: $darkBlue;
+        text-align: center;
+      }
+    }
+  }
+}
+
+@media (min-width: 412px) and (max-width: 768px) {
+  .products__page {
+    .filter__btn {
+      display: block;
+    }
+    .content {
+      .products {
+        width: 100%;
+      }
+      .filters {
+        position: absolute;
+        top: 9vh;
+        right: 0;
+        min-height: 90vh;
+        width: 20rem;
+        box-shadow: 0 0 5px 1px #bbb;
+        transform: translateX(150%);
+
+        &.show {
+          transform: translateX(0%);
+        }
+      }
+    }
+  }
+}
+@media only screen and (max-width: 412px) {
+  .products__page {
+    .filter__btn {
+      display: block;
+    }
+    .content {
+      .products {
+        width: 100%;
+        &__filter {
+          flex-direction: column;
+          &_group {
+            flex-direction: column;
+          }
+        }
+      }
+      .filters {
+        position: absolute;
+        top: 9vh;
+        right: 0;
+        min-height: 90vh;
+        width: 20rem;
+        box-shadow: 0 0 5px 1px #bbb;
+        transform: translateX(150%);
+
+        &.show {
+          transform: translateX(0%);
+        }
+      }
+    }
+  }
 }

@@ -82,7 +82,6 @@ const Post = ({ post }) => {
 
 export const getStaticProps = wrapper.getStaticProps(async ({ store, params }) => {
   const title = params.title;
-
   const { data } = await apis.getPost(title);
   store.dispatch({ type: types.GET_POST, payload: data });
 

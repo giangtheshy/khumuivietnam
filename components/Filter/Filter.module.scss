@@ -1,0 +1,47 @@
+@import "../../scss/config";
+.filter {
+  margin: 1rem auto;
+
+  .heading {
+    background: rgba($mainColor, 0.9);
+    padding: 0.5rem 0 0.5rem 0.5rem;
+    cursor: pointer;
+
+    &.hide {
+      .heading__title {
+        .heading__title_right {
+          .heading__title_right__icon {
+            transform: rotate(180deg);
+          }
+        }
+      }
+    }
+    &__title {
+      color: #fff;
+      text-transform: uppercase;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      &_left {
+        display: flex;
+        align-items: center;
+        &__icon {
+          font-size: 1.3rem;
+          margin-right: 0.2rem;
+        }
+      }
+      &_right {
+        &__icon {
+          font-size: 1.6rem;
+          margin-right: 1rem;
+          transition: $mainTransition;
+        }
+      }
+    }
+  }
+  .selector {
+    overflow: hidden;
+    transition: $mainTransition;
+  }
+}

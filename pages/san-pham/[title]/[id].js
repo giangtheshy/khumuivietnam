@@ -9,7 +9,6 @@ import { SiBrandDotAi, SiAdguard, SiSellfy } from "react-icons/si";
 
 import styles from "../../../scss/Product.module.scss";
 import { wrapper } from "../../../store/store";
-import axios from "../../../apis/axios";
 import { useRouter } from "next/router";
 import * as apis from "../../../apis";
 import * as types from "../../../store/types";
@@ -147,12 +146,14 @@ const Product = ({ product, loading }) => {
         </div>
         <div className={styles.uses}>
           <h6>Công dụng</h6>
-          <p>{product.uses}</p>
-          <img src={product.images[1]} alt={product.title} title={`${product.title} - khumuivietnam.com`} />
+          <p dangerouslySetInnerHTML={{ __html: product.uses }}></p>
+          {product.images[1] &&
+            <img src={product.images[1]} alt={product.title} title={`${product.title} - khumuivietnam.com`} />
+          }
         </div>
         <div className={styles.otherInfo}>
           <h6>Thông tin khác</h6>
-          <p>{product.otherInfo}</p>
+          <p dangerouslySetInnerHTML={{ __html: product.otherInfo }}></p>
           {product.images[2] &&
             <img src={product.images[2]} alt={product.title} title={`${product.title} - khumuivietnam.com`} />
           }

@@ -1,20 +1,33 @@
+@import "../../../scss/config";
 .file__box {
   position: relative;
-  width: 6rem;
-  height: 6rem;
+  width: 4rem;
+  height: 4rem;
   border: 1px dashed #ccc;
   cursor: pointer;
   border-radius: 0.5rem;
   margin-left: 1rem;
+  transition: $mainTransition;
+  &:hover {
+    border: 1px dashed $darkBlue;
+    .file__box_icon {
+      .icon {
+        transform: rotate3d(1, 1, 1, 360deg);
+        width: 2.5rem;
+        height: 2.5rem;
+      }
+    }
+  }
   &_icon {
     width: 100%;
     height: 100%;
     display: grid;
     place-items: center;
     .icon {
-      width: 3rem;
-      height: 3rem;
+      width: 1.5rem;
+      height: 1.5rem;
       color: rgb(87, 192, 87);
+      transition: $mainTransition;
     }
   }
   &_file {

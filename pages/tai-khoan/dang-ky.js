@@ -31,14 +31,21 @@ const Register = () => {
   }
   const handleChangeFile = (e) => {
     const file = e.target.files[0]
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onloadend = () => {
-      setData({ ...data, [e.target.name]: reader.result })
-    };
-    reader.onerror = () => {
-      console.error('something went wrong!!!');
-    };
+    try {
+      if (file) {
+
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onloadend = () => {
+          setData({ ...data, [e.target.name]: reader.result })
+        };
+        reader.onerror = () => {
+          console.error('something went wrong!!!');
+        };
+      }
+    } catch (error) {
+      console.error(error);
+    }
 
   }
   return (
