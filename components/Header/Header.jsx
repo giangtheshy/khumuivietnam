@@ -16,6 +16,7 @@ import styles from "./Header.module.scss";
 const Header = () => {
   const [showBar, setShowBar] = useState(false);
   const [showBox, setShowBox] = useState(false);
+  const [showDropDown, setShowDropDown] = useState(false);
   const [_, setCookies] = useCookies(["user"]);
   const user = useSelector((state) => state.user.user?.user);
   const dispatch = useDispatch();
@@ -43,55 +44,61 @@ const Header = () => {
           <input id="search" type="text" name="search" placeholder="Bạn cần tìm gì ..." className={styles.input} />
         </form>
         <nav className={styles.navBar}>
-          <Link href="/gioi-thieu" className={styles.itemNav}>
-            <button>
+          <Link href="/gioi-thieu">
+            <button className={styles.btnNav}>
               <VscInfo className={styles.icon} />
               Giới Thiệu
             </button>
           </Link>
-          <Link href="/san-pham" className={styles.itemNav}>
-            <button>
+          <Link href="/san-pham">
+            <button className={styles.btnNav}>
               <GiBottledBolt className={styles.icon} />
               Sản Phẩm
             </button>
           </Link>
-          <Link href="#contact" className={styles.itemNav}>
-            <button>
+          <Link href="#contact">
+            <button className={styles.btnNav}>
               <MdContactPhone className={styles.icon} />
               Liên Hệ
             </button>
           </Link>
 
           {!user ? (
-            <div className={styles.itemNav}>
-              <FaRegUser className={styles.icon} />
-              Tài Khoản
-              <div className={styles.accountDetails}>
-                <button className={styles.loginBtn} onClick={() => router.push("/tai-khoan/dang-nhap")}>
-                  <FaSignInAlt className={styles.icon} />
-                  Đăng Nhập
-                </button>
-                <button className={styles.registerBtn} onClick={() => router.push("/tai-khoan/dang-ky")}>
-                  <FaSignOutAlt className={styles.icon} />
-                  Đăng Ký
-                </button>
-              </div>
+            <div className={styles.itemNav} onClick={() => setShowDropDown(!showDropDown)}>
+              <button className={styles.btnNav}>
+                <FaRegUser className={styles.icon} />
+                Tài Khoản
+              </button>
+              {showDropDown && (
+                <div className={styles.accountDetails}>
+                  <button className={styles.__btn} onClick={() => router.push("/tai-khoan/dang-nhap")}>
+                    <FaSignInAlt className={styles.icon} />
+                    Đăng Nhập
+                  </button>
+                  <button className={styles.__btn} onClick={() => router.push("/tai-khoan/dang-ky")}>
+                    <FaSignOutAlt className={styles.icon} />
+                    Đăng Ký
+                  </button>
+                </div>
+              )}
             </div>
           ) : (
             <div className={styles.itemNav} onClick={() => setShowBox(!showBox)}>
-              <img
-                src={user?.photoURL.replace("/image/upload/", "/image/upload/c_scale,h_40,w_40/")}
-                alt="avatar | khumuivietnam.com"
-                className={styles.avatar}
-              />
-              <span className={styles.userName}>{user?.displayName}</span>
+              <button className={styles.btnNav}>
+                <img
+                  src={user?.photoURL.replace("/image/upload/", "/image/upload/c_scale,h_40,w_40/")}
+                  alt="avatar | khumuivietnam.com"
+                  className={styles.avatar}
+                />
+                <span className={styles.userName}>{user?.displayName}</span>
+              </button>
               {showBox && (
                 <div className={styles.accountBox}>
-                  <button className={styles.logout} onClick={logout}>
+                  <button className={styles.__btn} onClick={logout}>
                     <HiOutlineLogout className={styles.icon} />
                     Đăng xuất
                   </button>
-                  <button className={styles.history}>
+                  <button className={styles.__btn}>
                     <FaListAlt className={styles.icon} />
                     Đã mua
                   </button>
