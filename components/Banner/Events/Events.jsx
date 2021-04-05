@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import styles from "./Events.module.scss";
+import convert from "../../../utils/functions/convertLink";
 
 const Events = ({ posts }) => {
   return (
@@ -16,17 +17,7 @@ const Events = ({ posts }) => {
               <article className={styles.eventItem} key={post._id}>
                 <img src={post.image} alt={post.title} title={post.title} className={styles.eventImg} />
                 <div className={styles.eventDetails}>
-                  <Link
-                    href={`/bai-viet/${post.title
-                      .normalize("NFD")
-                      .replace(/[\u0300-\u036f]/g, "")
-                      .replace(/\s+/g, "-")
-                      .replace(/đ/g, "d")
-                      .replace(/Đ/g, "D")
-                      .toLowerCase()}`}
-                  >
-                    {post.title}
-                  </Link>
+                  <Link href={`/bai-viet/${convert(post.title)}`}>{post.title}</Link>
                   <p className={styles.timer}>{`Ngày đăng ${date.getDate()}-${
                     date.getMonth() + 1
                   }-${date.getFullYear()}`}</p>

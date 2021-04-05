@@ -1,18 +1,147 @@
+@import "../scss/config";
 .about {
   width: 90%;
   margin: 1rem auto;
-  .title {
-    color: red;
-  }
-  .description {
-    color: green;
-  }
-  .container {
-    .title {
-      color: red;
+  .content {
+    margin-top: 2rem;
+    background-color: #fff;
+    border-radius: 1rem;
+    padding: 2rem;
+    .header {
+      margin: 2rem 0 5rem 0;
+      border-bottom: 2px solid $mainColor;
+      padding: 1rem;
+      h1 {
+        color: $mainColor;
+      }
     }
-    .description {
-      color: green;
+    .adminAbout {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin: 3rem;
+      box-shadow: 0 0 3px 1px #ccc;
+      padding: 2rem;
+      border-radius: 1rem;
+      transition: $mainTransition;
+      &:hover {
+        transform: translateY(-0.5rem);
+        box-shadow: 0 0 3px 1px $mainColor;
+      }
+      .img {
+        width: 30%;
+        position: relative;
+        border-radius: 50%;
+        .icon {
+          position: absolute;
+          right: 5%;
+          top: 5%;
+          font-size: 4rem;
+          color: #3b5998;
+          background: #fff;
+          border-radius: 50%;
+          display: grid;
+          place-items: center;
+        }
+        img {
+          width: 100%;
+          border-radius: 50%;
+          object-fit: cover;
+          border: 10px solid $darkBlue;
+        }
+      }
+      .detail {
+        width: 50%;
+        border-radius: 1rem;
+        padding: 3rem;
+        background: #f5f5dc;
+        h2 {
+          color: $mainColor;
+          font-size: 1.4rem;
+          margin: 1rem 0;
+        }
+        .major {
+          color: $darkBlue;
+          margin: 1rem;
+        }
+        .description {
+          color: #bbb;
+          font-size: 1rem;
+          margin: 2rem;
+        }
+      }
+    }
+  }
+}
+@media (min-width: 768px) and (max-width: 1024px) {
+  .about {
+    .content {
+      .adminAbout {
+        flex-direction: column;
+        .img {
+          margin-bottom: 1rem;
+          width: 50%;
+        }
+        .detail {
+          width: 80%;
+        }
+      }
+    }
+  }
+}
+@media (min-width: 550px) and (max-width: 768px) {
+  .about {
+    .content {
+      .adminAbout {
+        flex-direction: column;
+        .img {
+          margin-bottom: 1rem;
+          width: 70%;
+        }
+        .detail {
+          width: 100%;
+        }
+      }
+    }
+  }
+}
+@media (min-width: 410px) and (max-width: 550px) {
+  .about {
+    .content {
+      .adminAbout {
+        flex-direction: column;
+        padding: 0.5rem;
+        margin: 1.5rem;
+        .img {
+          margin-bottom: 1rem;
+          width: 70%;
+        }
+        .detail {
+          width: 100%;
+          padding: 0.5rem;
+        }
+      }
+    }
+  }
+}
+@media only screen and (max-width: 410px) {
+  .about {
+    width: 98%;
+    .content {
+      padding: 0;
+      .adminAbout {
+        flex-direction: column;
+        padding: 0.5rem;
+        margin: 0.5rem;
+        .img {
+          margin-bottom: 1rem;
+          width: 70%;
+        }
+        .detail {
+          width: 100%;
+          padding: 0.5rem;
+        }
+      }
     }
   }
 }

@@ -24,7 +24,7 @@ export default function Home({ products }) {
       <Meta
         title="khumuivietnam.com - Chuyên các sản phẩm xịt khử mùi tốt nhất Việt Nam"
         keywords="khumuivietnam.com,khumuivietnam shop,khumuivietnam, xịt khử mùi nam, xịt khử mùi nữ, xịt khử mùi,"
-        description="khumuivietnam.com chuyên bán các loại xịt khử mùi tốt và rẻ nhất dành cho mọi cấp bậc,lứa tuổi. Cam đoan không tốt không nhận tiền!"
+        description="khumuivietnam shop chuyên bán các loại xịt khử mùi tốt và rẻ nhất dành cho mọi cấp bậc,lứa tuổi. Cam đoan không tốt không nhận tiền!"
       />
 
       <section className={styles.bannerSection}>

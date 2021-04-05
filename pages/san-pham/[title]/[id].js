@@ -16,6 +16,7 @@ import Meta from "../../../components/Meta";
 import Stars from "../../../utils/components/Stars/Stars";
 import ImageSlider from "../../../components/ProductSlider/ImageSlider";
 import BackLink from '../../../utils/components/BackLink/BackLink';
+import convert from '../../../utils/functions/convertLink';
 const Product = ({ product, loading }) => {
   const router = useRouter();
   const [index, setIndex] = useState(0)
@@ -27,13 +28,7 @@ const Product = ({ product, loading }) => {
     <div className={styles.productPage}>
       <Meta title={`${product.title} | Siêu rẻ và tốt nhất! | khumuivietnam.com`} description={`${product.title} : ${product.uses} | Siêu rẻ và tốt nhất!  | khumuivietnam.com`} keywords={`${product.title},${product.title} rẻ nhất,khumuivietnam,khumuivietnam.com,khumuivietnam shop`} />
       <BackLink list={[{ href: '/', text: "Trang chủ" }, { href: '/san-pham', text: "Sản phẩm" }, {
-        href: `/san-pham/${product.title
-          .normalize("NFD")
-          .replace(/[\u0300-\u036f]/g, "")
-          .replace(/\s+/g, "-")
-          .replace(/đ/g, "d")
-          .replace(/Đ/g, "D")
-          .toLowerCase()}/${product._id}`, text: product.title
+        href: `/san-pham/${convert(product.title)}/${product._id}`, text: product.title
       }]} />
 
       <section className={styles.productCenter}>
@@ -176,13 +171,8 @@ export const getStaticPaths = async () => {
   const paths = data.map((product) => ({
     params: {
       id: product._id,
-      title: product.title
-        .normalize("NFD")
-        .replace(/[\u0300-\u036f]/g, "")
-        .replace(/\s+/g, "-")
-        .replace(/đ/g, "d")
-        .replace(/Đ/g, "D")
-        .toLowerCase(),
+      title:
+        convert(product.title),
     },
   }));
   return { paths, fallback: false };

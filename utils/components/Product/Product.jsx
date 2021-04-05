@@ -5,6 +5,7 @@ import styles from "./Product.module.scss";
 import { FaRegHeart, FaCartPlus } from "react-icons/fa";
 import { BsHeartFill } from "react-icons/bs";
 import Stars from "../Stars/Stars";
+import convert from "../../functions/convertLink";
 
 const Product = ({ image, title, price, sold, _id, favorites, evaluate }) => {
   const router = useRouter();
@@ -21,17 +22,7 @@ const Product = ({ image, title, price, sold, _id, favorites, evaluate }) => {
       </div>
       <div className={styles.details}>
         <h3 className={styles.title}>
-          <Link
-            className={styles.link}
-            href="/san-pham/[title]/[id]"
-            as={`/san-pham/${title
-              .normalize("NFD")
-              .replace(/[\u0300-\u036f]/g, "")
-              .replace(/\s+/g, "-")
-              .replace(/đ/g, "d")
-              .replace(/Đ/g, "D")
-              .toLowerCase()}/${_id}`}
-          >
+          <Link className={styles.link} href="/san-pham/[title]/[id]" as={`/san-pham/${convert(title)}/${_id}`}>
             {title}
           </Link>
         </h3>

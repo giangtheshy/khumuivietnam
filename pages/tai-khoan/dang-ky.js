@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import { useCookies } from 'react-cookie';
+import Meta from '../../components/Meta';
 
 import { registerUser } from '../../store/actions/user.action';
 import Input from '../../utils/components/Input/Input';
@@ -50,6 +51,7 @@ const Register = () => {
   }
   return (
     <div className={styles.register}>
+      <Meta title="Đăng ký tài khoản tại khumuivietnam shop để nhận những ưu đãi đặc biệt và trải nghiệm tốt hơn" />
       <BackLink list={[{ href: '/', text: "Trang chủ" }, { href: '/tai-khoan', text: "Tài khoản" }, { href: '/tai-khoan/dang-ky', text: "Đăng ký" }]} />
       <section className={styles.register__wrapper}>
         <div className={styles.register__wrapper_left}>

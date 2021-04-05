@@ -9,6 +9,7 @@ import styles from "../../../scss/Post/Post.module.scss";
 import BackLink from "../../../utils/components/BackLink/BackLink";
 import Meta from "../../../components/Meta";
 import Events from "../../../components/Banner/Events/Events";
+import convert from "../../../utils/functions/convertLink";
 
 const Post = ({ post }) => {
   const posts = useSelector((state) => state.post.posts);
@@ -31,13 +32,7 @@ const Post = ({ post }) => {
           { href: "/", text: "Trang chủ" },
           { href: "/bai-viet", text: "Bài viết" },
           {
-            href: `/bai-viet/${post.title
-              .normalize("NFD")
-              .replace(/[\u0300-\u036f]/g, "")
-              .replace(/\s+/g, "-")
-              .replace(/đ/g, "d")
-              .replace(/Đ/g, "D")
-              .toLowerCase()}`,
+            href: `/bai-viet/${convert(post.title)}`,
             text: post.title,
           },
         ]}
@@ -91,13 +86,7 @@ export const getStaticPaths = async () => {
   const { data } = await apis.getPosts();
   const paths = data.map((post) => ({
     params: {
-      title: post.title
-        .normalize("NFD")
-        .replace(/[\u0300-\u036f]/g, "")
-        .replace(/\s+/g, "-")
-        .replace(/đ/g, "d")
-        .replace(/Đ/g, "D")
-        .toLowerCase(),
+      title: convert(post.title),
     },
   }));
   return { paths, fallback: false };

@@ -6,6 +6,7 @@ import { useRouter } from 'next/router';
 import Link from 'next/link';
 import { useCookies } from 'react-cookie';
 
+import Meta from '../../components/Meta';
 import { loginUser } from '../../store/actions/user.action';
 import Input from '../../utils/components/Input/Input';
 import Button from '../../utils/components/Button/Button';
@@ -40,6 +41,7 @@ const Login = () => {
   }
   return (
     <div className={styles.login}>
+      <Meta title="Đăng nhập vào khumuivietnam shop để nhận những ưu đãi đặc biệt và trải nghiệm tốt hơn" />
       <BackLink list={[{ href: '/', text: "Trang chủ" }, { href: '/tai-khoan', text: "Tài khoản" }, { href: '/tai-khoan/dang-nhap', text: "Đăng nhập" }]} />
       <section className={styles.login__wrapper}>
         <div className={styles.login__wrapper_left}>
