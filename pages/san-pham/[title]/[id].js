@@ -17,13 +17,13 @@ import Stars from "../../../utils/components/Stars/Stars";
 import ImageSlider from "../../../components/ProductSlider/ImageSlider";
 import BackLink from '../../../utils/components/BackLink/BackLink';
 import convert from '../../../utils/functions/convertLink';
-const Product = ({ product, loading }) => {
+const Product = ({ product }) => {
   const router = useRouter();
   const [index, setIndex] = useState(0)
   const handleIndex = (id) => {
     setIndex(id)
   }
-  if (loading) return <h1>Loading...</h1>;
+  if (!product) return <h1>Page not found...</h1>;
   return (
     <div className={styles.productPage}>
       <Meta title={`${product.title} | Siêu rẻ và tốt nhất! | khumuivietnam.com`} description={`${product.title} : ${product.uses} | Siêu rẻ và tốt nhất!  | khumuivietnam.com`} keywords={`${product.title},${product.title} rẻ nhất,khumuivietnam,khumuivietnam.com,khumuivietnam shop`} />
@@ -164,7 +164,7 @@ export const getStaticProps = wrapper.getStaticProps(async ({ store, params }) =
   const { data } = await apis.getProduct(id);
   store.dispatch({ type: types.GET_PRODUCT, payload: data });
 
-  return { props: { product: store.getState().product.product, loading: store.getState().product.loading } };
+  return { props: { product: store.getState().product.product }, revalidate: 1 };
 });
 export const getStaticPaths = async () => {
   const { data } = await apis.getProducts();
@@ -175,6 +175,6 @@ export const getStaticPaths = async () => {
         convert(product.title),
     },
   }));
-  return { paths, fallback: false };
+  return { paths, fallback: true };
 };
 export default Product;

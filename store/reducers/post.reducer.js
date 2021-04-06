@@ -16,6 +16,11 @@ const post = (state = initState, action) => {
       if (nextState.posts.length === 0) nextState.posts = state.posts;
 
       return nextState;
+    case types.GET_PROPS_HOME:
+      return { ...state, posts: action.payload.posts }
+    case types.GET_PROPS_POST:
+      return { ...state, posts: action.payload.posts, post: action.payload.post }
+
     case types.GET_POSTS:
       return { ...state, posts: action.payload };
     case types.GET_POST:

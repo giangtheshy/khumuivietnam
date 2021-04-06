@@ -61,7 +61,7 @@ export const getStaticProps = wrapper.getStaticProps(async ({ store }) => {
   const { data } = await apis.getPosts();
   store.dispatch({ type: types.GET_POSTS, payload: data });
 
-  return { props: { posts: store.getState().post.posts, } };
+  return { props: { posts: store.getState().post.posts, }, revalidate: 69 * 1000 * 60 };
 });
 
 export default Posts

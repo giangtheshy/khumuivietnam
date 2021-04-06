@@ -16,6 +16,8 @@ const product = (state = initState, action) => {
       if (nextState.products.length === 0) nextState.products = state.products;
 
       return nextState;
+    case types.GET_PROPS_HOME:
+      return { ...state, products: action.payload.products }
     case types.GET_PRODUCTS:
       return { ...state, products: action.payload };
     case types.GET_PRODUCT:

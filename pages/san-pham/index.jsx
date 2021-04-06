@@ -146,7 +146,7 @@ const ProductsPage = ({ products }) => {
     </div>
   );
 };
-export const getStaticProps = wrapper.getStaticProps(async ({ store }) => {
+export const getServerSideProps = wrapper.getServerSideProps(async ({ store }) => {
   const { data } = await apis.getProducts();
   store.dispatch({ type: types.GET_PRODUCTS, payload: data });
 

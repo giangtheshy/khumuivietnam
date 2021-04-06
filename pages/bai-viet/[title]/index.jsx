@@ -78,9 +78,11 @@ const Post = ({ post }) => {
 export const getStaticProps = wrapper.getStaticProps(async ({ store, params }) => {
   const title = params.title;
   const { data } = await apis.getPost(title);
-  store.dispatch({ type: types.GET_POST, payload: data });
+  const res = await apis.getPosts();
+  const posts = await res.data;
+  store.dispatch({ type: types.GET_PROPS_POST, payload: { post: data, posts: posts } });
 
-  return { props: { post: store.getState().post.post, loading: store.getState().post.loading } };
+  return { props: { post: store.getState().post.post }, revalidate: 60 * 1000 * 60 };
 });
 export const getStaticPaths = async () => {
   const { data } = await apis.getPosts();
@@ -89,6 +91,6 @@ export const getStaticPaths = async () => {
       title: convert(post.title),
     },
   }));
-  return { paths, fallback: false };
+  return { paths, fallback: true };
 };
 export default Post;

@@ -13,12 +13,12 @@ import ProductSlider from "../components/ProductSlider/ProductSlider";
 import BrandSlider from "../components/ProductSlider/BrandSlider";
 import { FaMedal } from "react-icons/fa";
 
-export default function Home({ products }) {
-  const posts = useSelector(state => state.post.posts)
-  const dispatch = useDispatch()
-  useEffect(() => {
-    dispatch(getPosts())
-  }, [])
+export default function Home({ products, posts }) {
+  // const posts = useSelector(state => state.post.posts)
+  // const dispatch = useDispatch()
+  // useEffect(() => {
+  //   dispatch(getPosts())
+  // }, [])
   return (
     <main className={styles.main}>
       <Meta
@@ -56,9 +56,16 @@ export default function Home({ products }) {
     </main>
   );
 }
+// export const getStaticProps = wrapper.getStaticProps(async ({ store }) => {
+//   const { data } = await apis.getProducts();
+//   store.dispatch({ type: types.GET_PRODUCTS, payload: data });
+//   return { props: { posts: store.getState().post.posts }, revalidate: 1 };
+// });
 export const getStaticProps = wrapper.getStaticProps(async ({ store }) => {
   const { data } = await apis.getProducts();
-  store.dispatch({ type: types.GET_PRODUCTS, payload: data });
+  const res = await apis.getPosts()
+  const posts = await res.data;
+  store.dispatch({ type: types.GET_PROPS_HOME, payload: { products: data, posts } });
 
-  return { props: { products: store.getState().product.products } };
+  return { props: { products: store.getState().product.products, posts: store.getState().post.posts }, revalidate: 60 * 1000 * 60 };
 });
