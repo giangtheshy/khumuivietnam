@@ -17,7 +17,7 @@ const Post = ({ post, posts }) => {
   // useEffect(() => {
   //   dispatch(getPosts());
   // }, []);
-  if (!posts) return <h2>Page not found</h2>;
+  if (!post) return <h2>Page not found</h2>;
   const date = new Date(post?.createdAt);
   return (
     <div className={styles.post}>
