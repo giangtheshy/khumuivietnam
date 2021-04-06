@@ -11,13 +11,14 @@ import Meta from "../../../components/Meta";
 import Events from "../../../components/Banner/Events/Events";
 import convert from "../../../utils/functions/convertLink";
 
-const Post = ({ post }) => {
-  const posts = useSelector((state) => state.post.posts);
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(getPosts());
-  }, []);
-  const date = new Date(post.createdAt);
+const Post = ({ post, posts }) => {
+  // const posts = useSelector((state) => state.post.posts);
+  // const dispatch = useDispatch();
+  // useEffect(() => {
+  //   dispatch(getPosts());
+  // }, []);
+  if (!posts) return <h2>Page not found</h2>;
+  const date = new Date(post?.createdAt);
   return (
     <div className={styles.post}>
       <Meta
@@ -75,6 +76,17 @@ const Post = ({ post }) => {
   );
 };
 
+// export const getServerSideProps = wrapper.getServerSideProps(async ({ store, params }) => {
+//   const title = params.title;
+//   const { data } = await apis.getPost(title);
+//   const res = await apis.getPosts();
+//   const posts = await res.data;
+//   store.dispatch({ type: types.GET_PROPS_POST, payload: { post: data, posts: posts } });
+
+//   return {
+//     props: { post: store.getState().post.post, posts: store.getState().post.posts },
+//   };
+// });
 export const getStaticProps = wrapper.getStaticProps(async ({ store, params }) => {
   const title = params.title;
   const { data } = await apis.getPost(title);
@@ -82,7 +94,10 @@ export const getStaticProps = wrapper.getStaticProps(async ({ store, params }) =
   const posts = await res.data;
   store.dispatch({ type: types.GET_PROPS_POST, payload: { post: data, posts: posts } });
 
-  return { props: { post: store.getState().post.post }, revalidate: 60 * 1000 * 60 };
+  return {
+    props: { post: store.getState().post.post, posts: store.getState().post.posts },
+    revalidate: 60 * 1000 * 60,
+  };
 });
 export const getStaticPaths = async () => {
   const { data } = await apis.getPosts();
