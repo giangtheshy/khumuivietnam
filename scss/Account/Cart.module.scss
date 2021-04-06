@@ -1,0 +1,124 @@
+@import "../../scss/config";
+.cart {
+  width: 90%;
+  margin: 1rem auto;
+  .cartWrapper {
+    background: #fff;
+    border-radius: 1rem;
+    margin-top: 2rem;
+    padding: 2rem;
+    &__header {
+      margin: 0 0 2rem 0;
+      h1 {
+        border-bottom: 2px solid $mainColor;
+        padding-bottom: 1rem;
+        font-size: 1.2rem;
+      }
+    }
+    .content {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      &__left {
+        width: 65%;
+      }
+      &__right {
+        width: 30%;
+        .total {
+          &__temp {
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #eee;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            &__text {
+              font-size: 0.8rem;
+              font-weight: bold;
+            }
+            &__price {
+              font-weight: bold;
+              font-size: 0.9rem;
+            }
+          }
+          &__main {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+            &__text {
+              font-size: 0.8rem;
+              font-weight: bold;
+            }
+            &__price {
+              font-weight: bold;
+              font-size: 1.5rem;
+              color: $mainColor;
+              text-transform: uppercase;
+            }
+          }
+        }
+        .btnCenter {
+          display: flex;
+          flex-direction: column;
+          margin-top: 1rem;
+          .btn__checkout {
+            color: #fff;
+            background: $mainColor;
+            border: 1px solid $mainColor;
+            font-size: 1.1rem;
+            padding: 0.3rem 1rem;
+            margin-bottom: 0.5rem;
+            border-radius: 0.3rem;
+            cursor: pointer;
+            &:hover {
+              background: rgba($mainColor, 0.8);
+            }
+          }
+          .btn__continue {
+            @extend .btn__checkout;
+            color: $mainColor;
+            background: #fff;
+            &:hover {
+              background: rgba($mainColor, 0.1);
+            }
+          }
+        }
+      }
+    }
+  }
+}
+@media (min-width: 388px) and (max-width: 768px) {
+  .cart {
+    .cartWrapper {
+      .content {
+        flex-direction: column;
+        &__left {
+          width: 100%;
+        }
+        &__right {
+          width: 100%;
+          margin-top: 2rem;
+        }
+      }
+    }
+  }
+}
+@media only screen and (max-width: 388px) {
+  .cart {
+    width: 100%;
+    .cartWrapper {
+      padding: 0.5rem;
+      .content {
+        flex-direction: column;
+        &__left {
+          width: 100%;
+        }
+        &__right {
+          width: 100%;
+          margin-top: 2rem;
+        }
+      }
+    }
+  }
+}

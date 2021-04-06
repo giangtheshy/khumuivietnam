@@ -32,7 +32,7 @@
     color: #fff;
   }
   .icon {
-    animation: btn 1s infinite ease-in-out;
+    animation: btn 1s infinite ease-out;
   }
   @keyframes btn {
     from {
@@ -41,5 +41,85 @@
     to {
       transform: translateY(-0.2rem) scale(1.2);
     }
+  }
+}
+.btnCart {
+  position: fixed;
+  right: 2rem;
+  bottom: 6rem;
+  border: 1px solid $mainColor;
+  background: #fff;
+  width: 2rem;
+  height: 2rem;
+  display: grid;
+  border-radius: 50%;
+  place-items: center;
+  transition: $mainTransition;
+  cursor: pointer;
+  &::after {
+    content: "";
+    width: 2.5rem;
+    height: 2.5rem;
+    border: 2px solid $mainColor;
+    position: absolute;
+    top: -0.41rem;
+    left: -0.41rem;
+    border-radius: 50%;
+  }
+  &::before {
+    content: "";
+    top: 1rem;
+    left: 1rem;
+    width: 0;
+    height: 0;
+    opacity: 0;
+    border: 2px solid $mainColor;
+    position: absolute;
+    border-radius: 50%;
+    transition: $mainTransition;
+  }
+  &:hover {
+    background: $mainColor;
+    border: 1px solid #fff;
+    box-shadow: 0 0 5px 2px $mainColor;
+    transform: scale(1.2);
+    &::after {
+      border: 1px solid #fff;
+      box-shadow: 0 0 5px 1px $mainColor;
+    }
+    &::before {
+      width: 3.5rem;
+      height: 3.5rem;
+      top: -0.91rem;
+      left: -0.91rem;
+      opacity: 1;
+    }
+    .icon {
+      color: #fff;
+    }
+  }
+  animation: cart 0.5s infinite ease-out;
+  @keyframes cart {
+    from {
+      box-shadow: 0 0 1px 1px $mainColor;
+    }
+    to {
+      box-shadow: 0 0 5px 2px $mainColor;
+    }
+  }
+  .icon {
+    transition: $mainTransition;
+    color: $mainColor;
+    font-size: 1.5rem;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .btn_to_top {
+    right: 0.5rem;
+    bottom: 0.5rem;
+  }
+  .btnCart {
+    right: 0.5rem;
+    bottom: 4rem;
   }
 }

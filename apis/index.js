@@ -13,3 +13,9 @@ export const getUser = (token) => axios.get("/api/users", { headers: { "x-auth-t
 export const checkLogin = (token) =>
   axios.post("/api/users/isValidToken", null, { headers: { "x-auth-token": token } });
 export const loginGoogle = (user) => axios.post("/api/users/loginGoogle", user);
+
+export const addToCart = (cart, token) => axios.post("/api/cart/addToCart", cart, { headers: { "x-auth-token": token } });
+export const getCart = (token) => axios.get("/api/cart/getCarts", { headers: { "x-auth-token": token } });
+export const removeFromCart = (id) => axios.delete(`/api/cart/removeFromCart/${id}`);
+export const incrementCart = (id) => axios.patch(`/api/cart/incrementCart/${id}`)
+export const decrementCart = (id) => axios.patch(`/api/cart/decrementCart/${id}`);

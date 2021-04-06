@@ -6,9 +6,11 @@ import styles from "./Layout.module.scss";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 import ButtonTop from "../ButtonTop/ButtonTop";
+import ButtonCart from "../ButtonTop/ButtonCart";
 
 const Layout = ({ children }) => {
   const [showBtn, setShowBtn] = useState(false);
+  const [moveCart, setMoveCart] = useState(false);
   const dispatch = useDispatch();
   const [cookies] = useCookies(["user"]);
   useEffect(() => {
@@ -21,7 +23,9 @@ const Layout = ({ children }) => {
   const handleScroll = () => {
     if (window.pageYOffset >= 300) {
       setShowBtn(true);
+      setMoveCart(true);
     } else {
+      setMoveCart(false);
       setShowBtn(false);
     }
   };
@@ -31,6 +35,8 @@ const Layout = ({ children }) => {
       {children}
       <Footer />
       {showBtn && <ButtonTop />}
+
+      <ButtonCart style={moveCart} />
     </>
   );
 };

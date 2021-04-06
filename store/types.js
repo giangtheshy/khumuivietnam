@@ -13,3 +13,8 @@ export const LOGOUT = "LOGOUT";
 export const CHECK_LOGIN = "CHECK_LOGIN";
 export const LOGIN_GOOGLE = "LOGIN_GOOGLE";
 
+export const ADD_TO_CART = "ADD_TO_CART";
+export const REMOVE_FROM_CART = "REMOVE_FROM_CART";
+export const GET_CART = "GET_CART";
+export const INCREASE_FROM_CART = "INCREASE_FROM_CART";
+export const DECREASE_FROM_CART = "DECREASE_FROM_CART";

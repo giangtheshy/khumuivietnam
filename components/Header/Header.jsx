@@ -7,6 +7,7 @@ import { logoutUser } from "../../store/actions/user.action";
 import Logo from "../../utils/components/Logo/Logo";
 import { VscInfo } from "react-icons/vsc";
 import { FiSearch } from "react-icons/fi";
+import { IoMdArrowDropdown } from "react-icons/io";
 import { GiBottledBolt } from "react-icons/gi";
 import { MdContactPhone } from "react-icons/md";
 import { HiOutlineLogout } from "react-icons/hi";
@@ -27,6 +28,9 @@ const Header = () => {
   const logout = async () => {
     await setCookies("user", "", { path: "/" });
     dispatch(logoutUser());
+  };
+  const HandleScrollFooter = () => {
+    window.scrollTo(0, 100000);
   };
   return (
     <header className={styles.header} id="header">
@@ -56,12 +60,12 @@ const Header = () => {
               Sản Phẩm
             </button>
           </Link>
-          <Link href="#contact">
-            <button className={styles.btnNav}>
-              <MdContactPhone className={styles.icon} />
-              Liên Hệ
-            </button>
-          </Link>
+          {/* <Link> */}
+          <button className={styles.btnNav} onClick={HandleScrollFooter}>
+            <MdContactPhone className={styles.icon} />
+            Liên Hệ
+          </button>
+          {/* </Link> */}
 
           {!user ? (
             <div className={styles.itemNav} onClick={() => setShowDropDown(!showDropDown)}>
@@ -90,7 +94,9 @@ const Header = () => {
                   alt="avatar | khumuivietnam.com"
                   className={styles.avatar}
                 />
+
                 <span className={styles.userName}>{user?.displayName}</span>
+                <IoMdArrowDropdown className={styles.btnNav__icon} />
               </button>
               {showBox && (
                 <div className={styles.accountBox}>

@@ -1,0 +1,98 @@
+@import "../../scss/config";
+.itemCenter {
+  margin: 1rem 0;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #eee;
+  .top {
+    display: flex;
+    .img {
+      width: 30%;
+      img {
+        width: 100%;
+        object-fit: contain;
+      }
+    }
+    .control {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      &__left {
+        margin-right: 1rem;
+        a {
+          text-decoration: none;
+          font-weight: bold;
+          color: $darkBlue;
+          font-size: 1rem;
+          margin-bottom: 1rem;
+          width: 100%;
+          overflow: hidden;
+          display: -webkit-box;
+          -webkit-line-clamp: 3;
+          -webkit-box-orient: vertical;
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+        .price {
+          color: $mainColor;
+          font-weight: bold;
+          .text {
+            color: #000;
+            font-weight: normal;
+            font-size: 0.9rem;
+          }
+        }
+      }
+      &__right {
+        &_btnCenter {
+          display: flex;
+          align-items: center;
+          margin-bottom: 1rem;
+          .center {
+            padding: 0.5rem;
+          }
+          .btn {
+            border: 1px solid #eee;
+            background: transparent;
+            padding: 0.5rem;
+            border-radius: 0.3rem;
+            cursor: pointer;
+            transition: $mainTransition;
+            &:hover {
+              background: #eff9ff;
+            }
+          }
+        }
+        .btnRemove {
+          width: 100%;
+          display: flex;
+          align-items: center;
+          font-size: 1rem;
+          color: $mainColor;
+          border: 1px solid $mainColor;
+          background: transparent;
+          justify-content: space-evenly;
+          border-radius: 0.5rem;
+          padding: 0.3rem 0.5rem;
+          cursor: pointer;
+          transition: $mainTransition;
+          &:hover {
+            color: #fff;
+            background: $mainColor;
+          }
+          .icon {
+            font-size: 1.1rem;
+          }
+        }
+      }
+    }
+  }
+  .bot {
+    width: 100%;
+    background: #eff9ff;
+    color: #000;
+    font-size: 0.9rem;
+    padding: 1rem;
+    border-radius: 0.5rem;
+  }
+}

@@ -1,6 +1,8 @@
 import React, { useState } from "react";
-import Link from "next/link";
 
+import Link from "next/link";
+import { useDispatch } from 'react-redux';
+import { useCookies } from 'react-cookie';
 
 import { VscCheck } from "react-icons/vsc";
 import { FiHeart } from "react-icons/fi";
@@ -12,6 +14,7 @@ import { wrapper } from "../../../store/store";
 import { useRouter } from "next/router";
 import * as apis from "../../../apis";
 import * as types from "../../../store/types";
+import { addToCart } from '../../../store/actions/cart.action'
 import Meta from "../../../components/Meta";
 import Stars from "../../../utils/components/Stars/Stars";
 import ImageSlider from "../../../components/ProductSlider/ImageSlider";
@@ -20,8 +23,24 @@ import convert from '../../../utils/functions/convertLink';
 const Product = ({ product }) => {
   const router = useRouter();
   const [index, setIndex] = useState(0)
+  const [quantity, setQuantity] = useState(1)
+  const dispatch = useDispatch()
+  const [cookies, setCookies] = useCookies(["user"]);
   const handleIndex = (id) => {
     setIndex(id)
+  }
+  const handleDecrement = () => {
+    if (quantity > 1) {
+      setQuantity(quantity - 1)
+    }
+  }
+  const handleIncrement = () => {
+    if (quantity < product.inventory) {
+      setQuantity(quantity + 1)
+    }
+  }
+  const handleAddToCart = () => {
+    dispatch(addToCart({ ...product, quantity }, cookies.user))
   }
   if (!product) return <h1>Page not found...</h1>;
   return (
@@ -93,11 +112,11 @@ const Product = ({ product }) => {
                 </div>
                 <div className={styles.btnCenter}>
                   <div className={styles.quantityBtn}>
-                    <button className={styles.btnDec}>-</button>
-                    <span>5</span>
-                    <button className={styles.btnInc}>+</button>
+                    <button className={styles.btnDec} onClick={handleDecrement}>-</button>
+                    <span>{quantity}</span>
+                    <button className={styles.btnInc} onClick={handleIncrement}>+</button>
                   </div>
-                  <button className={styles.btnAddCart}>
+                  <button className={styles.btnAddCart} onClick={handleAddToCart}>
                     <FaCartPlus /> Mua ngay
                   </button>
                 </div>

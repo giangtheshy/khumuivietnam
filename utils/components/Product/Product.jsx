@@ -1,14 +1,23 @@
 import React from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
+import { useDispatch } from "react-redux";
+import { useCookies } from "react-cookie";
+import { addToCart } from "../../../store/actions/cart.action";
 import styles from "./Product.module.scss";
 import { FaRegHeart, FaCartPlus } from "react-icons/fa";
 import { BsHeartFill } from "react-icons/bs";
 import Stars from "../Stars/Stars";
 import convert from "../../functions/convertLink";
 
-const Product = ({ image, title, price, sold, _id, favorites, evaluate }) => {
+const Product = ({ image, title, price, sold, _id, favorites, evaluate, inventory }) => {
   const router = useRouter();
+
+  const dispatch = useDispatch();
+  const [cookies, setCookies] = useCookies(["user"]);
+  const handleAddToCart = () => {
+    dispatch(addToCart({ title, price, images: [image], inventory, _id, quantity }, cookies.user));
+  };
   return (
     <article className={styles.product}>
       <div className={styles.imgCenter}>
@@ -16,7 +25,7 @@ const Product = ({ image, title, price, sold, _id, favorites, evaluate }) => {
         <button className={styles.iconHeart}>
           <FaRegHeart />
         </button>
-        <button className={styles.iconCart}>
+        <button className={styles.iconCart} onClick={handleAddToCart}>
           <FaCartPlus />
         </button>
       </div>
