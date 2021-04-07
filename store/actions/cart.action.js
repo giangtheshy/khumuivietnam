@@ -27,7 +27,7 @@ export const removeFromCart = (id) => async (dispatch) => {
 };
 export const incrementCart = (id) => async (dispatch) => {
   try {
-    await apis.incrementCart(id);
+    apis.incrementCart(id);
     dispatch({ type: types.INCREASE_FROM_CART, payload: id });
   } catch (error) {
     console.log(error);
@@ -35,7 +35,7 @@ export const incrementCart = (id) => async (dispatch) => {
 };
 export const decrementCart = (id) => async (dispatch) => {
   try {
-    await apis.decrementCart(id);
+    apis.decrementCart(id);
     dispatch({ type: types.DECREASE_FROM_CART, payload: id });
   } catch (error) {
     console.log(error);
