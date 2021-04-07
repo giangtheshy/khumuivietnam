@@ -11,13 +11,12 @@ import { getFavorites } from '../../store/actions/user.action';
 
 const Favorites = () => {
   const favorites = useSelector(state => state.user.favorites)
-  const [loading, setLoading] = useState(false)
   const [loadingPage, setLoadingPage] = useState(false)
   const dispatch = useDispatch()
   const user = useSelector(state => state.user?.user?.user)
   const [cookies, setCookies] = useCookies(["user"])
   useEffect(() => {
-    dispatch(getFavorites(cookies.user, setLoading))
+    dispatch(getFavorites(cookies.user, setLoadingPage))
   }, [user])
   return (
     <div className={styles.favorites}>
