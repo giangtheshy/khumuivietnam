@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useCallback } from "react";
 import Link from "next/link";
 import styles from "./ItemCart.module.scss";
 import { FaTrash } from "react-icons/fa";
@@ -7,9 +7,20 @@ import { GrSubtract } from "react-icons/gr";
 import convert from "../../utils/functions/convertLink";
 import { removeFromCart, incrementCart, decrementCart } from "../../store/actions/cart.action";
 import { useDispatch } from "react-redux";
+import Loading from "../../utils/components/Loading/Loading";
 
 const ItemCart = ({ product }) => {
+  const [loading, setLoading] = useState({ loadingRemove: false, loadingInc: false, loadingDec: false });
   const dispatch = useDispatch();
+  const setLoadingRemove = useCallback((value) => {
+    setLoading({ ...loading, loadingRemove: value });
+  }, []);
+  const setLoadingInc = useCallback((value) => {
+    setLoading({ ...loading, loadingInc: value });
+  }, []);
+  const setLoadingDec = useCallback((value) => {
+    setLoading({ ...loading, loadingDec: value });
+  }, []);
   return (
     <article className={styles.itemCenter}>
       <div className={styles.top}>
@@ -33,21 +44,32 @@ const ItemCart = ({ product }) => {
             <div className={styles.control__right_btnCenter}>
               <button
                 className={`${styles.btn}`}
-                onClick={() => product.quantity > 1 && dispatch(decrementCart(product._id))}
+                onClick={() => product.quantity > 1 && dispatch(decrementCart(product._id, setLoadingDec))}
               >
-                <GrSubtract className={styles.icon} />
+                {loading.loadingDec ? <Loading /> : <GrSubtract className={styles.icon} />}
               </button>
               <span className={` ${styles.center}`}>{product.quantity}</span>
               <button
                 className={`${styles.btn} `}
-                onClick={() => product.quantity < product.inventory && dispatch(incrementCart(product._id))}
+                onClick={() =>
+                  product.quantity < product.inventory && dispatch(incrementCart(product._id, setLoadingInc))
+                }
               >
-                <AiOutlinePlus className={styles.icon} />
+                {loading.loadingInc ? <Loading /> : <AiOutlinePlus className={styles.icon} />}
               </button>
             </div>
-            <button className={styles.btnRemove} onClick={() => dispatch(removeFromCart(product._id))}>
-              <FaTrash className={styles.icon} />
-              Xóa
+            <button
+              className={styles.btnRemove}
+              onClick={() => dispatch(removeFromCart(product._id, setLoadingRemove))}
+            >
+              {loading.loadingRemove ? (
+                <Loading />
+              ) : (
+                <>
+                  <FaTrash className={styles.icon} />
+                  Xóa
+                </>
+              )}
             </button>
           </div>
         </div>

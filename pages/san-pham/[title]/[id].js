@@ -20,9 +20,11 @@ import Stars from "../../../utils/components/Stars/Stars";
 import ImageSlider from "../../../components/ProductSlider/ImageSlider";
 import BackLink from '../../../utils/components/BackLink/BackLink';
 import convert from '../../../utils/functions/convertLink';
+import Loading from '../../../utils/components/Loading/Loading';
 const Product = ({ product }) => {
   const router = useRouter();
   const [index, setIndex] = useState(0)
+  const [loading, setLoading] = useState(false)
   const [quantity, setQuantity] = useState(1)
   const dispatch = useDispatch()
   const [cookies, setCookies] = useCookies(["user"]);
@@ -40,7 +42,7 @@ const Product = ({ product }) => {
     }
   }
   const handleAddToCart = () => {
-    dispatch(addToCart({ ...product, quantity }, cookies.user))
+    dispatch(addToCart({ ...product, quantity }, cookies.user, setLoading))
   }
   if (!product) return <h1>Page not found...</h1>;
   return (
@@ -93,7 +95,7 @@ const Product = ({ product }) => {
                 <div className={styles.infoTitle}>
                   <FiHeart className={styles.icon} />
                   <span className="bold">Lượt thích : </span>
-                  <span className="bold ">{product.guarantee}{product.favorites} người </span>
+                  <span className="bold ">{product.favorites.length} người </span>
                 </div>
                 <div className={styles.infoTitle}>
                   <SiAdguard className={styles.icon} />
@@ -117,7 +119,13 @@ const Product = ({ product }) => {
                     <button className={styles.btnInc} onClick={handleIncrement}>+</button>
                   </div>
                   <button className={styles.btnAddCart} onClick={handleAddToCart}>
-                    <FaCartPlus /> Mua ngay
+                    {loading ?
+                      <Loading />
+                      :
+                      <>
+                        <FaCartPlus /> Mua ngay
+                    </>
+                    }
                   </button>
                 </div>
               </div>

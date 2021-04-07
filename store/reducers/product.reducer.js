@@ -22,7 +22,8 @@ const product = (state = initState, action) => {
       return { ...state, products: action.payload };
     case types.GET_PRODUCT:
       return { ...state, product: action.payload };
-
+    case types.UPDATE_FAVORITES:
+      return { ...state, products: state.products.map(product => product._id === action.payload.product._id ? action.payload.product : product) }
     case types.SET_LOADING:
       return { ...state, loading: action.payload };
     default:

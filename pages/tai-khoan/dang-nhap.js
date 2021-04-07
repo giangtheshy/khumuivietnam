@@ -12,11 +12,12 @@ import Input from '../../utils/components/Input/Input';
 import Button from '../../utils/components/Button/Button';
 import { loginGoogle } from '../../store/actions/user.action';
 import BackLink from '../../utils/components/BackLink/BackLink';
-
+import Loading from '../../utils/components/Loading/Loading';
 import styles from '../../scss/Account/Login.module.scss';
 
 const Login = () => {
   const [data, setData] = useState({ email: "", password: "" })
+  const [loading, setLoading] = useState(false)
   const dispatch = useDispatch()
   const router = useRouter()
   const [cookies, setCookies] = useCookies(["user"]);
@@ -29,12 +30,17 @@ const Login = () => {
   const handleFailure = () => {
     alert("Some errors were occur when login");
   };
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (data.email !== "" && data.password !== "") {
-      dispatch(loginUser(data, setCookies));
-      setData({ email: "", password: "" })
-      router.push('/')
+      const error = await dispatch(loginUser(data, setCookies, setLoading));
+      if (error) {
+        alert(error);
+      } else {
+        setData({ email: "", password: "" })
+        router.push('/')
+
+      }
     } else {
       alert("Phải điền đủ email và password!")
     }
@@ -50,7 +56,7 @@ const Login = () => {
             <form onSubmit={handleSubmit}>
               <Input type="email" autoComplete="on" label="Email" placeholder="Email" value={data.email} name="email" onChange={(e) => setData({ ...data, [e.target.name]: e.target.value })} />
               <Input type="password" autoComplete="on" label="Password" placeholder="Password" value={data.password} name="password" onChange={(e) => setData({ ...data, [e.target.name]: e.target.value })} />
-              <Button type="submit" label="Đăng nhập" />
+              <Button type="submit" label={loading ? '...' : "Đăng nhập"} >{loading ? <Loading /> : "Đăng nhập"}</Button>
             </form>
             <div className={styles.underline}></div>
             <GoogleLogin

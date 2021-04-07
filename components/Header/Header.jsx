@@ -11,6 +11,7 @@ import { IoMdArrowDropdown } from "react-icons/io";
 import { GiBottledBolt } from "react-icons/gi";
 import { MdContactPhone } from "react-icons/md";
 import { HiOutlineLogout } from "react-icons/hi";
+import { ImHeart } from "react-icons/im";
 import { FaRegUser, FaSignInAlt, FaSignOutAlt, FaBars, FaListAlt } from "react-icons/fa";
 
 import styles from "./Header.module.scss";
@@ -107,6 +108,10 @@ const Header = () => {
                   <button className={styles.__btn}>
                     <FaListAlt className={styles.icon} />
                     Đã mua
+                  </button>
+                  <button className={styles.__btn} onClick={() => router.push("/tai-khoan/yeu-thich")}>
+                    <ImHeart className={styles.icon} />
+                    Yêu thích
                   </button>
                 </div>
               )}

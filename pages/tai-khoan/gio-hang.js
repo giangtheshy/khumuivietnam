@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useRouter } from 'next/router';
 import styles from '../../scss/Account/Cart.module.scss';
 import BackLink from '../../utils/components/BackLink/BackLink';
@@ -9,21 +9,23 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useCookies } from 'react-cookie';
 import { getCart } from '../../store/actions/cart.action';
 import { SiBitly } from 'react-icons/si';
+import Loading from '../../utils/components/Loading/Loading';
 
 const Cart = () => {
+  const [loadingPage, setLoadingPage] = useState(false)
   const dispatch = useDispatch()
   const router = useRouter()
   const [cookies, setCookies] = useCookies(["user"])
   const cart = useSelector(state => state.cart.cart)
   const user = useSelector(state => state.user.user)
   useEffect(() => {
-    dispatch(getCart(cookies.user))
+    dispatch(getCart(cookies.user, setLoadingPage))
   }, [])
   return (
     <div className={styles.cart}>
       <Meta title="Giỏ hàng của bạn | khumuivietnam.com" />
       <BackLink list={[{ href: '/', text: "Trang chủ" }, { href: '/gio-hang', text: "Giỏ hàng" }]} />
-      {user ?
+      {user && !loadingPage ?
         <section className={styles.cartWrapper}>
           <div className={styles.cartWrapper__header}>
             <h1><span className="bold">GIỎ HÀNG</span> ( {cart.length} sản phẩm )</h1>
@@ -57,7 +59,7 @@ const Cart = () => {
               </div>
             </div>
           </div>
-        </section> : (<h1 style={{ textAlign: 'center' }}>Phải đăng nhập để dùng giỏ hàng</h1>)
+        </section> : (<h1 style={{ textAlign: 'center' }}><Loading /></h1>)
       }
     </div>
   )

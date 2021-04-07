@@ -11,18 +11,24 @@ import File from '../../utils/components/File/File'
 import Button from '../../utils/components/Button/Button';
 import BackLink from '../../utils/components/BackLink/BackLink';
 import styles from '../../scss/Account/Register.module.scss';
-
+import Loading from '../../utils/components/Loading/Loading';
 const Register = () => {
   const [data, setData] = useState({ email: "", password: "", passwordCheck: "", displayName: "", photoURL: "" })
+  const [loading, setLoading] = useState(false)
   const dispatch = useDispatch()
   const router = useRouter()
   const [cookies, setCookies] = useCookies(["user"]);
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (Object.values(data).every(item => item !== "")) {
-      dispatch(registerUser(data, setCookies));
-      setData({ email: "", password: "", passwordCheck: "", displayName: "", photoURL: "" })
-      router.push('/')
+      const error = await dispatch(registerUser(data, setCookies, setLoading));
+      if (error) {
+        alert(error);
+      } else {
+
+        setData({ email: "", password: "", passwordCheck: "", displayName: "", photoURL: "" })
+        router.push('/')
+      }
     } else {
       alert("Phải điền đủ thông tin!")
     }
@@ -68,7 +74,9 @@ const Register = () => {
                 }
                 <File name="photoURL" onChange={handleChangeFile} id="file" />
               </div>
-              <Button type="submit" label="Đăng ký" />
+              <Button type="submit" label="Đăng ký" >
+                {loading ? <Loading /> : "Đăng ký"}
+              </Button>
             </form>
             <Link href="/tai-khoan/dang-nhap">Đăng nhập</Link>
 

@@ -13,6 +13,10 @@ export const getUser = (token) => axios.get("/api/users", { headers: { "x-auth-t
 export const checkLogin = (token) =>
   axios.post("/api/users/isValidToken", null, { headers: { "x-auth-token": token } });
 export const loginGoogle = (user) => axios.post("/api/users/loginGoogle", user);
+export const updateFavorites = (id, token) =>
+  axios.patch(`/api/users/updateFavorites/${id}`, null, { headers: { "x-auth-token": token } });
+export const getFavorites = (token) =>
+  axios.get(`/api/users/getFavorites`, { headers: { "x-auth-token": token } });
 
 export const addToCart = (cart, token) => axios.post("/api/cart/addToCart", cart, { headers: { "x-auth-token": token } });
 export const getCart = (token) => axios.get("/api/cart/getCarts", { headers: { "x-auth-token": token } });

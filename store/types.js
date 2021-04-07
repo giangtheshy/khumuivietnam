@@ -12,6 +12,8 @@ export const REGISTER = "REGISTER";
 export const LOGOUT = "LOGOUT";
 export const CHECK_LOGIN = "CHECK_LOGIN";
 export const LOGIN_GOOGLE = "LOGIN_GOOGLE";
+export const UPDATE_FAVORITES = "UPDATE_FAVORITES";
+export const GET_FAVORITES = "GET_FAVORITES";
 
 export const ADD_TO_CART = "ADD_TO_CART";
 export const REMOVE_FROM_CART = "REMOVE_FROM_CART";

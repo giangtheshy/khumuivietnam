@@ -1,22 +1,28 @@
 import * as types from "../types";
 import * as api from "../../apis";
 
-export const registerUser = (user, setCookies) => async (dispatch) => {
+export const registerUser = (user, setCookies, setLoading) => async (dispatch) => {
   try {
+    setLoading(true);
     await api.registerUser(user);
     const { data } = await api.loginUser({ email: user.email, password: user.password });
     await setCookies("user", data.token, { path: "/" });
     dispatch({ type: types.REGISTER, payload: data });
+    setLoading(false);
   } catch (error) {
-    console.log(error);
+    setLoading(false);
+    return error.response.data.message;
   }
 };
-export const loginUser = (user, setCookies) => async (dispatch) => {
+export const loginUser = (user, setCookies, setLoading) => async (dispatch) => {
   try {
+    setLoading(true)
     const { data } = await api.loginUser({ email: user.email, password: user.password });
     await setCookies("user", data.token, { path: "/" });
     dispatch({ type: types.LOGIN, payload: data });
+    setLoading(false)
   } catch (error) {
+    setLoading(false)
     return error.response.data.message;
   }
 };
@@ -47,6 +53,28 @@ export const loginGoogle = (user, setCookies) => async (dispatch) => {
     setCookies("user", data.token, { path: "/" });
     dispatch({ type: types.LOGIN_GOOGLE, payload: data });
   } catch (error) {
+    console.log(error);
+  }
+};
+export const updateFavorites = (id, token, setLoading) => async (dispatch) => {
+  try {
+    setLoading(true)
+    const { data } = await api.updateFavorites(id, token);
+    dispatch({ type: types.UPDATE_FAVORITES, payload: data });
+    setLoading(false)
+  } catch (error) {
+    setLoading(false)
+    console.log(error);
+  }
+};
+export const getFavorites = (token, setLoading) => async (dispatch) => {
+  try {
+    setLoading(true)
+    const { data } = await api.getFavorites(token);
+    dispatch({ type: types.GET_FAVORITES, payload: data });
+    setLoading(false)
+  } catch (error) {
+    setLoading(false)
     console.log(error);
   }
 };

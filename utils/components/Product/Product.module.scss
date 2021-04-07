@@ -48,6 +48,17 @@
       transform: translateX(100%);
       opacity: 0;
       transition: $mainTransition;
+      &.active {
+        background-color: $mainColor;
+        &:hover {
+          background: #fff;
+          color: $mainColor;
+          border: 1px solid $mainColor;
+        }
+      }
+      &.unActive {
+        color: #fff;
+      }
       &:hover {
         background: rgb(224, 33, 33);
       }

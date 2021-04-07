@@ -192,6 +192,11 @@
           width: 100%;
           .userName {
             display: block;
+            width: 100%;
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 1;
+            -webkit-box-orient: vertical;
           }
           .accountDetails {
             width: 100%;

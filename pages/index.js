@@ -1,6 +1,4 @@
-import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { getPosts } from '../store/actions/post.action';
+import { useSelector } from 'react-redux';
 import Meta from "../components/Meta";
 import Slides from "../components/Banner/Slides/Slides";
 import Events from "../components/Banner/Events/Events";
@@ -13,12 +11,8 @@ import ProductSlider from "../components/ProductSlider/ProductSlider";
 import BrandSlider from "../components/ProductSlider/BrandSlider";
 import { FaMedal } from "react-icons/fa";
 
-export default function Home({ products, posts }) {
-  // const posts = useSelector(state => state.post.posts)
-  // const dispatch = useDispatch()
-  // useEffect(() => {
-  //   dispatch(getPosts())
-  // }, [])
+export default function Home({ posts }) {
+  const productsStore = useSelector(state => state.product.products)
   return (
     <main className={styles.main}>
       <Meta
@@ -36,7 +30,7 @@ export default function Home({ products, posts }) {
           <h2 className={styles.title}>Sản phẩm mới</h2>
         </div>
         {/* <Products products={products} /> */}
-        <ProductSlider products={products} />
+        <ProductSlider products={productsStore} />
       </section>
       <section className={styles.bestSeller}>
         <div className={styles.header}>
@@ -45,27 +39,23 @@ export default function Home({ products, posts }) {
             Bán nhiều nhất
           </h2>
         </div>
-        <Products products={products} />
+        <Products products={productsStore} />
       </section>
       <section className={styles.famousBrand}>
         <div className={styles.header}>
           <h2 className={styles.title}>Thương hiệu nỗi tiếng</h2>
         </div>
-        <BrandSlider products={products} />
+        <BrandSlider products={productsStore} />
       </section>
     </main>
   );
 }
-// export const getStaticProps = wrapper.getStaticProps(async ({ store }) => {
-//   const { data } = await apis.getProducts();
-//   store.dispatch({ type: types.GET_PRODUCTS, payload: data });
-//   return { props: { posts: store.getState().post.posts }, revalidate: 1 };
-// });
-export const getStaticProps = wrapper.getStaticProps(async ({ store }) => {
+
+export const getServerSideProps = wrapper.getServerSideProps(async ({ store }) => {
   const { data } = await apis.getProducts();
   const res = await apis.getPosts()
   const posts = await res.data;
   store.dispatch({ type: types.GET_PROPS_HOME, payload: { products: data, posts } });
 
-  return { props: { products: store.getState().product.products, posts: store.getState().post.posts }, revalidate: 60 * 1000 * 60 };
+  return { props: { products: store.getState().product.products, posts: store.getState().post.posts } };
 });

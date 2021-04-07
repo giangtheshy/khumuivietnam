@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { RiFilter3Line } from "react-icons/ri";
 import { FiRefreshCw } from "react-icons/fi";
-
+import { useSelector } from "react-redux";
 import { wrapper } from "../../store/store";
 import * as apis from "../../apis";
 import * as types from "../../store/types";
@@ -11,7 +11,8 @@ import Products from "../../utils/components/Products/Products";
 import Filter from "../../components/Filter/Filter";
 import InputRadio from "../../utils/components/InputRadio/InputRadio";
 import Meta from "../../components/Meta";
-const ProductsPage = ({ products }) => {
+const ProductsPage = () => {
+  const products = useSelector((state) => state.product.products);
   const [filterHead, setFilterHead] = useState("");
   const [filterBar, setFilterBar] = useState({ category: "", fragrant: "", brand: "", capacity: "", country: "" });
   const [showFilter, setShowFilter] = useState(false);

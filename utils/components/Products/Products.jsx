@@ -15,6 +15,7 @@ const Products = ({ products }) => {
           sold={product.sold}
           evaluate={product.evaluate}
           inventory={product.inventory}
+          favorites={product.favorites}
         />
       ))}
     </div>
