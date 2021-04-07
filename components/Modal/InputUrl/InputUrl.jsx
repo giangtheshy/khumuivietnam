@@ -1,0 +1,36 @@
+import React, { useState } from "react";
+import Input from "../../../utils/components/Input/Input";
+import styles from "./InputUrl.module.scss";
+
+const InputUrl = ({ setShowModal, handleAddImageUrl }) => {
+  const [value, setValue] = useState("");
+  const handleChange = (e) => {
+    setValue(e.target.value);
+  };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (value !== "") {
+      handleAddImageUrl(value);
+      setShowModal(false);
+    }
+  };
+  return (
+    <div className={styles.url}>
+      <form className={styles.form} onSubmit={handleSubmit}>
+        <Input
+          name="url"
+          value={value}
+          onChange={handleChange}
+          type="text"
+          placeholder="Nhập đường dẫn hình ảnh từ website..."
+          label="Đường dẫn hình ảnh"
+        />
+        <button className={styles.btn} type="button">
+          Thêm ngay
+        </button>
+      </form>
+    </div>
+  );
+};
+
+export default InputUrl;

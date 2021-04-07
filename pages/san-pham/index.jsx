@@ -45,7 +45,7 @@ const ProductsPage = () => {
       } else if (filterHead === "Giá giảm") {
         return b.price - a.price;
       } else if (filterHead === "Yêu thích") {
-        return a.favorites?.length - b.favorites?.length;
+        return b.favorites?.length - a.favorites?.length;
       } else {
         return b.createdAt - a.createdAt;
       }

@@ -1,0 +1,26 @@
+.imgWrapper {
+  width: 3.5rem;
+  height: 3.5rem;
+  position: relative;
+  margin: 0.2rem 0.5rem;
+  .img {
+    width: 100%;
+    object-fit: cover;
+    border-radius: 1rem;
+  }
+  .btn {
+    position: absolute;
+    top: -0.5rem;
+    right: -0.5rem;
+    border: none;
+    background: transparent;
+    color: rgb(218, 25, 25);
+    cursor: pointer;
+    &:hover {
+      color: brown;
+    }
+    .icon {
+      font-size: 1.5rem;
+    }
+  }
+}

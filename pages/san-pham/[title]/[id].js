@@ -42,7 +42,12 @@ const Product = ({ product }) => {
     }
   }
   const handleAddToCart = () => {
-    dispatch(addToCart({ ...product, quantity }, cookies.user, setLoading))
+    if (cookies.user !== "") {
+      dispatch(addToCart({ ...product, quantity }, cookies.user, setLoading))
+
+    } else {
+      alert("Phải đăng nhập để thêm giỏ hàng")
+    }
   }
   if (!product) return <h1>Page not found...</h1>;
   return (

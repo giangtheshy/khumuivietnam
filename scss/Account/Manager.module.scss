@@ -1,0 +1,56 @@
+@import "../../scss/config";
+.manager {
+  width: 90%;
+  margin: 1rem auto;
+  .managerWrapper {
+    margin-top: 2rem;
+    background-color: #fff;
+    border-radius: 0.5rem;
+    padding: 2rem;
+    display: flex;
+    .manager__left {
+      width: 40%;
+      .form {
+        .imgCenter {
+          display: flex;
+          align-items: center;
+          width: 100%;
+          height: 6rem;
+          margin: 1rem 0;
+        }
+        .openModal {
+          border: 1px solid $mainColor;
+          background: transparent;
+          border-radius: 0.3rem;
+          padding: 0.2rem 0.4rem;
+          font-size: 1rem;
+          font-weight: bold;
+          color: $mainColor;
+          margin: 0.5rem 1rem;
+          cursor: pointer;
+          transition: $mainTransition;
+          &:hover {
+            color: #fff;
+            background: $mainColor;
+            border: 1px solid #fff;
+            box-shadow: 0 0 3px 1px $mainColor;
+          }
+        }
+        .areaLabel {
+          width: 100%;
+          margin: 0.5rem 0;
+          textarea {
+            width: 100%;
+            min-height: 5rem;
+            border: 1px solid #bbb;
+            border-radius: 0.3rem;
+            padding: 0.5rem;
+          }
+        }
+      }
+    }
+    .manager__right {
+      width: 60%;
+    }
+  }
+}

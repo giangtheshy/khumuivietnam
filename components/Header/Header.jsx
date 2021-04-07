@@ -4,34 +4,49 @@ import { useRouter } from "next/router";
 import { useSelector, useDispatch } from "react-redux";
 import { useCookies } from "react-cookie";
 import { logoutUser } from "../../store/actions/user.action";
+import { searchProducts } from "../../store/actions/product.action";
 import Logo from "../../utils/components/Logo/Logo";
 import { VscInfo } from "react-icons/vsc";
 import { FiSearch } from "react-icons/fi";
 import { IoMdArrowDropdown } from "react-icons/io";
+import { FaRegUser, FaSignInAlt, FaSignOutAlt, FaBars, FaListAlt } from "react-icons/fa";
 import { GiBottledBolt } from "react-icons/gi";
 import { MdContactPhone } from "react-icons/md";
 import { HiOutlineLogout } from "react-icons/hi";
 import { ImHeart } from "react-icons/im";
-import { FaRegUser, FaSignInAlt, FaSignOutAlt, FaBars, FaListAlt } from "react-icons/fa";
 
+import Loading from "../../utils/components/Loading/Loading";
+import Products from "../SearchBox/Products";
+import Posts from "../SearchBox/Posts";
 import styles from "./Header.module.scss";
 const Header = () => {
   const [showBar, setShowBar] = useState(false);
   const [showBox, setShowBox] = useState(false);
+  const [loadingSearch, setLoadingSearch] = useState(false);
+  const [search, setSearch] = useState("");
   const [showDropDown, setShowDropDown] = useState(false);
   const [_, setCookies] = useCookies(["user"]);
   const user = useSelector((state) => state.user.user?.user);
+  const searchData = useSelector((state) => state.product.search);
   const dispatch = useDispatch();
   const router = useRouter();
   useEffect(() => {
     setShowBar(false);
   }, [router.pathname]);
+  useEffect(() => {
+    if (search) {
+      dispatch(searchProducts(search, setLoadingSearch));
+    }
+  }, [search]);
   const logout = async () => {
     await setCookies("user", "", { path: "/" });
     dispatch(logoutUser());
   };
   const HandleScrollFooter = () => {
     window.scrollTo(0, 100000);
+  };
+  const handleChangeSearch = (e) => {
+    setSearch(e.target.value);
   };
   return (
     <header className={styles.header} id="header">
@@ -46,7 +61,31 @@ const Header = () => {
           <label htmlFor="search" className={styles.iconSearch}>
             <FiSearch />
           </label>
-          <input id="search" type="text" name="search" placeholder="Bạn cần tìm gì ..." className={styles.input} />
+          <input
+            id="search"
+            type="text"
+            name="search"
+            placeholder="Bạn cần tìm gì ..."
+            className={styles.input}
+            value={search}
+            onChange={handleChangeSearch}
+          />
+          {search && (
+            <div className={styles.searchBox}>
+              {loadingSearch ? (
+                <h2 style={{ textAlign: "center" }}>
+                  <Loading />
+                </h2>
+              ) : (
+                <>
+                  <h3>Bài viết : </h3>
+                  <Posts posts={searchData.posts} setSearch={setSearch} />
+                  <h3>Sản phẩm :</h3>
+                  <Products products={searchData.products} setSearch={setSearch} />
+                </>
+              )}
+            </div>
+          )}
         </form>
         <nav className={styles.navBar}>
           <Link href="/gioi-thieu">
@@ -105,10 +144,15 @@ const Header = () => {
                     <HiOutlineLogout className={styles.icon} />
                     Đăng xuất
                   </button>
-                  <button className={styles.__btn}>
-                    <FaListAlt className={styles.icon} />
-                    Đã mua
-                  </button>
+                  {user?.role ? (
+                    <button className={styles.__btn} onClick={() => router.push("/tai-khoan/quan-ly")}>
+                      <FaListAlt className={styles.icon} />
+                      Quản lý
+                    </button>
+                  ) : (
+                    <></>
+                  )}
+
                   <button className={styles.__btn} onClick={() => router.push("/tai-khoan/yeu-thich")}>
                     <ImHeart className={styles.icon} />
                     Yêu thích

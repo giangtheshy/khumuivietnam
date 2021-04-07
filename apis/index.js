@@ -1,6 +1,10 @@
 import axios from "./axios";
+
+export const createProduct = (product, token) => axios.post("/api/products/createProduct", product, { headers: { "x-auth-token": token } });
 export const getProducts = () => axios.get("/api/products/getProducts");
 export const getProduct = (id) => axios.get(`/api/products/getProduct/${id}`);
+export const searchProducts = (search) => axios.post(`/api/products/search`, search);
+
 export const getPosts = () => axios.get("/api/posts/getPosts");
 export const getPost = (title) => axios.get(`/api/posts/getPost/${title}`);
 

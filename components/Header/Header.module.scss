@@ -46,6 +46,25 @@
         border-radius: 0.5rem;
         box-shadow: 0 0 10px 1px rgb(122, 122, 122);
       }
+      .searchBox {
+        position: absolute;
+        top: 3rem;
+        left: 0rem;
+        background-color: #fff;
+        width: 100%;
+        z-index: 3;
+        border-radius: 0.3rem;
+        box-shadow: 0 0 3px 1px #ccc;
+        padding: 0.5rem;
+        h3 {
+          font-size: 0.9rem;
+          margin-bottom: 0.7rem;
+          border-bottom: 1px solid $mainColor;
+          border-radius: 0.5rem;
+          background: #eff9ff;
+          padding: 0.4rem;
+        }
+      }
     }
     .navBar {
       display: flex;
@@ -184,7 +203,7 @@
         .btnNav {
           width: 100%;
           font-size: 1.2rem;
-          margin: 1rem 0;
+          margin: 0.5rem 0;
           padding: 0.5rem 1rem;
           border-bottom: 1px solid #eee;
         }
@@ -213,6 +232,7 @@
             left: 0rem;
             button {
               width: 80%;
+              margin: 0.3rem auto !important;
             }
           }
         }

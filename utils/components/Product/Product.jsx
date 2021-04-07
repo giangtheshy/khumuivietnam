@@ -20,10 +20,18 @@ const Product = ({ image, title, price, sold, _id, favorites, evaluate, inventor
   const dispatch = useDispatch();
   const [cookies, setCookies] = useCookies(["user"]);
   const handleAddToCart = () => {
-    dispatch(addToCart({ title, price, images: [image], inventory, _id, quantity: 1 }, cookies.user, setLoadingCart));
+    if (user) {
+      dispatch(addToCart({ title, price, images: [image], inventory, _id, quantity: 1 }, cookies.user, setLoadingCart));
+    } else {
+      alert("Phải đăng nhập để dùng chức năng này");
+    }
   };
   const handleUpdateFavorites = () => {
-    dispatch(updateFavorites(_id, cookies.user, setLoadingHeart));
+    if (user) {
+      dispatch(updateFavorites(_id, cookies.user, setLoadingHeart));
+    } else {
+      alert("Phải đăng nhập để dùng chức năng này");
+    }
   };
   return (
     <article className={styles.product}>

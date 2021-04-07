@@ -1,0 +1,39 @@
+@import "../../../scss/config";
+.url {
+  position: fixed;
+  top: 25%;
+  right: 25%;
+  width: 50%;
+  height: 50%;
+  background: #fff;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 4px 1px #bbb;
+  padding: 2rem;
+  z-index: 2;
+  .form {
+    display: grid;
+    place-items: center;
+    .btn {
+      margin: 1rem;
+      border: 1px solid $mainColor;
+      color: $mainColor;
+      background: transparent;
+      transition: $mainTransition;
+      padding: 0.3rem 1rem;
+      font-size: 1.1rem;
+      border-radius: 0.3rem;
+      cursor: pointer;
+      &:hover {
+        border: 1px solid $mainColor;
+        color: #fff;
+        background: $mainColor;
+      }
+    }
+  }
+}
+@media only screen and (max-width: 450px) {
+  .url {
+    right: 0;
+    width: 100%;
+  }
+}
