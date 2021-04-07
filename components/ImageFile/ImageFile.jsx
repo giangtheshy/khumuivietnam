@@ -5,7 +5,7 @@ const ImageFile = ({ src, alt, value, handleRemoveImage }) => {
   return (
     <div className={styles.imgWrapper}>
       <img src={src} alt={alt} className={styles.img} />
-      <button className={styles.btn} title="Bỏ chọn ảnh" onClick={() => handleRemoveImage(value)}>
+      <button className={styles.btn} title="Bỏ chọn ảnh" onClick={() => handleRemoveImage(value)} type="button">
         <RiIndeterminateCircleFill className={styles.icon} />
       </button>
     </div>

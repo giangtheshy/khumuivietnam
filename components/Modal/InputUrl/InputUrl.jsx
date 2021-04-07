@@ -16,7 +16,7 @@ const InputUrl = ({ setShowModal, handleAddImageUrl }) => {
   };
   return (
     <div className={styles.url}>
-      <form className={styles.form} onSubmit={handleSubmit}>
+      <form className={styles.form}>
         <Input
           name="url"
           value={value}
@@ -25,7 +25,7 @@ const InputUrl = ({ setShowModal, handleAddImageUrl }) => {
           placeholder="Nhập đường dẫn hình ảnh từ website..."
           label="Đường dẫn hình ảnh"
         />
-        <button className={styles.btn} type="button">
+        <button className={styles.btn} type="button" onClick={handleSubmit}>
           Thêm ngay
         </button>
       </form>
