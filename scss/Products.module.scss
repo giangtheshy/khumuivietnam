@@ -33,6 +33,7 @@
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
+    text-align: center;
     .products {
       width: 70%;
       background-color: #fff;
@@ -47,6 +48,22 @@
         &_group {
           display: flex;
         }
+      }
+    }
+    .btnLoadMore {
+      border: 1px solid $mainColor;
+      border-radius: 0.3rem;
+      background: #fff;
+      color: $mainColor;
+      font-weight: bold;
+      padding: 0.3rem 1rem;
+      width: 8rem;
+      margin: 2rem auto;
+      cursor: pointer;
+      transition: $mainTransition;
+      &:hover {
+        color: #fff;
+        background: $mainColor;
       }
     }
     .filters {

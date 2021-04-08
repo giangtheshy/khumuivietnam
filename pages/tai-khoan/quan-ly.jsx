@@ -267,7 +267,7 @@ const Manager = () => {
 };
 
 export const getServerSideProps = wrapper.getServerSideProps(async ({ store }) => {
-  const { data } = await apis.getProducts();
+  const { data } = await apis.getProducts(0);
   store.dispatch({ type: types.GET_PRODUCTS, payload: data });
 
   return { props: { products: store.getState().product.products } };

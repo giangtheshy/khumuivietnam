@@ -51,7 +51,11 @@ const Post = ({ post, posts }) => {
                     <article className={styles.paraItem} key={index}>
                       <Link href={article.link}>{article.heading}</Link>
                       <div className={styles.content}>
-                        <img src={article.image} alt={article.heading} title={article.heading} />
+                        <img
+                          src={article.image.replace("/image/upload/", "/image/upload/c_scale,h_400,w_500/")}
+                          alt={article.heading}
+                          title={article.heading}
+                        />
                         <p className={styles.text} dangerouslySetInnerHTML={{ __html: article.text }}></p>
                       </div>
                     </article>

@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { RiFilter3Line } from "react-icons/ri";
 import { FiRefreshCw } from "react-icons/fi";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { getProducts } from "../../store/actions/product.action";
 import { wrapper } from "../../store/store";
 import * as apis from "../../apis";
 import * as types from "../../store/types";
@@ -11,11 +12,15 @@ import Products from "../../utils/components/Products/Products";
 import Filter from "../../components/Filter/Filter";
 import InputRadio from "../../utils/components/InputRadio/InputRadio";
 import Meta from "../../components/Meta";
+import Loading from "../../utils/components/Loading/Loading";
 const ProductsPage = () => {
+  const [page, setPage] = useState(1);
   const products = useSelector((state) => state.product.products);
   const [filterHead, setFilterHead] = useState("");
   const [filterBar, setFilterBar] = useState({ category: "", fragrant: "", brand: "", capacity: "", country: "" });
   const [showFilter, setShowFilter] = useState(false);
+  const [loadingMore, setLoadingMore] = useState(false);
+  const dispatch = useDispatch();
   const handleChangeFilterHead = (e) => {
     setFilterHead(e.target.value);
   };
@@ -55,6 +60,10 @@ const ProductsPage = () => {
   const handleRefresh = () => {
     setFilterHead("");
     setFilterBar({ category: "", fragrant: "", brand: "", capacity: "", country: "" });
+  };
+  const handleLoadMore = () => {
+    dispatch(getProducts(page + 1, setLoadingMore));
+    setPage(page + 1);
   };
   return (
     <div className={styles.products__page}>
@@ -100,6 +109,11 @@ const ProductsPage = () => {
             </div>
           </div>
           <Products products={handleFilterProducts(products)} />
+          {products.length % 10 === 0 && (
+            <button className={styles.btnLoadMore} onClick={handleLoadMore}>
+              {loadingMore ? <Loading /> : "Tải thêm"}
+            </button>
+          )}
         </div>
         <aside className={`${styles.filters} ${showFilter && styles.show}`}>
           <h3 className={styles.filters__heading}>
@@ -148,7 +162,7 @@ const ProductsPage = () => {
   );
 };
 export const getServerSideProps = wrapper.getServerSideProps(async ({ store }) => {
-  const { data } = await apis.getProducts();
+  const { data } = await apis.getProducts(1);
   store.dispatch({ type: types.GET_PRODUCTS, payload: data });
 
   return { props: { products: store.getState().product.products } };

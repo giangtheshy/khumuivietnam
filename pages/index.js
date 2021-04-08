@@ -39,7 +39,7 @@ export default function Home({ posts }) {
             Bán nhiều nhất
           </h2>
         </div>
-        <Products products={productsStore} />
+        <Products products={productsStore.slice(0, 10)} />
       </section>
       <section className={styles.famousBrand}>
         <div className={styles.header}>
@@ -52,7 +52,7 @@ export default function Home({ posts }) {
 }
 
 export const getServerSideProps = wrapper.getServerSideProps(async ({ store }) => {
-  const { data } = await apis.getProducts();
+  const { data } = await apis.getProducts(0);
   const res = await apis.getPosts()
   const posts = await res.data;
   store.dispatch({ type: types.GET_PROPS_HOME, payload: { products: data, posts } });

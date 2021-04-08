@@ -199,7 +199,7 @@ export const getStaticProps = wrapper.getStaticProps(async ({ store, params }) =
   return { props: { product: store.getState().product.product }, revalidate: 1 };
 });
 export const getStaticPaths = async () => {
-  const { data } = await apis.getProducts();
+  const { data } = await apis.getProducts(0);
   const paths = data.map((product) => ({
     params: {
       id: product._id,

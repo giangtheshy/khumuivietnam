@@ -8,11 +8,14 @@ export const createProduct = (product, token) => async (dispatch) => {
     console.log(error);
   }
 };
-export const getProducts = () => async (dispatch) => {
+export const getProducts = (page,setLoading) => async (dispatch) => {
   try {
-    const { data } = await apis.getProducts();
+    setLoading(true)
+    const { data } = await apis.getProducts(page);
     dispatch({ type: types.GET_PRODUCTS, payload: data });
+    setLoading(false)
   } catch (error) {
+    setLoading(false)
     console.log(error);
   }
 };
