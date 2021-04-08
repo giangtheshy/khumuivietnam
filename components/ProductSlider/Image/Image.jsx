@@ -4,7 +4,7 @@ import styles from "./Image.module.scss";
 const Image = ({ image, title, onClick }) => {
   return (
     <article className={styles.imageIcon} onClick={onClick}>
-      <img src={image} alt={title} title={title} />
+      <img src={image.replace("/image/upload/", "/image/upload/c_scale,h_80,w_140/")} alt={title} title={title} />
     </article>
   );
 };

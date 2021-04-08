@@ -61,7 +61,7 @@ const Product = ({ product }) => {
         <div className={styles.imgCenter}>
           <div className={styles.mainImg}>
             <img
-              src={product.images[index]}
+              src={product.images[index].replace("/image/upload/", "/image/upload/c_scale,h_350,w_500/")}
               alt={`khumuivietnam.com - ${product.title}`}
               title={`khumuivietnam.com - ${product.title}`}
             />
@@ -169,20 +169,20 @@ const Product = ({ product }) => {
         </div>
         <div className={styles.heading}>
           <h2>{`${product.title} - bán tại khumuivietnam.com`}</h2>
-          <img src={product.images[0]} alt={product.title} title={`${product.title} - khumuivietnam.com`} />
+          <img src={product.images[0].replace("/image/upload/", "/image/upload/c_scale,h_350,w_500/")} alt={product.title} title={`${product.title} - khumuivietnam.com`} />
         </div>
         <div className={styles.uses}>
           <h6>Công dụng</h6>
           <p dangerouslySetInnerHTML={{ __html: product.uses }}></p>
           {product.images[1] &&
-            <img src={product.images[1]} alt={product.title} title={`${product.title} - khumuivietnam.com`} />
+            <img src={product.images[1].replace("/image/upload/", "/image/upload/c_scale,h_350,w_500/")} alt={product.title} title={`${product.title} - khumuivietnam.com`} />
           }
         </div>
         <div className={styles.otherInfo}>
           <h6>Thông tin khác</h6>
           <p dangerouslySetInnerHTML={{ __html: product.otherInfo }}></p>
           {product.images[2] &&
-            <img src={product.images[2]} alt={product.title} title={`${product.title} - khumuivietnam.com`} />
+            <img src={product.images[2].replace("/image/upload/", "/image/upload/c_scale,h_350,w_500/")} alt={product.title} title={`${product.title} - khumuivietnam.com`} />
           }
         </div>
       </section>

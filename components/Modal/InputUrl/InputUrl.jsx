@@ -12,6 +12,8 @@ const InputUrl = ({ setShowModal, handleAddImageUrl }) => {
     if (value !== "") {
       handleAddImageUrl(value);
       setShowModal(false);
+    } else {
+      alert("URL không thể để trống!");
     }
   };
   return (
@@ -27,6 +29,9 @@ const InputUrl = ({ setShowModal, handleAddImageUrl }) => {
         />
         <button className={styles.btn} type="button" onClick={handleSubmit}>
           Thêm ngay
+        </button>
+        <button className={styles.btn} type="button" onClick={() => setShowModal(false)}>
+          Đóng
         </button>
       </form>
     </div>

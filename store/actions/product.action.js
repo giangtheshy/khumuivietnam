@@ -16,6 +16,22 @@ export const getProducts = () => async (dispatch) => {
     console.log(error);
   }
 };
+export const updateProduct = (product, token) => async (dispatch) => {
+  try {
+    const { data } = await apis.updateProduct(product, token);
+    dispatch({ type: types.UPDATE_PRODUCT, payload: { product: data } });
+  } catch (error) {
+    console.log(error);
+  }
+};
+export const removeProduct = (id, token) => async (dispatch) => {
+  try {
+    const { data } = await apis.removeProduct(id, token);
+    dispatch({ type: types.REMOVE_PRODUCT, payload: data });
+  } catch (error) {
+    console.log(error);
+  }
+};
 
 export const getProduct = (id) => async (dispatch) => {
   try {
@@ -31,6 +47,13 @@ export const getProduct = (id) => async (dispatch) => {
 };
 export const setLoading = (type) => (dispatch) => {
   dispatch({ type: types.SET_LOADING, payload: type });
+};
+export const setEditProduct = (id) => async (dispatch) => {
+  try {
+    dispatch({ type: types.SET_EDIT_PRODUCT, payload: id });
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 export const searchProducts = (search, setLoading) => async (dispatch) => {

@@ -35,7 +35,7 @@ const Layout = ({ children }) => {
       {children}
       <Footer />
       {showBtn && <ButtonTop />}
-      {cookies.user !== "" && <ButtonCart style={moveCart} />}
+      {cookies.user && <ButtonCart style={moveCart} />}
     </>
   );
 };

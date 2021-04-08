@@ -36,7 +36,7 @@ const Product = ({ image, title, price, sold, _id, favorites, evaluate, inventor
   return (
     <article className={styles.product}>
       <div className={styles.imgCenter}>
-        <img src={image} alt={title} />
+        <img src={image.replace("/image/upload/", "/image/upload/c_scale,h_254,w_300/")} alt={title} />
         <button
           className={`${styles.iconHeart} ${
             user?.favorites?.find((fav) => fav === _id) ? styles.active : styles.unActive

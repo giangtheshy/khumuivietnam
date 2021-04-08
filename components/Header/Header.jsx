@@ -147,7 +147,7 @@ const Header = () => {
                   {user?.role ? (
                     <button className={styles.__btn} onClick={() => router.push("/tai-khoan/quan-ly")}>
                       <FaListAlt className={styles.icon} />
-                      Quản lý
+                      Bán hàng
                     </button>
                   ) : (
                     <></>

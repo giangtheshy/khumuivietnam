@@ -1,8 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useCookies } from "react-cookie";
 
+import { wrapper } from "../../store/store";
+import * as apis from "../../apis";
+import * as types from "../../store/types";
 import { useDispatch, useSelector } from "react-redux";
-import { createProduct } from "../../store/actions/product.action";
+import { createProduct, setEditProduct, updateProduct } from "../../store/actions/product.action";
 import BackLink from "../../utils/components/BackLink/BackLink";
 import Meta from "../../components/Meta";
 import styles from "../../scss/Account/Manager.module.scss";
@@ -11,6 +14,7 @@ import File from "../../utils/components/File/File";
 import ImageFile from "../../components/ImageFile/ImageFile";
 import Button from "../../utils/components/Button/Button";
 import InputUrl from "../../components/Modal/InputUrl/InputUrl";
+import RowProduct from "../../components/Table/Row/RowProduct";
 
 const Manager = () => {
   const [dataProduct, setDataProduct] = useState({
@@ -31,8 +35,19 @@ const Manager = () => {
 
   const [showModal, setShowModal] = useState(false);
   const [cookies, setCookies] = useCookies(["user"]);
-  const role = useSelector((state) => state.user?.user?.user?.role);
+  const user = useSelector((state) => state.user?.user?.user);
+  const products = useSelector((state) => state.product.products);
+  const isEdit = useSelector((state) => state.product.isEdit);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (isEdit) {
+      setDataProduct({ ...products.find((product) => product._id === isEdit) });
+    }
+  }, [isEdit]);
+  useEffect(() => {
+    return () => dispatch(setEditProduct(null));
+  }, []);
   const handleChange = (e) => {
     setDataProduct({ ...dataProduct, [e.target.name]: e.target.value });
   };
@@ -58,8 +73,15 @@ const Manager = () => {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (Object.values(dataProduct).every((item) => item !== "" || item?.length > 0)) {
-      dispatch(createProduct(dataProduct, cookies.user));
+    if (Object.values(dataProduct).every((item) => item !== "") && dataProduct.images.length > 0) {
+      if (isEdit) {
+        dispatch(updateProduct(dataProduct, cookies.user));
+        dispatch(setEditProduct(null));
+        alert("Cập nhật thành công");
+      } else {
+        dispatch(createProduct(dataProduct, cookies.user));
+        alert("Thêm thành công");
+      }
       setDataProduct({
         title: "",
         category: "",
@@ -75,7 +97,6 @@ const Manager = () => {
         uses: "",
         otherInfo: "",
       });
-      alert("Thêm thành công");
     } else {
       alert("Phải điền đủ thông tin");
     }
@@ -83,14 +104,14 @@ const Manager = () => {
   const handleAddImageUrl = (value) => {
     setDataProduct({ ...dataProduct, images: [...dataProduct.images, value] });
   };
-  if (!role) return <h1>Page not found</h1>;
+  if (!user?.role) return <h1>Page not found</h1>;
   return (
     <div className={styles.manager}>
-      <Meta title="Trang quản lý cá nhân " robots="noindex,nofollow" />
+      <Meta title="Trang bán hàng cá nhân " robots="noindex,nofollow" />
       <BackLink
         list={[
           { href: "/", text: "Trang chủ" },
-          { href: "/tai-khoan/quan-ly", text: "Quản lý" },
+          { href: "/tai-khoan/quan-ly", text: "Bán hàng" },
         ]}
       />
       {showModal && <InputUrl setShowModal={setShowModal} handleAddImageUrl={handleAddImageUrl} />}
@@ -209,15 +230,47 @@ const Manager = () => {
                 {showModal ? "Đóng" : "URL"}
               </button>
             </div>
-            <Button label="Tạo sản phẩm" type="submit">
-              Tạo sản phẩm
+            <Button label={isEdit ? "Cập nhật ngay" : "Tạo sản phẩm"} type="submit">
+              {isEdit ? "Cập nhật ngay" : "Tạo sản phẩm"}
             </Button>
           </form>
         </div>
-        <div className={styles.manager__right}></div>
+        <div className={styles.manager__right}>
+          <div className={styles.manager__right_header}>
+            <h3>Sản phẩm của bạn ( {products.filter((product) => product.UID === user._id).length})</h3>
+          </div>
+          <div className={styles.manager__right_content}>
+            <table className={styles.table}>
+              <thead>
+                <tr className={styles.table__header}>
+                  <th>STT</th>
+                  <th>Tên sản phẩm</th>
+                  <th>Đã bán</th>
+                  <th>Sửa</th>
+                  <th>Xóa</th>
+                  <th>Trạng thái</th>
+                </tr>
+              </thead>
+              <tbody>
+                {products
+                  .filter((product) => product.UID === user._id)
+                  .map((product, index) => (
+                    <RowProduct product={product} key={product._id} index={index} />
+                  ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
       </section>
     </div>
   );
 };
+
+export const getServerSideProps = wrapper.getServerSideProps(async ({ store }) => {
+  const { data } = await apis.getProducts();
+  store.dispatch({ type: types.GET_PRODUCTS, payload: data });
+
+  return { props: { products: store.getState().product.products } };
+});
 
 export default Manager;

@@ -3,6 +3,8 @@ import axios from "./axios";
 export const createProduct = (product, token) => axios.post("/api/products/createProduct", product, { headers: { "x-auth-token": token } });
 export const getProducts = () => axios.get("/api/products/getProducts");
 export const getProduct = (id) => axios.get(`/api/products/getProduct/${id}`);
+export const updateProduct = (product, token) => axios.patch(`/api/products/updateProduct/${product._id}`, product, { headers: { "x-auth-token": token } });
+export const removeProduct = (id, token) => axios.delete(`/api/products/removeProduct/${id}`, { headers: { "x-auth-token": token } });
 export const searchProducts = (search) => axios.post(`/api/products/search`, search);
 
 export const getPosts = () => axios.get("/api/posts/getPosts");

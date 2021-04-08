@@ -1,8 +1,11 @@
 
 export const CREATE_PRODUCT = "CREATE_PRODUCT";
 export const GET_PRODUCTS = "GET_PRODUCTS";
+export const UPDATE_PRODUCT = "UPDATE_PRODUCT";
+export const REMOVE_PRODUCT = "REMOVE_PRODUCT";
 export const GET_PROPS_HOME = "GET_PROPS_HOME";
 export const GET_PRODUCT = "GET_PRODUCT";
+export const SET_EDIT_PRODUCT = "SET_EDIT_PRODUCT";
 export const SEARCH_PRODUCTS = "SEARCH_PRODUCTS";
 export const SET_LOADING = "SET_LOADING";
 
