@@ -14,12 +14,12 @@ export const addToCart = (cart, token, setLoadingCart) => async (dispatch) => {
 };
 export const getCart = (token, setLoadingPage) => async (dispatch) => {
   try {
-    setLoadingPage(true)
+    setLoadingPage(true);
     const { data } = await apis.getCart(token);
     dispatch({ type: types.GET_CART, payload: data });
-    setLoadingPage(false)
+    setLoadingPage(false);
   } catch (error) {
-    setLoadingPage(false)
+    setLoadingPage(false);
     console.log(error);
   }
 };
@@ -34,23 +34,23 @@ export const removeFromCart = (id, setLoadingRemove) => async (dispatch) => {
 };
 export const incrementCart = (id, setLoadingInc) => async (dispatch) => {
   try {
-    setLoadingInc(true)
+    setLoadingInc(true);
     await apis.incrementCart(id);
     dispatch({ type: types.INCREASE_FROM_CART, payload: id });
-    setLoadingInc(false)
+    setLoadingInc(false);
   } catch (error) {
-    setLoadingInc(false)
+    setLoadingInc(false);
     console.log(error);
   }
 };
 export const decrementCart = (id, setLoadingDec) => async (dispatch) => {
   try {
-    setLoadingDec(true)
+    setLoadingDec(true);
     await apis.decrementCart(id);
     dispatch({ type: types.DECREASE_FROM_CART, payload: id });
-    setLoadingDec(false)
+    setLoadingDec(false);
   } catch (error) {
-    setLoadingDec(false)
+    setLoadingDec(false);
     console.log(error);
   }
 };

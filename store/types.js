@@ -1,4 +1,3 @@
-
 export const CREATE_PRODUCT = "CREATE_PRODUCT";
 export const GET_PRODUCTS = "GET_PRODUCTS";
 export const UPDATE_PRODUCT = "UPDATE_PRODUCT";
@@ -14,10 +13,11 @@ export const GET_POST = "GET_POST";
 export const GET_PROPS_POST = "GET_PROPS_POST";
 
 export const LOGIN = "LOGIN";
-export const REGISTER = "REGISTER";
 export const LOGOUT = "LOGOUT";
-export const CHECK_LOGIN = "CHECK_LOGIN";
-export const LOGIN_GOOGLE = "LOGIN_GOOGLE";
+export const REGISTER = "REGISTER";
+export const GET_USER = "GET_USER";
+export const DELETE_USER = "DELETE_USER";
+export const GET_TOKEN = "GET_TOKEN";
 export const UPDATE_FAVORITES = "UPDATE_FAVORITES";
 export const GET_FAVORITES = "GET_FAVORITES";
 

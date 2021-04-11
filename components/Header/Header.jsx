@@ -2,8 +2,7 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useSelector, useDispatch } from "react-redux";
-import { useCookies } from "react-cookie";
-import { logoutUser } from "../../store/actions/user.action";
+import * as apis from "../../apis";
 import { searchProducts } from "../../store/actions/product.action";
 import Logo from "../../utils/components/Logo/Logo";
 import { VscInfo } from "react-icons/vsc";
@@ -25,8 +24,7 @@ const Header = () => {
   const [loadingSearch, setLoadingSearch] = useState(false);
   const [search, setSearch] = useState("");
   const [showDropDown, setShowDropDown] = useState(false);
-  const [_, setCookies] = useCookies(["user"]);
-  const user = useSelector((state) => state.user.user?.user);
+  const user = useSelector((state) => state.user.user);
   const searchData = useSelector((state) => state.product.search);
   const dispatch = useDispatch();
   const router = useRouter();
@@ -39,8 +37,14 @@ const Header = () => {
     }
   }, [search]);
   const logout = async () => {
-    await setCookies("user", "", { path: "/" });
-    dispatch(logoutUser());
+    try {
+      await apis.logout();
+      localStorage.removeItem("firstLogin");
+      window.location.href = "/";
+    } catch (error) {
+      console.error(error);
+      window.location.href = "/";
+    }
   };
   const HandleScrollFooter = () => {
     window.scrollTo(0, 100000);
@@ -130,12 +134,12 @@ const Header = () => {
             <div className={styles.itemNav} onClick={() => setShowBox(!showBox)}>
               <button className={styles.btnNav}>
                 <img
-                  src={user?.photoURL.replace("/image/upload/", "/image/upload/c_scale,h_40,w_40/")}
+                  src={user?.avatar.replace("/image/upload/", "/image/upload/c_scale,h_40,w_40/")}
                   alt="avatar | khumuivietnam.com"
                   className={styles.avatar}
                 />
 
-                <span className={styles.userName}>{user?.displayName}</span>
+                <span className={styles.userName}>{user?.name}</span>
                 <IoMdArrowDropdown className={styles.btnNav__icon} />
               </button>
               {showBox && (

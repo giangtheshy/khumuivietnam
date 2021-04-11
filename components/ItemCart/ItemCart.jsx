@@ -25,7 +25,10 @@ const ItemCart = ({ product }) => {
     <article className={styles.itemCenter}>
       <div className={styles.top}>
         <div className={styles.img}>
-          <img src={product.images[0]} alt={product.title} />
+          <img
+            src={product.images[0].replace("/image/upload/", "/image/upload/c_scale,h_254,w_300/")}
+            alt={product.title}
+          />
         </div>
         <div className={styles.control}>
           <div className={styles.control__left}>

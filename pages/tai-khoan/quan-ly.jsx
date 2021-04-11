@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { useCookies } from "react-cookie";
 
 import { wrapper } from "../../store/store";
 import * as apis from "../../apis";
@@ -34,8 +33,7 @@ const Manager = () => {
   });
 
   const [showModal, setShowModal] = useState(false);
-  const [cookies, setCookies] = useCookies(["user"]);
-  const user = useSelector((state) => state.user?.user?.user);
+  const user = useSelector((state) => state.user);
   const products = useSelector((state) => state.product.products);
   const isEdit = useSelector((state) => state.product.isEdit);
   const dispatch = useDispatch();
@@ -75,11 +73,11 @@ const Manager = () => {
     e.preventDefault();
     if (Object.values(dataProduct).every((item) => item !== "") && dataProduct.images.length > 0) {
       if (isEdit) {
-        dispatch(updateProduct(dataProduct, cookies.user));
+        dispatch(updateProduct(dataProduct, user.token));
         dispatch(setEditProduct(null));
         alert("Cập nhật thành công");
       } else {
-        dispatch(createProduct(dataProduct, cookies.user));
+        dispatch(createProduct(dataProduct, user.token));
         alert("Thêm thành công");
       }
       setDataProduct({
@@ -237,7 +235,7 @@ const Manager = () => {
         </div>
         <div className={styles.manager__right}>
           <div className={styles.manager__right_header}>
-            <h3>Sản phẩm của bạn ( {products.filter((product) => product.UID === user._id).length})</h3>
+            <h3>Sản phẩm của bạn ( {products.filter((product) => product.UID === user?.user?._id).length})</h3>
           </div>
           <div className={styles.manager__right_content}>
             <table className={styles.table}>
@@ -253,7 +251,7 @@ const Manager = () => {
               </thead>
               <tbody>
                 {products
-                  .filter((product) => product.UID === user._id)
+                  .filter((product) => product.UID === user?.user?._id)
                   .map((product, index) => (
                     <RowProduct product={product} key={product._id} index={index} />
                   ))}

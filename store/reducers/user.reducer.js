@@ -3,25 +3,26 @@ import * as types from "../types";
 const initState = {
   user: null,
   favorites: [],
+  role: null,
+  token: 0,
+  isLogged: false,
   loading: false,
   error: null,
 };
-const user = (state = initState, action) => {
-  switch (action.type) {
-
-    case types.REGISTER:
+const user = (state = initState, { type, payload }) => {
+  switch (type) {
     case types.LOGIN:
-    case types.CHECK_LOGIN:
-    case types.LOGIN_GOOGLE:
-      return { ...state, user: action.payload };
-    case types.LOGOUT:
-      return { ...state, user: null };
+      return { ...state, isLogged: true };
+    case types.GET_USER:
+      return { ...state, user: payload, role: payload.role };
+    case types.GET_TOKEN:
+      return { ...state, token: payload };
     case types.UPDATE_FAVORITES:
-      return { ...state, user: { ...state.user, user: { ...state.user.user, favorites: action.payload.favorites } } };
+      return { ...state, user: { ...state.user, favorites: payload.favorites } };
     case types.GET_FAVORITES:
-      return { ...state, favorites: action.payload }
+      return { ...state, favorites: payload };
     case types.SET_LOADING:
-      return { ...state, loading: action.payload };
+      return { ...state, loading: payload };
     default:
       return state;
   }

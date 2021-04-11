@@ -1,0 +1,100 @@
+@import "../../scss/config";
+.tokenContainer {
+  width: 90%;
+  margin: 1rem auto;
+  .token {
+    margin-top: 2rem;
+    padding: 1rem;
+    background: #fff;
+    border-radius: 0.5rem;
+    display: flex;
+    &__left {
+      width: 58%;
+      &_header {
+        position: relative;
+        width: 80%;
+        margin: 2rem auto;
+        border-bottom: 2px solid #eee;
+        text-align: center;
+        text-transform: uppercase;
+        padding-bottom: 1rem;
+        &::before {
+          content: "";
+          position: absolute;
+          left: 40%;
+          bottom: -2px;
+          width: 20%;
+          height: 2px;
+          background: $mainColor;
+        }
+      }
+      &_content {
+        margin: 2rem auto;
+        width: 80%;
+        height: 60%;
+        display: grid;
+        place-items: center;
+        .form {
+          width: 60%;
+          height: 60%;
+          text-align: center;
+        }
+        .alert__success {
+          width: 80%;
+          height: 50%;
+          background: #ebf7ee;
+          color: #3ebd61;
+          border-radius: 1rem;
+          padding: 1rem;
+          display: grid;
+          place-items: center;
+          font-size: 1.2rem;
+          font-weight: bold;
+          text-transform: uppercase;
+          .icon {
+            color: #3ebd61;
+            font-size: 3rem;
+          }
+        }
+        .alert__error {
+          @extend .alert__success;
+          color: rgb(197, 86, 66);
+          background: rgb(250, 239, 236);
+          .icon {
+            color: rgb(197, 86, 66);
+            font-size: 3rem;
+          }
+        }
+      }
+    }
+    &__right {
+      width: 40%;
+      height: 30rem;
+      background-image: linear-gradient(to left, rgba(255, 255, 255, 0.8), #bbb),
+        url("https://cdn.tgdd.vn/Files/2019/05/02/1164502/nhung-loai-xit-khu-mui-tot-nhat-hien-nay-ma-ban-khong-nen-bo-qua-2_800x500.jpg");
+      background-repeat: no-repeat;
+      background-position: right;
+      background-attachment: fixed;
+      background-size: contain;
+    }
+  }
+}
+@media only screen and (max-width: 768px) {
+  .tokenContainer {
+    .token {
+      flex-direction: column;
+      &__left {
+        width: 100%;
+        &_content {
+          width: 100%;
+          .form {
+            width: 100%;
+          }
+        }
+      }
+      &__right {
+        width: 100%;
+      }
+    }
+  }
+}

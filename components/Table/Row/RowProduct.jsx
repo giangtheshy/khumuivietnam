@@ -4,23 +4,21 @@ import Link from "next/link";
 import { GoTrashcan } from "react-icons/go";
 import { BiEdit } from "react-icons/bi";
 import { BsCheckCircle, BsArrowClockwise } from "react-icons/bs";
-import { useDispatch } from "react-redux";
-import { useCookies } from "react-cookie";
+import { useDispatch, useSelector } from "react-redux";
 import { removeProduct, setEditProduct } from "../../../store/actions/product.action";
 
 import convert from "../../../utils/functions/convertLink";
 
 const RowProduct = ({ product, index }) => {
-  const [cookies, setCookies] = useCookies(["user"]);
   const dispatch = useDispatch();
-
+  const token = useSelector((state) => state.user.token);
   const handleEdit = () => {
     dispatch(setEditProduct(product._id));
   };
   const handleRemove = () => {
     const c = confirm("Bạn có chắn muốn xóa sản phẩm này?");
     if (c) {
-      dispatch(removeProduct(product._id, cookies.user));
+      dispatch(removeProduct(product._id, token));
       alert("Đã xóa sản phẩm!");
     }
   };

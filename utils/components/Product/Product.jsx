@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import { useDispatch, useSelector } from "react-redux";
-import { useCookies } from "react-cookie";
 import { addToCart } from "../../../store/actions/cart.action";
 import { updateFavorites } from "../../../store/actions/user.action";
 import styles from "./Product.module.scss";
@@ -15,20 +14,19 @@ import Loading from "../Loading/Loading";
 const Product = ({ image, title, price, sold, _id, favorites, evaluate, inventory }) => {
   const [loadingCart, setLoadingCart] = useState(false);
   const [loadingHeart, setLoadingHeart] = useState(false);
-  const user = useSelector((state) => state.user?.user?.user);
+  const user = useSelector((state) => state.user);
   const router = useRouter();
   const dispatch = useDispatch();
-  const [cookies, setCookies] = useCookies(["user"]);
   const handleAddToCart = () => {
-    if (user) {
-      dispatch(addToCart({ title, price, images: [image], inventory, _id, quantity: 1 }, cookies.user, setLoadingCart));
+    if (user.user) {
+      dispatch(addToCart({ title, price, images: [image], inventory, _id, quantity: 1 }, user.token, setLoadingCart));
     } else {
       alert("Phải đăng nhập để dùng chức năng này");
     }
   };
   const handleUpdateFavorites = () => {
-    if (user) {
-      dispatch(updateFavorites(_id, cookies.user, setLoadingHeart));
+    if (user.user) {
+      dispatch(updateFavorites(_id, user.token, setLoadingHeart));
     } else {
       alert("Phải đăng nhập để dùng chức năng này");
     }
@@ -39,7 +37,7 @@ const Product = ({ image, title, price, sold, _id, favorites, evaluate, inventor
         <img src={image.replace("/image/upload/", "/image/upload/c_scale,h_254,w_300/")} alt={title} />
         <button
           className={`${styles.iconHeart} ${
-            user?.favorites?.find((fav) => fav === _id) ? styles.active : styles.unActive
+            user.user?.favorites?.find((fav) => fav === _id) ? styles.active : styles.unActive
           }`}
           onClick={handleUpdateFavorites}
         >

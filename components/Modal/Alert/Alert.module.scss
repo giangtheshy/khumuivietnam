@@ -1,0 +1,132 @@
+@import "../../../scss/config";
+.alert_box {
+  position: fixed;
+  top: 1rem;
+  background-color: #fff;
+  left: 40%;
+  z-index: 100;
+  width: 20rem;
+  height: auto;
+  box-shadow: 5px 2px 20px #ccc;
+  border-radius: 1rem;
+  display: none;
+  transform: translateY(-100%);
+  transition: $mainTransition;
+  animation: alert 0.5s linear;
+  &.show {
+    display: block;
+    transform: translateY(0%);
+  }
+  &.success {
+    background: #f2fce4;
+    .type {
+      color: #71be34;
+    }
+    .btn {
+      background: #71be34;
+      color: #fff;
+    }
+  }
+  &.error {
+    background: #fdf3f3;
+    .type {
+      color: #ff623d;
+    }
+    .btn {
+      background: #ff623d;
+      color: #fff;
+    }
+  }
+  &.warning {
+    background: #fff6e7;
+    .type {
+      color: #ffb703;
+    }
+    .btn {
+      background: #ffb703;
+      color: #fff;
+    }
+  }
+  .icons {
+    font-size: 3rem;
+    text-align: center;
+    margin-top: 1rem;
+    &__success {
+      color: #71be34;
+    }
+    &__error {
+      color: #ff623d;
+    }
+    &__warning {
+      color: #ffb703;
+    }
+  }
+  .type {
+    text-align: center;
+    font-size: 1.4rem;
+    font-weight: normal;
+    text-transform: capitalize;
+  }
+  .content {
+    text-align: center;
+    padding-bottom: 1rem;
+    width: 80%;
+    margin: 0.5rem auto 0 auto;
+    border-bottom: 1px solid #eee;
+    color: gray;
+    text-transform: capitalize;
+  }
+  .btn {
+    width: 50%;
+    padding: 0.3rem 0.5rem;
+    margin: 0.5rem 25%;
+    cursor: pointer;
+    border-radius: 1rem;
+    border: none;
+    color: $mainColor;
+    font-size: 1.2rem;
+    background: #fff;
+  }
+}
+@keyframes alert {
+  0% {
+    transform: translateY(-1rem);
+  }
+  25% {
+    transform: translateY(1rem);
+  }
+  50% {
+    transform: translateY(-0.5rem);
+  }
+  75% {
+    transform: translateY(0.5rem);
+  }
+  90% {
+    transform: translateY(-0.3rem);
+  }
+  100% {
+    transform: translateY(0.1rem);
+  }
+}
+@media (min-width: 768px) and (max-width: 950px) {
+  .alert_box {
+    left: 30%;
+  }
+}
+@media (min-width: 450px) and (max-width: 768px) {
+  .alert_box {
+    left: 20%;
+  }
+}
+@media (min-width: 368px) and (max-width: 450px) {
+  .alert_box {
+    left: 10%;
+  }
+}
+@media only screen and (max-width: 368px) {
+  .alert_box {
+    left: 0%;
+    width: 100%;
+    top: 0;
+  }
+}

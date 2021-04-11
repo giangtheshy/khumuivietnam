@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 
 import Link from "next/link";
-import { useDispatch } from 'react-redux';
-import { useCookies } from 'react-cookie';
+import { useDispatch, useSelector } from "react-redux";
 
 import { VscCheck } from "react-icons/vsc";
 import { FiHeart } from "react-icons/fi";
@@ -14,48 +13,58 @@ import { wrapper } from "../../../store/store";
 import { useRouter } from "next/router";
 import * as apis from "../../../apis";
 import * as types from "../../../store/types";
-import { addToCart } from '../../../store/actions/cart.action'
+import { addToCart } from "../../../store/actions/cart.action";
 import Meta from "../../../components/Meta";
 import Stars from "../../../utils/components/Stars/Stars";
 import ImageSlider from "../../../components/ProductSlider/ImageSlider";
-import BackLink from '../../../utils/components/BackLink/BackLink';
-import convert from '../../../utils/functions/convertLink';
-import Loading from '../../../utils/components/Loading/Loading';
+import BackLink from "../../../utils/components/BackLink/BackLink";
+import convert from "../../../utils/functions/convertLink";
+import Loading from "../../../utils/components/Loading/Loading";
 const Product = ({ product }) => {
   const router = useRouter();
-  const [index, setIndex] = useState(0)
-  const [loading, setLoading] = useState(false)
-  const [quantity, setQuantity] = useState(1)
-  const dispatch = useDispatch()
-  const [cookies, setCookies] = useCookies(["user"]);
+  const [index, setIndex] = useState(0);
+  const [loading, setLoading] = useState(false);
+  const [quantity, setQuantity] = useState(1);
+  const token = useSelector((state) => state.user.token);
+  const dispatch = useDispatch();
   const handleIndex = (id) => {
-    setIndex(id)
-  }
+    setIndex(id);
+  };
   const handleDecrement = () => {
     if (quantity > 1) {
-      setQuantity(quantity - 1)
+      setQuantity(quantity - 1);
     }
-  }
+  };
   const handleIncrement = () => {
     if (quantity < product.inventory) {
-      setQuantity(quantity + 1)
+      setQuantity(quantity + 1);
     }
-  }
+  };
   const handleAddToCart = () => {
-    if (cookies.user !== "") {
-      dispatch(addToCart({ ...product, quantity }, cookies.user, setLoading))
-
+    if (token) {
+      dispatch(addToCart({ ...product, quantity }, token, setLoading));
     } else {
-      alert("Phải đăng nhập để thêm giỏ hàng")
+      alert("Phải đăng nhập để thêm giỏ hàng");
     }
-  }
+  };
   if (!product) return <h1>Page not found...</h1>;
   return (
     <div className={styles.productPage}>
-      <Meta title={`${product.title} | Siêu rẻ và tốt nhất! | khumuivietnam.com`} description={`${product.title} : ${product.uses} | Siêu rẻ và tốt nhất!  | khumuivietnam.com`} keywords={`${product.title},${product.title} rẻ nhất,khumuivietnam,khumuivietnam.com,khumuivietnam shop`} />
-      <BackLink list={[{ href: '/', text: "Trang chủ" }, { href: '/san-pham', text: "Sản phẩm" }, {
-        href: `/san-pham/${convert(product.title)}/${product._id}`, text: product.title
-      }]} />
+      <Meta
+        title={`${product.title} | Siêu rẻ và tốt nhất! | khumuivietnam.com`}
+        description={`${product.title} : ${product.uses} | Siêu rẻ và tốt nhất!  | khumuivietnam.com`}
+        keywords={`${product.title},${product.title} rẻ nhất,khumuivietnam,khumuivietnam.com,khumuivietnam shop`}
+      />
+      <BackLink
+        list={[
+          { href: "/", text: "Trang chủ" },
+          { href: "/san-pham", text: "Sản phẩm" },
+          {
+            href: `/san-pham/${convert(product.title)}/${product._id}`,
+            text: product.title,
+          },
+        ]}
+      />
 
       <section className={styles.productCenter}>
         <div className={styles.imgCenter}>
@@ -85,11 +94,12 @@ const Product = ({ product }) => {
                   src="https://bizweb.dktcdn.net/100/021/944/themes/723706/assets/hot_price.png?1616296243114"
                   alt="khumuivietnam.com "
                 />
-                <span className="bold clr-main">{product.price.toLocaleString('en-US', {
-                  style: 'currency',
-                  currency: 'VND',
-                })}</span>
-
+                <span className="bold clr-main">
+                  {product.price.toLocaleString("en-US", {
+                    style: "currency",
+                    currency: "VND",
+                  })}
+                </span>
               </div>
               <div className={styles.contentDetails}>
                 <div className={styles.infoTitle}>
@@ -119,18 +129,22 @@ const Product = ({ product }) => {
                 </div>
                 <div className={styles.btnCenter}>
                   <div className={styles.quantityBtn}>
-                    <button className={styles.btnDec} onClick={handleDecrement}>-</button>
+                    <button className={styles.btnDec} onClick={handleDecrement}>
+                      -
+                    </button>
                     <span>{quantity}</span>
-                    <button className={styles.btnInc} onClick={handleIncrement}>+</button>
+                    <button className={styles.btnInc} onClick={handleIncrement}>
+                      +
+                    </button>
                   </div>
                   <button className={styles.btnAddCart} onClick={handleAddToCart}>
-                    {loading ?
+                    {loading ? (
                       <Loading />
-                      :
+                    ) : (
                       <>
                         <FaCartPlus /> Mua ngay
-                    </>
-                    }
+                      </>
+                    )}
                   </button>
                 </div>
               </div>
@@ -169,21 +183,33 @@ const Product = ({ product }) => {
         </div>
         <div className={styles.heading}>
           <h2>{`${product.title} - bán tại khumuivietnam.com`}</h2>
-          <img src={product.images[0].replace("/image/upload/", "/image/upload/c_scale,h_350,w_500/")} alt={product.title} title={`${product.title} - khumuivietnam.com`} />
+          <img
+            src={product.images[0].replace("/image/upload/", "/image/upload/c_scale,h_350,w_500/")}
+            alt={product.title}
+            title={`${product.title} - khumuivietnam.com`}
+          />
         </div>
         <div className={styles.uses}>
           <h6>Công dụng</h6>
           <p dangerouslySetInnerHTML={{ __html: product.uses }}></p>
-          {product.images[1] &&
-            <img src={product.images[1].replace("/image/upload/", "/image/upload/c_scale,h_350,w_500/")} alt={product.title} title={`${product.title} - khumuivietnam.com`} />
-          }
+          {product.images[1] && (
+            <img
+              src={product.images[1].replace("/image/upload/", "/image/upload/c_scale,h_350,w_500/")}
+              alt={product.title}
+              title={`${product.title} - khumuivietnam.com`}
+            />
+          )}
         </div>
         <div className={styles.otherInfo}>
           <h6>Thông tin khác</h6>
           <p dangerouslySetInnerHTML={{ __html: product.otherInfo }}></p>
-          {product.images[2] &&
-            <img src={product.images[2].replace("/image/upload/", "/image/upload/c_scale,h_350,w_500/")} alt={product.title} title={`${product.title} - khumuivietnam.com`} />
-          }
+          {product.images[2] && (
+            <img
+              src={product.images[2].replace("/image/upload/", "/image/upload/c_scale,h_350,w_500/")}
+              alt={product.title}
+              title={`${product.title} - khumuivietnam.com`}
+            />
+          )}
         </div>
       </section>
     </div>
@@ -203,8 +229,7 @@ export const getStaticPaths = async () => {
   const paths = data.map((product) => ({
     params: {
       id: product._id,
-      title:
-        convert(product.title),
+      title: convert(product.title),
     },
   }));
   return { paths, fallback: true };
