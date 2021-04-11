@@ -142,7 +142,7 @@ const Product = ({ product }) => {
                       <Loading />
                     ) : (
                       <>
-                        <FaCartPlus /> Mua ngay
+                        <FaCartPlus className={styles.icon} /> Thêm ngay
                       </>
                     )}
                   </button>

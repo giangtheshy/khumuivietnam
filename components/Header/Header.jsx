@@ -13,6 +13,7 @@ import { GiBottledBolt } from "react-icons/gi";
 import { MdContactPhone } from "react-icons/md";
 import { HiOutlineLogout } from "react-icons/hi";
 import { ImHeart } from "react-icons/im";
+import { RiUserReceivedLine } from "react-icons/ri";
 
 import Loading from "../../utils/components/Loading/Loading";
 import Products from "../SearchBox/Products";
@@ -160,6 +161,10 @@ const Header = () => {
                   <button className={styles.__btn} onClick={() => router.push("/tai-khoan/yeu-thich")}>
                     <ImHeart className={styles.icon} />
                     Yêu thích
+                  </button>
+                  <button className={styles.__btn} onClick={() => router.push("/tai-khoan")}>
+                    <RiUserReceivedLine className={styles.icon} />
+                    Cá nhân
                   </button>
                 </div>
               )}

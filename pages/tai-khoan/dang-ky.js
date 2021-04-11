@@ -13,6 +13,7 @@ import BackLink from "../../utils/components/BackLink/BackLink";
 import styles from "../../scss/Account/Register.module.scss";
 import Loading from "../../utils/components/Loading/Loading";
 import Alert from "../../components/Modal/Alert/Alert";
+import withLogin from "../../utils/HOC/withLogin";
 const Register = () => {
   const [data, setData] = useState({ email: "", password: "", passwordCheck: "", name: "" });
   const [loading, setLoading] = useState(false);
@@ -135,4 +136,4 @@ const Register = () => {
   );
 };
 
-export default Register;
+export default withLogin(Register);

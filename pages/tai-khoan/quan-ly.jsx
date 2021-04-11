@@ -14,6 +14,7 @@ import ImageFile from "../../components/ImageFile/ImageFile";
 import Button from "../../utils/components/Button/Button";
 import InputUrl from "../../components/Modal/InputUrl/InputUrl";
 import RowProduct from "../../components/Table/Row/RowProduct";
+import withSeller from "../../utils/HOC/withSeller";
 
 const Manager = () => {
   const [dataProduct, setDataProduct] = useState({
@@ -271,4 +272,4 @@ export const getServerSideProps = wrapper.getServerSideProps(async ({ store }) =
   return { props: { products: store.getState().product.products } };
 });
 
-export default Manager;
+export default withSeller(Manager);

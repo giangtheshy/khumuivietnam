@@ -7,6 +7,7 @@ import Meta from "../../components/Meta";
 import styles from "../../scss/Account/Favorites.module.scss";
 import Products from "../../utils/components/Products/Products";
 import { getFavorites } from "../../store/actions/user.action";
+import withoutLogin from "../../utils/HOC/withoutLogin";
 
 const Favorites = () => {
   const favorites = useSelector((state) => state.user.favorites);
@@ -45,4 +46,4 @@ const Favorites = () => {
   );
 };
 
-export default Favorites;
+export default withoutLogin(Favorites);

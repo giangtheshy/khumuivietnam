@@ -6,6 +6,7 @@ import Input from "../../utils/components/Input/Input";
 import Button from "../../utils/components/Button/Button";
 import styles from "../../scss/Account/token.module.scss";
 import Alert from "../../components/Modal/Alert/Alert";
+import withLogin from "../../utils/HOC/withLogin";
 
 const ForgotPassword = () => {
   const [value, setValue] = useState("");
@@ -62,4 +63,4 @@ const ForgotPassword = () => {
   );
 };
 
-export default ForgotPassword;
+export default withLogin(ForgotPassword);

@@ -9,6 +9,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { getCart } from "../../store/actions/cart.action";
 import { SiBitly } from "react-icons/si";
 import Loading from "../../utils/components/Loading/Loading";
+import withoutLogin from "../../utils/HOC/withoutLogin";
 
 const Cart = () => {
   const [loadingPage, setLoadingPage] = useState(false);
@@ -86,4 +87,4 @@ const Cart = () => {
   );
 };
 
-export default Cart;
+export default withoutLogin(Cart);

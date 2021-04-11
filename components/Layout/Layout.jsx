@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 
 import styles from "./Layout.module.scss";
 import Header from "../Header/Header";
@@ -9,6 +10,7 @@ import ButtonCart from "../ButtonTop/ButtonCart";
 const Layout = ({ children }) => {
   const [showBtn, setShowBtn] = useState(false);
   const [moveCart, setMoveCart] = useState(false);
+  const user = useSelector((state) => state.user.user);
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
@@ -29,7 +31,7 @@ const Layout = ({ children }) => {
       {children}
       <Footer />
       {showBtn && <ButtonTop />}
-      {<ButtonCart style={moveCart} />}
+      {user && <ButtonCart style={moveCart} />}
     </>
   );
 };

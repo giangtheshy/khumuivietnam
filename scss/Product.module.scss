@@ -2,7 +2,7 @@
 .productPage {
   width: 90%;
   margin: 1rem auto;
-  
+
   .productCenter {
     display: flex;
     height: auto;
@@ -125,6 +125,9 @@
                 border-bottom-right-radius: 0.3rem;
                 &:hover {
                   background-image: linear-gradient(to right, $secondaryColor, $mainColor);
+                }
+                .icon {
+                  margin-right: 1rem;
                 }
               }
             }

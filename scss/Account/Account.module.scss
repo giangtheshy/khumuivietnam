@@ -1,4 +1,111 @@
-.account{
+@import "../../scss/config";
+.account {
   width: 90%;
   margin: 1rem auto;
+  .profile {
+    background: #fff;
+    border-radius: 1rem;
+    margin-top: 2rem;
+    padding: 2rem;
+    display: flex;
+    justify-content: space-between;
+    .left {
+      width: 40%;
+      &_info {
+        text-align: center;
+        padding: 0 0 1rem 0;
+        .img {
+          position: relative;
+          width: 9rem;
+          height: 9rem;
+          margin: 0 auto 1rem auto;
+          overflow: hidden;
+          &:hover {
+            .change_avatar {
+              display: block;
+            }
+          }
+          img {
+            width: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 5px solid $darkBlue;
+            box-shadow: 0 0 2px 1px $darkBlue;
+          }
+          .change_avatar {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            background: rgba(255, 255, 255, 0.767);
+            width: 9rem;
+            height: 3rem;
+            border: none;
+            cursor: pointer;
+            display: none;
+            animation: show 0.3s 1 ease-out;
+            .icon {
+              font-size: 2rem;
+              color: #bbb;
+            }
+            @keyframes show {
+              from {
+                opacity: 0;
+                transform: scale(0.4);
+              }
+              to {
+                opacity: 1;
+                transform: scale(1);
+              }
+            }
+          }
+        }
+        .info {
+          padding-bottom: 1rem;
+          border-bottom: 1px solid $mainColor;
+          h3 {
+            text-transform: capitalize;
+            color: $mainColor;
+            padding-bottom: 0.5rem;
+          }
+          h4 {
+            color: $darkBlue;
+            font-size: 0.9rem;
+          }
+        }
+      }
+      &_control {
+        background: #f5f5dc;
+        border-radius: 0.3rem;
+        box-shadow: 0 0 3px 1px #eee;
+        padding: 0.4rem 1rem;
+        ul {
+          list-style-type: none;
+          li {
+            display: block;
+            padding: 0.3rem 1rem;
+            cursor: pointer;
+            border-bottom: 1px solid $darkBlue;
+            margin: 0.5rem 0;
+            transition: $mainTransition;
+            font-weight: 700;
+            &:hover {
+              border-radius: 0.3rem;
+              background: #eee;
+              color: $darkBlue;
+            }
+            .icon {
+              margin-right: 0.5rem;
+            }
+          }
+        }
+      }
+    }
+    .right {
+      width: 58%;
+      min-height: 100%;
+      background: #f5f5dc;
+      border-radius: 1rem;
+      box-shadow: 0 0 4px 1px #bbb;
+    }
+  }
 }

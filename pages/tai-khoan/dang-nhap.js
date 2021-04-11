@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import GoogleLogin from "react-google-login";
 import FacebookLogin from "react-facebook-login";
 import { GrGooglePlus } from "react-icons/gr";
@@ -16,6 +16,7 @@ import BackLink from "../../utils/components/BackLink/BackLink";
 import Loading from "../../utils/components/Loading/Loading";
 import styles from "../../scss/Account/Login.module.scss";
 import Alert from "../../components/Modal/Alert/Alert";
+import withLogin from "../../utils/HOC/withLogin";
 
 const Login = () => {
   const [data, setData] = useState({ email: "", password: "" });
@@ -24,12 +25,15 @@ const Login = () => {
   const dispatch = useDispatch();
   const router = useRouter();
 
+  useEffect(() => {
+    return () => setData({ email: "", password: "" });
+  }, []);
+
   const handleSuccess = async (res) => {
     const tokenId = res.tokenId;
     await apis.googleLogin({ tokenId });
     localStorage.setItem("firstLogin", true);
     dispatch(loginUser());
-    router.push("/");
   };
   const handleFailure = () => {
     alert("Some errors were occur when login");
@@ -39,7 +43,6 @@ const Login = () => {
     await apis.facebookLogin({ accessToken, userID });
     localStorage.setItem("firstLogin", true);
     dispatch(loginUser());
-    router.push("/");
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -51,8 +54,6 @@ const Login = () => {
         dispatch(loginUser());
         setLoading(false);
         setAlert({ message: res.data.message, type: "success" });
-        setData({ email: "", password: "" });
-        router.push("/");
       } catch (error) {
         setLoading(false);
         setAlert({ message: error.response?.data?.message, type: "error" });
@@ -141,4 +142,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default withLogin(Login);
