@@ -1,5 +1,5 @@
 import axios from "./axios";
-axios.defaults.withCredentials = true;
+axios.defaults.withCredentials = "same-origin";
 
 export const createProduct = (product, token) =>
   axios.post("/api/products/createProduct", product, { headers: { Authorization: token } });

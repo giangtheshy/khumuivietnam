@@ -10,7 +10,7 @@ export const getAccessToken = () => async (dispatch) => {
 
     dispatch({ type: types.GET_TOKEN, payload: data.access_token });
   } catch (error) {
-    return error.response.data.message;
+    return error.response?.data?.message;
   }
 };
 export const getUser = (token) => async (dispatch) => {

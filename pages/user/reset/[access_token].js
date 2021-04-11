@@ -23,11 +23,11 @@ const ResetPassword = () => {
       if (password === cf_password) {
         try {
           const res = await apis.reset({ password: data.password }, access_token);
-          setAlert({ message: res.data.message, type: success });
+          setAlert({ message: res.data.message, type: "success" });
           setData({ password: "", cf_password: "" });
           router.push("/tai-khoan/dang-nhap");
         } catch (error) {
-          setAlert({ message: error.response.data.message, type: "error" });
+          setAlert({ message: error.response?.data?.message, type: "error" });
         }
       } else {
         setAlert({ message: "Mật khẩu xác nhận không khớp.", type: "warning" });
