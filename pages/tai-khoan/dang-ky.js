@@ -7,6 +7,7 @@ import Meta from "../../components/Meta";
 import * as apis from "../../apis";
 import Input from "../../utils/components/Input/Input";
 // import File from "../../utils/components/File/File";
+import { BsCheckCircle } from "react-icons/bs";
 import Button from "../../utils/components/Button/Button";
 import BackLink from "../../utils/components/BackLink/BackLink";
 import styles from "../../scss/Account/Register.module.scss";
@@ -29,7 +30,7 @@ const Register = () => {
         setAlert({ message: res.data.message, type: "success" });
 
         setData({ email: "", password: "", passwordCheck: "", name: "" });
-        router.push("/tai-khoan/dang-nhap");
+        // router.push("/tai-khoan/dang-nhap");
       } catch (error) {
         setLoading(false);
         setAlert({ message: error.response.data.message, type: "error" });
@@ -68,54 +69,63 @@ const Register = () => {
           { href: "/tai-khoan/dang-ky", text: "Đăng ký" },
         ]}
       />
-      <Alert show={alert.message} setShow={setAlert} type={alert.type} message={alert.message} />
+      {alert.type !== "success" && (
+        <Alert show={alert.message} setShow={setAlert} type={alert.type} message={alert.message} />
+      )}
       <section className={styles.register__wrapper}>
         <div className={styles.register__wrapper_left}>
           <div className={styles.register__wrapper_left_header}>
             <h1>Đăng ký tài khoản</h1>
           </div>
           <div className={styles.register__wrapper_left_center}>
-            <form onSubmit={handleSubmit}>
-              <Input
-                type="text"
-                label="Tên người dùng"
-                placeholder="Tên người dùng"
-                value={data.name}
-                name="name"
-                onChange={handleChange}
-              />
-              <Input
-                type="email"
-                label="Email"
-                placeholder="Email"
-                value={data.email}
-                name="email"
-                onChange={handleChange}
-              />
-              <Input
-                type="password"
-                label="Password"
-                placeholder="Password"
-                value={data.password}
-                name="password"
-                onChange={handleChange}
-              />
-              <Input
-                type="password"
-                label="Password xác nhận"
-                placeholder="Password xác nhận lại"
-                value={data.passwordCheck}
-                name="passwordCheck"
-                onChange={handleChange}
-              />
-              {/* <div className={styles.imgCenter}>
+            {alert.type === "success" ? (
+              <div className={styles.alert__success}>
+                <BsCheckCircle className={styles.icon} />
+                {alert.message}
+              </div>
+            ) : (
+              <form onSubmit={handleSubmit}>
+                <Input
+                  type="text"
+                  label="Tên người dùng"
+                  placeholder="Tên người dùng"
+                  value={data.name}
+                  name="name"
+                  onChange={handleChange}
+                />
+                <Input
+                  type="email"
+                  label="Email"
+                  placeholder="Email"
+                  value={data.email}
+                  name="email"
+                  onChange={handleChange}
+                />
+                <Input
+                  type="password"
+                  label="Password"
+                  placeholder="Password"
+                  value={data.password}
+                  name="password"
+                  onChange={handleChange}
+                />
+                <Input
+                  type="password"
+                  label="Password xác nhận"
+                  placeholder="Password xác nhận lại"
+                  value={data.passwordCheck}
+                  name="passwordCheck"
+                  onChange={handleChange}
+                />
+                {/* <div className={styles.imgCenter}>
                 {data.photoURL && <img src={data.photoURL} alt="avatar" className={styles.avatar} />}
                 <File name="photoURL" onChange={handleChangeFile} id="file" />
               </div> */}
-              <Button type="submit" label="Đăng ký">
-                {loading ? <Loading /> : "Đăng ký"}
-              </Button>
-            </form>
+                <Button type="submit" label="Đăng ký">
+                  {loading ? <Loading /> : "Đăng ký"}
+                </Button>
+              </form>
+            )}
             <Link href="/tai-khoan/dang-nhap">Đăng nhập</Link>
           </div>
         </div>
