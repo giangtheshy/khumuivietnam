@@ -24,6 +24,9 @@ export const reset = (password, token) =>
   axios.post("/api/user/reset", password, { headers: { Authorization: token } });
 export const googleLogin = (data) => axios.post("/api/user/google_login", data);
 export const facebookLogin = (data) => axios.post("/api/user/facebook_login", data);
+export const UpdateUser = (name, token) => axios.patch("/api/user/update", name, { headers: { Authorization: token } });
+export const UpdateUserAvatar = (avatar, token) =>
+  axios.patch("/api/user/update_avatar", avatar, { headers: { Authorization: token } });
 export const getUser = (token) => axios.get("/api/user/info", { headers: { Authorization: token } });
 
 export const updateFavorites = (id, token) =>
