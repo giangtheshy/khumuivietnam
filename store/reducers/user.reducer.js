@@ -21,6 +21,8 @@ const user = (state = initState, { type, payload }) => {
       return { ...state, user: { ...state.user, favorites: payload.favorites } };
     case types.GET_FAVORITES:
       return { ...state, favorites: payload };
+    case types.UPDATE_AVATAR:
+      return { ...state, user: { ...state.user, avatar: payload } };
     case types.SET_LOADING:
       return { ...state, loading: payload };
     default:

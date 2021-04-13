@@ -13,9 +13,12 @@ import Meta from "../../components/Meta";
 import styles from "../../scss/Account/Account.module.scss";
 import ChangePassword from "../../components/ChangePassword/ChangePassword";
 import Loading from "../../utils/components/Loading/Loading";
+import ChangeAvatar from "components/Modal/ChangeAvatar/ChangeAvatar";
+
 const Account = () => {
   const [isEdit, setIsEdit] = useState(false);
   const [isChangePassword, setIsChangePassword] = useState(false);
+  const [showModal, setShowModal] = useState(false);
   const user = useSelector((state) => state.user.user);
   const token = useSelector((state) => state.user.token);
   const [name, setName] = useState({ name: user?.name, loading: false });
@@ -39,6 +42,7 @@ const Account = () => {
           { href: "/tai-khoan", text: "Tài khoản" },
         ]}
       />
+      {showModal && <ChangeAvatar setShowModal={setShowModal} />}
       <section className={styles.profile}>
         <div className={styles.left}>
           <div className={styles.left_info}>
@@ -47,7 +51,7 @@ const Account = () => {
                 src={user?.avatar.replace("/image/upload/", "/image/upload/c_scale,h_250,w_250/")}
                 alt="avatar user"
               />
-              <button className={styles.change_avatar}>
+              <button className={styles.change_avatar} onClick={() => setShowModal(!showModal)}>
                 <IoMdReverseCamera className={styles.icon} />
               </button>
             </div>
@@ -97,7 +101,7 @@ const Account = () => {
             <h2>{isChangePassword ? "Thay đổi mật khẩu" : "Thông tin cá nhân"}</h2>
           </div>
           {isChangePassword ? (
-            <ChangePassword />
+            <ChangePassword token={token} />
           ) : (
             <div className={styles.right_content}>
               <div className={styles.item}>

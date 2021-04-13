@@ -20,6 +20,7 @@ export const DELETE_USER = "DELETE_USER";
 export const GET_TOKEN = "GET_TOKEN";
 export const UPDATE_FAVORITES = "UPDATE_FAVORITES";
 export const GET_FAVORITES = "GET_FAVORITES";
+export const UPDATE_AVATAR = "UPDATE_AVATAR";
 
 export const ADD_TO_CART = "ADD_TO_CART";
 export const REMOVE_FROM_CART = "REMOVE_FROM_CART";

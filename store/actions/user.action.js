@@ -22,6 +22,15 @@ export const getUser = (token) => async (dispatch) => {
     return error.response.data.message;
   }
 };
+export const updateAvatar = (avatar, token) => async (dispatch) => {
+  try {
+    const { data } = await api.updateAvatar(avatar, token);
+    console.log(data);
+    dispatch({ type: types.UPDATE_AVATAR, payload: data.avatar });
+  } catch (error) {
+    console.log(error);
+  }
+};
 export const logoutUser = () => (dispatch) => {
   try {
     dispatch({ type: types.LOGOUT });

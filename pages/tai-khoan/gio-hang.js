@@ -70,7 +70,9 @@ const Cart = () => {
                 </div>
               </div>
               <div className={styles.btnCenter}>
-                <button className={styles.btn__checkout}>Giao hàng ngay</button>
+                <button className={styles.btn__checkout} onClick={() => router.push("/tai-khoan/giao-hang")}>
+                  Giao hàng ngay
+                </button>
                 <button className={styles.btn__continue} onClick={() => router.push("/san-pham")}>
                   Tiếp tục mua
                 </button>

@@ -1,0 +1,44 @@
+@import "scss/config";
+.wrapper {
+  width: 90%;
+  margin: 1rem auto;
+  .shipping {
+    margin-top: 2rem;
+    background-color: #fff;
+    border-radius: 0.5rem;
+    padding: 2rem;
+    .header {
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+      border-bottom: 2px solid $mainColor;
+      h1 {
+        text-align: center;
+        color: $darkBlue;
+      }
+    }
+    .body {
+      &__left {
+        width: 50%;
+        .areaLabel {
+          width: 100%;
+          margin: 0.5rem 0;
+          textarea {
+            width: 100% !important;
+            min-height: 7rem;
+            border: 1px solid #bbb;
+            border-radius: 0.3rem;
+            padding: 0.5rem;
+            resize: vertical;
+            &:focus-within {
+              border: 1px solid $darkBlue;
+              box-shadow: 0 0 1px 1px $darkBlue;
+            }
+          }
+        }
+      }
+      &__right {
+        width: 50%;
+      }
+    }
+  }
+}
