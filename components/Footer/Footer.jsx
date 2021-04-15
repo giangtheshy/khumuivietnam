@@ -13,14 +13,14 @@ const Footer = () => {
     <footer className={styles.footer} id="contact">
       <div className={styles.topFooter}>
         <div className={styles.left}>
-          <Logo />
+          <Logo width="10rem" />
           <h2>khumuivietnam.com</h2>
           <p>Chuyên bán các sản phẩm xịt khử mùi tốt nhất và rẻ nhất</p>
           <p>
             <ImLocation /> Địa chỉ : Phường Linh Trung,Quận Thủ Đức, TP.HCM
           </p>
           <p>
-            <FiClock /> Thời gian làm việc : <span className="bold">9h-17h</span> (nghỉ thứ 7 & CN)
+            <FiClock /> Thời gian làm việc : <span className="bold">7h-22h</span> các ngày trong tuần
           </p>
         </div>
         <div className={styles.centerRight}>

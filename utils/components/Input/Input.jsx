@@ -11,6 +11,7 @@ const Input = ({ onChange, value, type, label, placeholder, name, autoComplete, 
       <input
         type={type}
         onChange={onChange}
+        value={value}
         className={styles.input__box_input}
         placeholder={placeholder}
         name={name}
@@ -23,6 +24,5 @@ const Input = ({ onChange, value, type, label, placeholder, name, autoComplete, 
 };
 Input.defaultProps = {
   readOnly: false,
-  defaultValue: "",
 };
 export default Input;
