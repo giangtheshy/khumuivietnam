@@ -14,6 +14,11 @@ const Meta = ({ title, description, keywords, robots, image }) => {
       <link rel="icon" href="/favicon.ico" />
       <meta property="og:image" content={image} />
       <meta name="google-site-verification" content="rnNS94UXgTKub_flILvvdXFyxxJchtJuF6PkAOcWnPY" />
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-VJYELK62RG"></script>
+      <script>
+        window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments)}
+        gtag('js', new Date()); gtag('config', 'G-VJYELK62RG');
+      </script>
       <title>{title}</title>
     </Head>
   );
