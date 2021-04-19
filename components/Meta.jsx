@@ -27,7 +27,8 @@ Meta.defaultProps = {
   title: "khumuivietnam.com - Chuyên các sản phẩm xịt khử mùi tốt nhất Việt Nam",
   description:
     "khumuivietnam.com chuyên bán các loại xịt khử mùi tốt và rẻ nhất dành cho mọi cấp bậc,lứa tuổi. Cam đoan không tốt không nhận tiền!",
-  keywords: "khumuivietnam.com,khumuivietnam shop, khumuivietnam, xịt khử mùi nam, xịt khử mùi nữ, xịt khử mùi",
+  keywords:
+    "khumuivietnam.com,khumuivietnam shop,khử mùi việt nam, khumuivietnam, xịt khử mùi nam, xịt khử mùi nữ, xịt khử mùi",
   robots: "index,follow",
   image:
     "https://cdn.tgdd.vn/Files/2019/05/02/1164502/nhung-loai-xit-khu-mui-tot-nhat-hien-nay-ma-ban-khong-nen-bo-qua-2_800x500.jpg",

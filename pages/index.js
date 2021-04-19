@@ -1,4 +1,4 @@
-import { useSelector } from 'react-redux';
+import { useSelector } from "react-redux";
 import Meta from "../components/Meta";
 import Slides from "../components/Banner/Slides/Slides";
 import Events from "../components/Banner/Events/Events";
@@ -12,7 +12,7 @@ import BrandSlider from "../components/ProductSlider/BrandSlider";
 import { FaMedal } from "react-icons/fa";
 
 export default function Home({ posts }) {
-  const productsStore = useSelector(state => state.product.products)
+  const productsStore = useSelector((state) => state.product.products);
   return (
     <main className={styles.main}>
       <Meta
@@ -43,7 +43,7 @@ export default function Home({ posts }) {
       </section>
       <section className={styles.famousBrand}>
         <div className={styles.header}>
-          <h2 className={styles.title}>Thương hiệu nỗi tiếng</h2>
+          <h2 className={styles.title}>Thương hiệu nổi tiếng</h2>
         </div>
         <BrandSlider products={productsStore} />
       </section>
@@ -53,7 +53,7 @@ export default function Home({ posts }) {
 
 export const getServerSideProps = wrapper.getServerSideProps(async ({ store }) => {
   const { data } = await apis.getProducts(0);
-  const res = await apis.getPosts()
+  const res = await apis.getPosts();
   const posts = await res.data;
   store.dispatch({ type: types.GET_PROPS_HOME, payload: { products: data, posts } });
 

@@ -8,7 +8,7 @@ const Events = ({ posts }) => {
     <div className={styles.eventsSection}>
       <div className={styles.eventsCenter}>
         <div className={styles.eventsHeader}>
-          <h2>Tin Nỗi Bật</h2>
+          <h2>Tin Nổi Bật</h2>
         </div>
         <div className={styles.eventsContainer}>
           {posts?.map((post) => {
