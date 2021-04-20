@@ -10,7 +10,7 @@ class MyDocument extends Document {
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', 'G-2K1B409JRR')
+            gtag('config', 'UA-194783005-1')
         `,
             }}
           />

@@ -14,7 +14,7 @@ const Meta = ({ title, description, keywords, robots, image }) => {
       <link rel="icon" href="/favicon.ico" />
       <meta property="og:image" content={image} />
       <meta name="google-site-verification" content="rnNS94UXgTKub_flILvvdXFyxxJchtJuF6PkAOcWnPY" />
-      <script async src="https://www.googletagmanager.com/gtag/js?id=G-2K1B409JRR"></script>
+      <script async src="https://www.googletagmanager.com/gtag/js?id=UA-194783005-1"></script>
       {/* <script>
         {
           window.dataLayer = window.dataLayer || [];
