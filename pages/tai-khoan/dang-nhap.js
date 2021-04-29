@@ -124,6 +124,8 @@ const Login = () => {
                 cssClass={styles.fb_btn}
                 icon={<FaFacebookF className={styles.icon} />}
                 textButton="Đăng nhập bằng Facebook"
+                isMobile={false}
+                redirectUri="http://khumuivietnam.com"
               />
             </div>
             <label className={styles.forgotPassword} onClick={() => router.push("/user/forgot")}>
