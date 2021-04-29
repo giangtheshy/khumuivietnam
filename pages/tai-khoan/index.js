@@ -7,13 +7,14 @@ import { BiCheckShield } from "react-icons/bi";
 import { FaHeart, FaMoneyBillAlt, FaEdit } from "react-icons/fa";
 import { useRouter } from "next/router";
 
-import * as apis from "../../apis";
-import BackLink from "../../utils/components/BackLink/BackLink";
-import Meta from "../../components/Meta";
-import styles from "../../scss/Account/Account.module.scss";
-import ChangePassword from "../../components/ChangePassword/ChangePassword";
-import Loading from "../../utils/components/Loading/Loading";
+import * as apis from "apis";
+import BackLink from "utils/components/BackLink/BackLink";
+import Meta from "components/Meta";
+import styles from "scss/Account/Account.module.scss";
+import ChangePassword from "components/ChangePassword/ChangePassword";
+import Loading from "utils/components/Loading/Loading";
 import ChangeAvatar from "components/Modal/ChangeAvatar/ChangeAvatar";
+import withoutLogin from "utils/HOC/withoutLogin";
 
 const Account = () => {
   const [isEdit, setIsEdit] = useState(false);
@@ -153,4 +154,4 @@ const Account = () => {
   );
 };
 
-export default Account;
+export default withoutLogin(Account);
