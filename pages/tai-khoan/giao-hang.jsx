@@ -6,7 +6,7 @@ import styles from "scss/Account/Shipping.module.scss";
 import Meta from "components/Meta";
 import BackLink from "utils/components/BackLink/BackLink";
 import Input from "utils/components/Input/Input";
-import withCart from "utils/HOC/withCart";
+
 import * as apis from "apis";
 
 const Shipping = () => {
