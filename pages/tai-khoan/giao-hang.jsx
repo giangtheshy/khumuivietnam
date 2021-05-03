@@ -1,17 +1,44 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
+import { useRouter } from "next/router";
 
 import styles from "scss/Account/Shipping.module.scss";
 import Meta from "components/Meta";
 import BackLink from "utils/components/BackLink/BackLink";
 import Input from "utils/components/Input/Input";
+import withCart from "utils/HOC/withCart";
+import * as apis from "apis";
 
 const Shipping = () => {
   const user = useSelector((state) => state.user.user);
+  const token = useSelector((state) => state.user.token);
   const cart = useSelector((state) => state.cart.cart);
   const [info, setInfo] = useState({ name: user?.name, email: user?.email, phone: "", address: "", note: "" });
+  const router = useRouter();
+
+  useEffect(() => {
+    if (cart?.length === 0) {
+      router.push("/tai-khoan/gio-hang");
+    }
+  }, []);
+
   const handleChange = (e) => {
     setInfo({ ...info, [e.target.name]: e.target.value });
+  };
+  const totalAmount = cart.reduce((item, value) => item + value.price * value.quantity, 0);
+  const handleCheckout = async () => {
+    if (Object.values(info).every((item) => item !== "")) {
+      const { data } = await apis.createPayment({ info, amount: totalAmount, cart }, token);
+      if (data.code === "00") {
+        if (window.vnpay) {
+          vnpay.open({ width: 768, height: 600, url: x.data });
+        } else {
+          location.href = data.data;
+        }
+      }
+    } else {
+      alert("Phải điền đủ thông tin");
+    }
   };
   return (
     <div className={styles.wrapper}>
@@ -65,7 +92,40 @@ const Shipping = () => {
               <textarea name="note" id="note" value={info.note} onChange={handleChange}></textarea>
             </label>
           </div>
-          <div className={styles.body__right}></div>
+          <div className={styles.body__right}>
+            <div className={styles.total}>
+              <div className={styles.total__temp}>
+                <span className={styles.total__temp__text}>Tạm tính :</span>
+                <span className={styles.total__temp__price}>
+                  {cart
+                    .reduce((item, value) => item + value.price * value.quantity, 0)
+                    .toLocaleString("en-US", {
+                      style: "currency",
+                      currency: "VND",
+                    })}
+                </span>
+              </div>
+              <div className={styles.total__main}>
+                <span className={styles.total__main__text}>Thành tiên:</span>
+                <span className={styles.total__main__price}>
+                  {cart
+                    .reduce((item, value) => item + value.price * value.quantity, 0)
+                    .toLocaleString("en-US", {
+                      style: "currency",
+                      currency: "VND",
+                    })}
+                </span>
+              </div>
+            </div>
+            <div className={styles.btnCenter}>
+              <button className={styles.btn__checkout} onClick={handleCheckout}>
+                Thanh toán bằng VnPay
+              </button>
+              <button className={styles.btn__continue} onClick={() => router.push("/tai-khoan/gio-hang")}>
+                Quay lại giỏ hàng
+              </button>
+            </div>
+          </div>
         </div>
       </section>
     </div>

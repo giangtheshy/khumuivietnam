@@ -1,0 +1,17 @@
+@import "~scss/config";
+.bill {
+  width: 70%;
+  margin: 1rem auto;
+  @include screen(custom, 1024px) {
+    width: 90%;
+  }
+  @include screen(tablet) {
+    width: 99%;
+  }
+  .bill_section {
+    background-color: #fff;
+    padding: 1rem;
+    margin: 3rem 0;
+    border-radius: 0.4rem;
+  }
+}

@@ -39,3 +39,9 @@ export const getCart = (token) => axios.get("/api/cart/getCarts", { headers: { A
 export const removeFromCart = (id) => axios.delete(`/api/cart/removeFromCart/${id}`);
 export const incrementCart = (id) => axios.patch(`/api/cart/incrementCart/${id}`);
 export const decrementCart = (id) => axios.patch(`/api/cart/decrementCart/${id}`);
+
+export const createPayment = (data, token) =>
+  axios.post("/api/payment/create", data, { headers: { Authorization: token } });
+export const returnVnPay = (query) => axios.get(`/api/payment/vnpay_return${query}`);
+
+export const getAllBillByUser = (token) => axios.get("/api/bill/get_bills", { headers: { Authorization: token } });

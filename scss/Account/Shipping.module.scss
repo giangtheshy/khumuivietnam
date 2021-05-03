@@ -1,12 +1,18 @@
-@import "scss/config";
+@import "~scss/config";
 .wrapper {
   width: 90%;
   margin: 1rem auto;
+  @include screen(phone) {
+    width: 98%;
+  }
   .shipping {
     margin-top: 2rem;
     background-color: #fff;
     border-radius: 0.5rem;
     padding: 2rem;
+    @include screen(phone) {
+      padding: 0.5rem;
+    }
     .header {
       padding-bottom: 1rem;
       margin-bottom: 2rem;
@@ -17,8 +23,18 @@
       }
     }
     .body {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      @include screen(tablet) {
+        flex-direction: column;
+      }
       &__left {
-        width: 50%;
+        width: 60%;
+        @include screen(tablet) {
+          width: 100%;
+          margin-bottom: 4rem;
+        }
         .areaLabel {
           width: 100%;
           margin: 0.5rem 0;
@@ -37,7 +53,71 @@
         }
       }
       &__right {
-        width: 50%;
+        width: 37%;
+        @include screen(tablet) {
+          width: 100%;
+        }
+        .total {
+          &__temp {
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #eee;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            &__text {
+              font-size: 0.8rem;
+              font-weight: bold;
+            }
+            &__price {
+              font-weight: bold;
+              font-size: 0.9rem;
+            }
+          }
+          &__main {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+            &__text {
+              font-size: 0.8rem;
+              font-weight: bold;
+            }
+            &__price {
+              font-weight: bold;
+              font-size: 1.5rem;
+              color: $mainColor;
+              text-transform: uppercase;
+            }
+          }
+        }
+        .btnCenter {
+          display: flex;
+          flex-direction: column;
+          margin-top: 1rem;
+          .btn__checkout {
+            color: #fff;
+            background: #0094d9;
+            border: 1px solid #0094d9;
+            font-size: 1.1rem;
+            padding: 0.3rem 1rem;
+            margin-bottom: 0.5rem;
+            border-radius: 0.3rem;
+            cursor: pointer;
+            &:hover {
+              background: rgba(#0094d9, 0.8);
+            }
+          }
+          .btn__continue {
+            @extend .btn__checkout;
+            color: $mainColor;
+            border: 1px solid $mainColor;
+            background: #fff;
+            &:hover {
+              background: rgba($mainColor, 0.1);
+            }
+          }
+        }
       }
     }
   }

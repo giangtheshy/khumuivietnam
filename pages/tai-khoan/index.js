@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { IoMdReverseCamera, IoMdArrowDropright, IoIosSave } from "react-icons/io";
 import { SiOpenaccess } from "react-icons/si";
@@ -14,7 +14,7 @@ import styles from "scss/Account/Account.module.scss";
 import ChangePassword from "components/ChangePassword/ChangePassword";
 import Loading from "utils/components/Loading/Loading";
 import ChangeAvatar from "components/Modal/ChangeAvatar/ChangeAvatar";
-import withoutLogin from "utils/HOC/withoutLogin";
+import withoutAuth from "utils/HOC/withoutLogin";
 
 const Account = () => {
   const [isEdit, setIsEdit] = useState(false);
@@ -26,6 +26,11 @@ const Account = () => {
   const [avatar, setAvatar] = useState({ avatar: user?.avatar, loading: false });
   const router = useRouter();
 
+  useEffect(() => {
+    if (localStorage.getItem("firstLogin") != "true") {
+      router.push("/tai-khoan/dang-nhap");
+    }
+  }, []);
   const handleIsEdit = async () => {
     if (isEdit) {
       setName({ ...name, loading: true });
@@ -154,4 +159,4 @@ const Account = () => {
   );
 };
 
-export default withoutLogin(Account);
+export default Account;

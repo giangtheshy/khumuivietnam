@@ -15,7 +15,10 @@ const Posts = ({ posts }) => {
 
   return (
     <div className={styles.posts}>
-      <Meta title="Toàn bộ các bài viết về những sản phẩm nổi bật trên toàn quốc| khumuivietnam.com" />
+      <Meta
+        keywords="khumuivietnam.com,khumuivietnam shop,khử mùi việt nam, khumuivietnam, xịt khử mùi nam, xịt khử mùi nữ, xịt khử mùi,review xịt khử mùi,đánh giá xịt khử mùi,khumui vietnam"
+        title="Toàn bộ các bài viết về những sản phẩm nổi bật trên toàn quốc| khumuivietnam.com"
+      />
       <BackLink
         list={[
           { href: "/", text: "Trang chủ" },

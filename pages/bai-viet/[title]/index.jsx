@@ -19,7 +19,7 @@ const Post = ({ post, posts }) => {
         description={post.description}
         keywords={`${post.title} ,${post.contents.map(
           (item) => `${item.title},`
-        )} khumuivietnam.com, khumuivietnam shop`}
+        )} khumuivietnam.com,khumuivietnam shop,khử mùi việt nam, khumuivietnam, xịt khử mùi nam, xịt khử mùi nữ, xịt khử mùi,review xịt khử mùi,đánh giá xịt khử mùi,khumui vietnam`}
       />
       <BackLink
         list={[

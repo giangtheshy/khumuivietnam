@@ -13,6 +13,9 @@ const Meta = ({ title, description, keywords, robots, image }) => {
       <meta property="og:locale" content="vi_VN" />
       <link rel="icon" href="/favicon.ico" />
       <meta property="og:image" content={image} />
+      {/* <link rel="stylesheet" href="https://pay.vnpay.vn/lib/vnpay/vnpay.css" />
+      <script src="https://pay.vnpay.vn/lib/vnpay/vnpay.js"></script>
+      <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script> */}
       <meta name="google-site-verification" content="rnNS94UXgTKub_flILvvdXFyxxJchtJuF6PkAOcWnPY" />
       <script async src="https://www.googletagmanager.com/gtag/js?id=UA-194783005-1"></script>
 
@@ -24,10 +27,8 @@ Meta.defaultProps = {
   title: "khumuivietnam.com - Chuyên các sản phẩm xịt khử mùi tốt nhất Việt Nam",
   description:
     "khumuivietnam.com chuyên bán các loại xịt khử mùi tốt và rẻ nhất dành cho mọi cấp bậc,lứa tuổi. Cam đoan không tốt không nhận tiền!",
-  keywords:
-    "khumuivietnam.com,khumuivietnam shop,khử mùi việt nam, khumuivietnam, xịt khử mùi nam, xịt khử mùi nữ, xịt khử mùi,review xịt khử mùi,đánh giá xịt khử mùi,khumui vietnam",
+  keywords: "khử mùi việt nam, khu mui viet nam, khumuivietnam, xịt khử mùi, xịt khử mùi nam, xịt khử mùi nữ",
   robots: "index,follow",
-  image:
-    "https://cdn.tgdd.vn/Files/2019/05/02/1164502/nhung-loai-xit-khu-mui-tot-nhat-hien-nay-ma-ban-khong-nen-bo-qua-2_800x500.jpg",
+  image: "https://res.cloudinary.com/giangtheshy/image/upload/v1619963902/dev/khumuivietnam/drvbdmzs5agecqbecwzd.jpg",
 };
 export default Meta;

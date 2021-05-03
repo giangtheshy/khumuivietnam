@@ -1,0 +1,119 @@
+@import "~scss/config";
+.bill {
+  width: 90%;
+  margin: 1rem auto;
+  padding: 1rem;
+  border-radius: 0.3rem;
+  border: 1px solid #eee;
+  @include screen(tablet) {
+    width: 100%;
+    padding: 1rem 0;
+  }
+  .info {
+    display: flex;
+    align-items: flex-start;
+    background: #eee;
+    margin-bottom: 1rem;
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+    @include screen(custom, 500px) {
+      flex-direction: column;
+    }
+    img {
+      width: 20%;
+      object-fit: cover;
+      @include screen(custom, 500px) {
+        width: 70%;
+        margin: 1rem auto;
+      }
+      @include screen(phone) {
+        width: 90%;
+        margin: 1rem auto;
+      }
+    }
+    .details {
+      padding: 0 2rem;
+      width: 68%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      @include screen(custom, 500px) {
+        width: 90%;
+        margin: 1rem auto;
+      }
+      @include screen(phone) {
+        width: 100%;
+        margin: 1rem auto;
+      }
+      &__top {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1rem;
+        .name {
+          color: $darkBlue;
+          font-weight: bold;
+          font-size: 1.1rem;
+        }
+        .amount {
+          font-size: 1.3rem;
+          font-weight: bold;
+          color: $mainColor;
+        }
+        .address {
+          color: $mainGreen;
+          font-size: 0.9rem;
+          margin-bottom: 0.5rem;
+        }
+      }
+      &__bottom {
+        .note {
+          font-size: 0.9rem;
+        }
+      }
+      .btn_show_more {
+        display: flex;
+        justify-content: center;
+        margin: 1rem auto;
+        border: 1px solid $darkBlue;
+        background: transparent;
+        border-radius: 0.3rem;
+        padding: 0.2rem 0.5rem;
+        color: $darkBlue;
+        cursor: pointer;
+        transition: $mainTransition;
+        &:hover {
+          background: $darkBlue;
+          color: #fff;
+        }
+      }
+      .products {
+        .product {
+          display: flex;
+          justify-content: space-between;
+          flex-wrap: wrap;
+          border-bottom: 1px solid #fff;
+          padding-bottom: 0.5rem;
+          a {
+            color: $darkBlue;
+            font-weight: bold;
+            font-size: 1.1rem;
+            text-decoration: none;
+            &:hover {
+              text-decoration: underline;
+              cursor: pointer;
+            }
+          }
+          .quantity {
+            color: $mainGreen;
+          }
+          .price {
+            color: $mainColor;
+            font-size: 1.2rem;
+          }
+        }
+      }
+    }
+  }
+}

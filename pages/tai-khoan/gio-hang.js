@@ -9,7 +9,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { getCart } from "../../store/actions/cart.action";
 import { SiBitly } from "react-icons/si";
 import Loading from "../../utils/components/Loading/Loading";
-import withoutLogin from "../../utils/HOC/withoutLogin";
+import withoutAuth from "utils/HOC/withoutLogin";
 
 const Cart = () => {
   const [loadingPage, setLoadingPage] = useState(false);
@@ -71,10 +71,13 @@ const Cart = () => {
               </div>
               <div className={styles.btnCenter}>
                 <button className={styles.btn__checkout} onClick={() => router.push("/tai-khoan/giao-hang")}>
-                  Giao hàng ngay
+                  Thanh Toán
                 </button>
                 <button className={styles.btn__continue} onClick={() => router.push("/san-pham")}>
                   Tiếp tục mua
+                </button>
+                <button className={styles.btn__continue} onClick={() => router.push("/tai-khoan/da-thanh-toan")}>
+                  Đơn hàng đã mua
                 </button>
               </div>
             </div>
@@ -89,4 +92,4 @@ const Cart = () => {
   );
 };
 
-export default withoutLogin(Cart);
+export default withoutAuth(Cart);
