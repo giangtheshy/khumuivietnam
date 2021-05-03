@@ -36,6 +36,7 @@ const Login = () => {
     const tokenId = res.tokenId;
     await apis.googleLogin({ tokenId });
     localStorage.setItem("firstLogin", true);
+    router.push("/");
     dispatch(loginUser());
   };
   const handleFailure = () => {
@@ -46,6 +47,7 @@ const Login = () => {
     await apis.facebookLogin({ accessToken, userID });
     localStorage.setItem("firstLogin", true);
     dispatch(loginUser());
+    router.push("/");
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -56,6 +58,7 @@ const Login = () => {
         localStorage.setItem("firstLogin", true);
         dispatch(loginUser());
         setLoading(false);
+        router.push("/");
         setAlert({ message: res.data.message, type: "success" });
       } catch (error) {
         setLoading(false);
