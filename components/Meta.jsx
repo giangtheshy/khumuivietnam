@@ -13,9 +13,7 @@ const Meta = ({ title, description, keywords, robots, image }) => {
       <meta property="og:locale" content="vi_VN" />
       <link rel="icon" href="/favicon.ico" />
       <meta property="og:image" content={image} />
-      {/* <link rel="stylesheet" href="https://pay.vnpay.vn/lib/vnpay/vnpay.css" />
-      <script src="https://pay.vnpay.vn/lib/vnpay/vnpay.js"></script>
-      <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script> */}
+
       <meta name="google-site-verification" content="rnNS94UXgTKub_flILvvdXFyxxJchtJuF6PkAOcWnPY" />
       <script async src="https://www.googletagmanager.com/gtag/js?id=UA-194783005-1"></script>
 

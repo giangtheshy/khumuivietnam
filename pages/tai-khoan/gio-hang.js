@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import styles from "../../scss/Account/Cart.module.scss";
-import BackLink from "../../utils/components/BackLink/BackLink";
-import Meta from "../../components/Meta";
-import ItemCart from "../../components/ItemCart/ItemCart";
+import styles from "scss/Account/Cart.module.scss";
+import BackLink from "utils/components/BackLink/BackLink";
+import Meta from "components/Meta";
+import ItemCart from "components/ItemCart/ItemCart";
 
 import { useSelector, useDispatch } from "react-redux";
-import { getCart } from "../../store/actions/cart.action";
+import { getCart } from "store/actions/cart.action";
 import { SiBitly } from "react-icons/si";
-import Loading from "../../utils/components/Loading/Loading";
+import Loading from "utils/components/Loading/Loading";
 import withoutAuth from "utils/HOC/withoutLogin";
 
 const Cart = () => {

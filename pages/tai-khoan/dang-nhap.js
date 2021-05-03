@@ -6,17 +6,17 @@ import { FaFacebookF } from "react-icons/fa";
 import { useDispatch } from "react-redux";
 import { useRouter } from "next/router";
 import Link from "next/link";
+import withAuth from "utils/HOC/withAuth";
 
-import * as apis from "../../apis";
-import Meta from "../../components/Meta";
-import { loginUser } from "../../store/actions/user.action";
-import Input from "../../utils/components/Input/Input";
-import Button from "../../utils/components/Button/Button";
-import BackLink from "../../utils/components/BackLink/BackLink";
-import Loading from "../../utils/components/Loading/Loading";
-import styles from "../../scss/Account/Login.module.scss";
-import Alert from "../../components/Modal/Alert/Alert";
-import withLogin from "../../utils/HOC/withLogin";
+import * as apis from "apis";
+import Meta from "components/Meta";
+import { loginUser } from "store/actions/user.action";
+import Input from "utils/components/Input/Input";
+import Button from "utils/components/Button/Button";
+import BackLink from "utils/components/BackLink/BackLink";
+import Loading from "utils/components/Loading/Loading";
+import styles from "scss/Account/Login.module.scss";
+import Alert from "components/Modal/Alert/Alert";
 
 const Login = () => {
   const [data, setData] = useState({ email: "", password: "" });
@@ -26,6 +26,9 @@ const Login = () => {
   const router = useRouter();
 
   useEffect(() => {
+    // if (localStorage.getItem("firstLogin") != "true") {
+    //   router.push("/tai-khoan");
+    // }
     return () => setData({ email: "", password: "" });
   }, []);
 
@@ -144,4 +147,4 @@ const Login = () => {
   );
 };
 
-export default withLogin(Login);
+export default Login;

@@ -30,11 +30,7 @@ const Shipping = () => {
     if (Object.values(info).every((item) => item !== "")) {
       const { data } = await apis.createPayment({ info, amount: totalAmount, cart }, token);
       if (data.code === "00") {
-        if (window.vnpay) {
-          vnpay.open({ width: 768, height: 600, url: x.data });
-        } else {
-          location.href = data.data;
-        }
+        location.href = data.data;
       }
     } else {
       alert("Phải điền đủ thông tin");

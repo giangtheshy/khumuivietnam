@@ -2,18 +2,18 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useRouter } from "next/router";
 import Link from "next/link";
-import withLogin from "utils/HOC/withLogin";
-import Meta from "../../components/Meta";
+import withAuth from "utils/HOC/withAuth";
+import Meta from "components/Meta";
 
-import * as apis from "../../apis";
-import Input from "../../utils/components/Input/Input";
+import * as apis from "apis";
+import Input from "utils/components/Input/Input";
 // import File from "../../utils/components/File/File";
 import { BsCheckCircle } from "react-icons/bs";
-import Button from "../../utils/components/Button/Button";
-import BackLink from "../../utils/components/BackLink/BackLink";
-import styles from "../../scss/Account/Register.module.scss";
-import Loading from "../../utils/components/Loading/Loading";
-import Alert from "../../components/Modal/Alert/Alert";
+import Button from "utils/components/Button/Button";
+import BackLink from "utils/components/BackLink/BackLink";
+import styles from "scss/Account/Register.module.scss";
+import Loading from "utils/components/Loading/Loading";
+import Alert from "components/Modal/Alert/Alert";
 const Register = () => {
   const [data, setData] = useState({ email: "", password: "", passwordCheck: "", name: "" });
   const [loading, setLoading] = useState(false);
@@ -136,4 +136,4 @@ const Register = () => {
   );
 };
 
-export default withLogin(Register);
+export default withAuth(Register);

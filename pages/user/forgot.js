@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import * as apis from "../../apis";
-import BackLink from "../../utils/components/BackLink/BackLink";
-import Meta from "../../components/Meta";
-import Input from "../../utils/components/Input/Input";
-import Button from "../../utils/components/Button/Button";
-import styles from "../../scss/Account/token.module.scss";
-import Alert from "../../components/Modal/Alert/Alert";
-import withLogin from "../../utils/HOC/withLogin";
+import * as apis from "apis";
+import BackLink from "utils/components/BackLink/BackLink";
+import Meta from "components/Meta";
+import Input from "utils/components/Input/Input";
+import Button from "utils/components/Button/Button";
+import styles from "scss/Account/token.module.scss";
+import Alert from "components/Modal/Alert/Alert";
+import withAuth from "utils/HOC/withAuth";
 
 const ForgotPassword = () => {
   const [value, setValue] = useState("");
@@ -63,4 +63,4 @@ const ForgotPassword = () => {
   );
 };
 
-export default withLogin(ForgotPassword);
+export default withAuth(ForgotPassword);
