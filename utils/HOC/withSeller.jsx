@@ -1,4 +1,4 @@
-import Account from "../../pages/tai-khoan";
+import Account from "pages/tai-khoan";
 import { useSelector } from "react-redux";
 const withSeller = (Component) => {
   const Auth = (props) => {

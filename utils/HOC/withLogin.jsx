@@ -1,8 +1,8 @@
-import Account from "../../pages/tai-khoan";
+import Account from "pages/tai-khoan";
 import { useSelector } from "react-redux";
 const withAuth = (Component) => {
   const Auth = (props) => {
-    const isLogged = useSelector((state) => state.user.isLogged);
+    const isLogged = useSelector((state) => state.user?.isLogged);
     if (isLogged) {
       return <Account />;
     }

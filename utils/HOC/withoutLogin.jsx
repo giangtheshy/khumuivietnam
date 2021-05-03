@@ -1,4 +1,4 @@
-import Login from "../../pages/tai-khoan/dang-nhap";
+import Login from "pages/tai-khoan/dang-nhap";
 import { useSelector } from "react-redux";
 const withoutAuth = (Component) => {
   const Auth = (props) => {
