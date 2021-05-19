@@ -22,6 +22,7 @@ export const getUser = (token) => async (dispatch) => {
     return error.response.data.message;
   }
 };
+
 export const updateAvatar = (avatar, token) => async (dispatch) => {
   try {
     const { data } = await api.updateAvatar(avatar, token);

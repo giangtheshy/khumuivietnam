@@ -13,7 +13,7 @@ import { GiBottledBolt } from "react-icons/gi";
 import { MdContactPhone } from "react-icons/md";
 import { HiOutlineLogout } from "react-icons/hi";
 import { ImHeart } from "react-icons/im";
-import { RiUserReceivedLine } from "react-icons/ri";
+import { RiUserReceivedLine, RiAdminLine } from "react-icons/ri";
 
 import Loading from "../../utils/components/Loading/Loading";
 import Products from "../SearchBox/Products";
@@ -153,6 +153,14 @@ const Header = () => {
                     <button className={styles.__btn} onClick={() => router.push("/tai-khoan/quan-ly")}>
                       <FaListAlt className={styles.icon} />
                       Bán hàng
+                    </button>
+                  ) : (
+                    <></>
+                  )}
+                  {user?.role > 1 ? (
+                    <button className={styles.__btn} onClick={() => router.push("/admin")}>
+                      <RiAdminLine className={styles.icon} />
+                      Admin
                     </button>
                   ) : (
                     <></>

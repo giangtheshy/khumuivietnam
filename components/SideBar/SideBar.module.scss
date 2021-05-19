@@ -1,0 +1,104 @@
+@import "~scss/config";
+.sideBar {
+  width: 5%;
+  min-height: 100vh;
+  background: #2a3042;
+  transition: $mainTransition;
+  padding: 1rem 0.5rem;
+
+  &.show {
+    width: 22%;
+    .header {
+      margin-top: 3rem;
+      margin-bottom: 3rem;
+    }
+    .container {
+      ul {
+        margin-left: 1rem;
+        li {
+          justify-content: flex-start;
+          .icon_arrow {
+            display: block;
+            margin-left: 1.5rem;
+            font-size: 1.5rem;
+          }
+        }
+      }
+    }
+  }
+  .header {
+    margin-top: 0;
+    margin-bottom: 6rem;
+    display: grid;
+    place-items: center;
+    transition: $mainTransition;
+  }
+  .container {
+    ul {
+      list-style-type: none;
+      li {
+        margin: 1.5rem 0;
+        display: flex;
+        align-items: center;
+        color: #666d82;
+        justify-content: center;
+        cursor: pointer;
+        transition: $mainTransition;
+        &:hover {
+          color: #f2f3f4;
+          .icon {
+            color: #f2f3f4;
+          }
+        }
+        &.active {
+          color: #f2f3f4;
+          .icon {
+            color: #f2f3f4;
+          }
+          .icon_arrow {
+            transform: rotate(180deg);
+          }
+        }
+        .icon {
+          color: #666d82;
+          margin-right: 0.5rem;
+        }
+        .icon_arrow {
+          display: none;
+          transition: $mainTransition;
+        }
+      }
+      .drop_box {
+        width: 100%;
+        ul {
+          list-style-type: none;
+          li {
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            color: #666d82;
+            text-align: left;
+            cursor: pointer;
+            transition: $mainTransition;
+            &:hover {
+              color: #f2f3f4;
+              .icon {
+                color: #f2f3f4;
+              }
+            }
+            &.active {
+              color: #f2f3f4;
+              .icon {
+                color: #f2f3f4;
+              }
+            }
+            .icon {
+              color: #666d82;
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -28,6 +28,7 @@ export const UpdateUser = (name, token) => axios.patch("/api/user/update", name,
 export const updateAvatar = (avatar, token) =>
   axios.patch("/api/user/update_avatar", avatar, { headers: { Authorization: token } });
 export const getUser = (token) => axios.get("/api/user/info", { headers: { Authorization: token } });
+export const getAllUsers = (token) => axios.get("/api/user/get_all", { headers: { Authorization: token } });
 
 export const updateFavorites = (id, token) =>
   axios.patch(`/api/user/updateFavorites/${id}`, null, { headers: { Authorization: token } });
@@ -45,3 +46,4 @@ export const createPayment = (data, token) =>
 export const returnVnPay = (query) => axios.get(`/api/payment/vnpay_return${query}`);
 
 export const getAllBillByUser = (token) => axios.get("/api/bill/get_bills", { headers: { Authorization: token } });
+export const getAllBills = (token) => axios.get("/api/bill/get_all", { headers: { Authorization: token } });

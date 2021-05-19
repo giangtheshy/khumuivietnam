@@ -1,0 +1,108 @@
+@import "~scss/config";
+.header {
+  height: 4rem;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 0 2px 2px #ccc;
+  background-color: #fff;
+  .btn_bar {
+    position: relative;
+    width: 3rem;
+    height: 3rem;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    &:hover {
+      .line {
+        background: #bbb;
+      }
+    }
+    &.show {
+      .line {
+        display: none;
+      }
+      .line2 {
+        top: 1rem;
+        transform: rotate(45deg) translate(6px, 4px);
+        display: block;
+      }
+      .line3 {
+        top: 1.5rem;
+        transform: rotate(-45deg) translate(-0px, 0px);
+        display: block;
+      }
+    }
+    .line {
+      width: 70%;
+      height: 3px;
+      background: #000;
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      border-radius: 0.5rem;
+      transition: $mainTransition;
+    }
+    .line2 {
+      @extend .line;
+      top: 1.5rem;
+    }
+    .line3 {
+      @extend .line;
+      top: 2rem;
+    }
+  }
+  .left {
+    display: flex;
+    align-items: center;
+    .profile {
+      position: relative;
+      display: flex;
+      align-items: center;
+      border: none;
+      background: transparent;
+      color: gray;
+      margin-right: 1rem;
+      cursor: pointer;
+      img {
+        object-fit: cover;
+        width: 2rem;
+        height: 2rem;
+        border-radius: 50%;
+        margin-right: 0.5rem;
+      }
+      .icon {
+        font-size: 1.5rem;
+        font-weight: normal;
+      }
+      .drop_down {
+        position: absolute;
+        top: 3rem;
+        right: 0;
+        background: #fff;
+        box-shadow: 0 0 1px 2px #bbb;
+        border-radius: 1rem;
+        padding: 1rem 2rem;
+        a {
+          display: block;
+          text-decoration: none;
+          color: #000;
+          font-size: 1.1rem;
+          margin: 0.5rem 0;
+          &:hover {
+            color: $mainColor;
+          }
+        }
+      }
+    }
+    .settings {
+      border: none;
+      background: transparent;
+      color: gray;
+      font-size: 1.5rem;
+      margin: 0 1rem;
+      cursor: pointer;
+    }
+  }
+}
