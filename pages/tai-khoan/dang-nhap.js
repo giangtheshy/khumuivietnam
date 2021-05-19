@@ -21,6 +21,7 @@ import Alert from "components/Modal/Alert/Alert";
 const Login = () => {
   const [data, setData] = useState({ email: "", password: "" });
   const [loading, setLoading] = useState(false);
+  const [loadingSocial, setLoadingSocial] = useState({ facebook: false, google: false });
   const [alert, setAlert] = useState({ message: "", type: "" });
   const dispatch = useDispatch();
   const router = useRouter();
@@ -34,8 +35,10 @@ const Login = () => {
 
   const handleSuccess = async (res) => {
     const tokenId = res.tokenId;
+    setLoadingSocial({ ...loadingSocial, google: true });
     await apis.googleLogin({ tokenId });
     localStorage.setItem("firstLogin", true);
+    setLoadingSocial({ ...loadingSocial, google: false });
     router.push("/");
     dispatch(loginUser());
   };
@@ -44,8 +47,10 @@ const Login = () => {
   };
   const handleSuccessFacebook = async (res) => {
     const { accessToken, userID } = res;
+    setLoadingSocial({ ...loadingSocial, facebook: true });
     await apis.facebookLogin({ accessToken, userID });
     localStorage.setItem("firstLogin", true);
+    setLoadingSocial({ ...loadingSocial, facebook: false });
     dispatch(loginUser());
     router.push("/");
   };
@@ -117,7 +122,7 @@ const Login = () => {
                 cookiePolicy="single_host_origin"
                 render={(props) => (
                   <button className={styles.google_login} onClick={props.onClick} disabled={props.disabled}>
-                    <GrGooglePlus className={styles.google_login_icon} />{" "}
+                    {loadingSocial.google ? <Loading /> : <GrGooglePlus className={styles.google_login_icon} />}
                     <p className={styles.google_login_text}>Đăng nhập bằng Google</p>
                   </button>
                 )}
@@ -128,7 +133,7 @@ const Login = () => {
                 fields="name,email,picture"
                 callback={handleSuccessFacebook}
                 cssClass={styles.fb_btn}
-                icon={<FaFacebookF className={styles.icon} />}
+                icon={loadingSocial.facebook ? <Loading /> : <FaFacebookF className={styles.icon} />}
                 textButton="Đăng nhập bằng Facebook"
                 isMobile={false}
                 redirectUri="http://khumuivietnam.com"
