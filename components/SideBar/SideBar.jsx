@@ -4,6 +4,7 @@ import styles from "./SideBar.module.scss";
 import { RiHome7Fill, RiBillLine, RiUserSearchLine, RiArrowDropDownLine } from "react-icons/ri";
 import { BsListUl } from "react-icons/bs";
 import { AiOutlineCheckCircle } from "react-icons/ai";
+import { CgUserList } from "react-icons/cg";
 import { VscPreview, VscError } from "react-icons/vsc";
 import Logo from "utils/components/Logo/Logo";
 import Meta from "components/Meta";
@@ -20,8 +21,6 @@ const SideBar = ({ isOpenBar }) => {
       setActive("post");
     } else if (router.pathname.includes("user")) {
       setActive("user");
-    } else if (router.pathname.includes("bill")) {
-      setActive("bill");
     } else {
       setActive("home");
     }
@@ -29,6 +28,8 @@ const SideBar = ({ isOpenBar }) => {
       setActiveSub("verify");
     } else if (router.pathname.includes("/unverify")) {
       setActiveSub("unverify");
+    } else if (router.pathname.includes("/request")) {
+      setActiveSub("request");
     } else {
       setActiveSub("");
     }
@@ -73,11 +74,22 @@ const SideBar = ({ isOpenBar }) => {
           <li className={active === "user" ? styles.active : ""} onClick={() => router.push("/admin/user")}>
             <RiUserSearchLine className={styles.icon} />
             {isOpenBar && "Người dùng"}
+            <RiArrowDropDownLine className={styles.icon_arrow} />
           </li>
-          <li className={active === "bill" ? styles.active : ""} onClick={() => router.push("/admin/bill")}>
-            <RiBillLine className={styles.icon} />
-            {isOpenBar && "Đơn Hàng"}
-          </li>
+          {active === "user" && (
+            <div className={styles.drop_box}>
+              <ul>
+                <li
+                  className={activeSub === "request" ? styles.active : ""}
+                  onClick={() => router.push("/admin/user/request")}
+                >
+                  <CgUserList className={styles.icon} />
+                  {isOpenBar && "Yêu cầu quyền"}
+                </li>
+              </ul>
+            </div>
+          )}
+
           <li className={active === "post" ? styles.active : ""} onClick={() => router.push("/admin/post")}>
             <VscPreview className={styles.icon} />
             {isOpenBar && "Bài viết"}

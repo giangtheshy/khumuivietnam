@@ -31,8 +31,18 @@ html {
 .clr-blue {
   color: $mainBlue;
 }
+.clr-darkBlue {
+  color: $darkBlue;
+}
 .bold {
   font-weight: bold;
+}
+.flex-center {
+  display: flex;
+  align-items: center;
+}
+.relative {
+  position: relative;
 }
 body {
   background: #f0f0f0;

@@ -5,9 +5,9 @@ import { GoTrashcan } from "react-icons/go";
 import { BiEdit } from "react-icons/bi";
 import { BsCheckCircle, BsArrowClockwise } from "react-icons/bs";
 import { useDispatch, useSelector } from "react-redux";
-import { removeProduct, setEditProduct } from "../../../store/actions/product.action";
+import { removeProduct, setEditProduct } from "store/actions/product.action";
 
-import convert from "../../../utils/functions/convertLink";
+import convert from "utils/functions/convertLink";
 
 const RowProduct = ({ product, index }) => {
   const dispatch = useDispatch();

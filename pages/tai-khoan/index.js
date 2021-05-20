@@ -39,6 +39,10 @@ const Account = () => {
     }
     setIsEdit(!isEdit);
   };
+  const handleRequest = async () => {
+    await apis.createRequest({ uid: user._id, email: user.email, name: user.name });
+    alert("Đã gửi yều cầu ! Vui lòng đợi người quản lý xét duyệt.");
+  };
   return (
     <div className={styles.account}>
       <Meta title="Trang tài khoản cá nhân " />
@@ -119,15 +123,17 @@ const Account = () => {
                   {user?.role === 0 ? "Người mua hàng" : user?.role === 1 ? "Người bán hàng" : "Người quản lý"}
                 </span>
               </div>
-              <div className={styles.item}>
-                <span className={styles.label}>
-                  <CgArrowTopRightO className={styles.icon} />
-                  Bạn có hàng muốn bán?
-                </span>
-                <span className={styles.text}>
-                  <button>Yêu cầu cấp quyền bán!</button>
-                </span>
-              </div>
+              {user?.role < 1 && (
+                <div className={styles.item}>
+                  <span className={styles.label}>
+                    <CgArrowTopRightO className={styles.icon} />
+                    Bạn có hàng muốn bán?
+                  </span>
+                  <span className={styles.text}>
+                    <button onClick={handleRequest}>Yêu cầu cấp quyền bán!</button>
+                  </span>
+                </div>
+              )}
               <div className={styles.item}>
                 <span className={styles.label}>
                   <FaMoneyBillAlt className={styles.icon} />

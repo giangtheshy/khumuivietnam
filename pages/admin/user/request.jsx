@@ -3,43 +3,45 @@ import styles from "scss/Admin/Product/UnVerify.module.scss";
 import * as apis from "apis";
 import { useSelector } from "react-redux";
 
-import RowVerify from "components/Table/Row/RowVerify";
+import RowRequest from "components/Table/Row/RowRequest";
 
-const Verify = () => {
-  const [products, setProducts] = useState([]);
+const Request = () => {
+  const [requests, setRequests] = useState([]);
+  const token = useSelector((state) => state.user.token);
 
   useEffect(() => {
     const fetchProducts = async () => {
-      const { data } = await apis.getProducts();
-      setProducts(data);
+      const { data } = await apis.getAllRequest(token);
+      setRequests(data);
     };
-
-    fetchProducts();
-  }, []);
+    if (token) {
+      fetchProducts();
+    }
+  }, [token]);
   return (
     <div>
       <div className={styles.manager__right}>
         <div className={styles.manager__right_header}>
-          <h3>Sản phẩm đã duyệt ( {products.length})</h3>
+          <h3>Yêu cầu bán hàng chưa duyệt ( {requests.length})</h3>
         </div>
         <div className={styles.manager__right_content}>
           <table className={styles.table}>
             <thead>
               <tr className={styles.table__header}>
                 <th>STT</th>
-                <th>Tên sản phẩm</th>
-                <th>Giá cả</th>
-                <th>Đã bán</th>
+                <th>Email</th>
+                <th>Tên người dùng</th>
+                <th>Hành động</th>
                 <th>Xóa</th>
               </tr>
             </thead>
             <tbody>
-              {products.map((product, index) => (
-                <RowVerify
-                  product={product}
-                  key={product._id}
+              {requests.map((request, index) => (
+                <RowRequest
+                  request={request}
+                  key={request._id}
                   index={index}
-                  actions={(id) => setProducts(products.filter((product) => product._id !== id))}
+                  actions={(id) => setRequests(requests.filter((request) => request._id !== id))}
                 />
               ))}
             </tbody>
@@ -50,4 +52,4 @@ const Verify = () => {
   );
 };
 
-export default Verify;
+export default Request;

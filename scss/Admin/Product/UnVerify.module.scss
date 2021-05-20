@@ -1,0 +1,36 @@
+@import "~scss/config";
+.manager__right {
+  width: 80%;
+  margin: 1rem auto;
+  &_header {
+    border-bottom: 1px solid $mainColor;
+    margin-bottom: 5rem;
+    h3 {
+      text-align: center;
+      padding-bottom: 1rem;
+      text-transform: uppercase;
+      color: $darkBlue;
+    }
+  }
+  &_content {
+    .table,
+    th,
+    td {
+      border: 1px solid #eee;
+      border-collapse: collapse;
+      text-align: center;
+      padding: 0.3rem 0.8rem;
+      background-color: #fff;
+    }
+    .table {
+      width: 100%;
+      padding: 0.5rem;
+      &__header {
+        th {
+          padding: 0.3rem 0.8rem;
+          color: $darkBlue;
+        }
+      }
+    }
+  }
+}

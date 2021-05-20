@@ -1,0 +1,44 @@
+@import "~scss/config";
+.product_admin {
+  padding: 2rem;
+  .header {
+    width: 70%;
+    margin: 1rem auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 2rem;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid $mainBlue;
+    .box_item {
+      background-color: #fff;
+      box-shadow: 0 0 2px 3px #fff;
+      align-items: center;
+      display: flex;
+      color: $darkBlue;
+      padding: 1rem 2rem;
+      border-radius: 0.5rem;
+      .icon_success {
+        color: $mainGreen;
+        font-size: 1.5rem;
+        margin-right: 1rem;
+      }
+      .icon_error {
+        color: $mainColor;
+        font-size: 1.5rem;
+        margin-right: 1rem;
+      }
+    }
+  }
+  .container {
+    .wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin: 3rem 0;
+      .charts__container {
+        width: 45%;
+      }
+    }
+  }
+}

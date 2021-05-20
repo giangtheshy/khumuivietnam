@@ -64,7 +64,7 @@ const Dashboard = () => {
         </div>
         <div className={styles.box_item}>
           <AiTwotoneReconciliation className={styles.icon} />
-          <span className={styles.box_item__info}>{bills?.length} Hóa đơn đã thanh toán</span>
+          <span className={styles.box_item__info}>{bills?.length} Hóa đơn </span>
         </div>
       </div>
       <div className={styles.charts}>
@@ -130,6 +130,13 @@ const Dashboard = () => {
                   beginAtZero: true,
                 },
               },
+              plugins: {
+                title: {
+                  display: true,
+                  text: "Biểu đồ sản phẩm",
+                  position: "bottom",
+                },
+              },
             }}
           />
         </div>
@@ -181,6 +188,13 @@ const Dashboard = () => {
                   suggestedMax: 5,
                 },
               },
+              plugins: {
+                title: {
+                  display: true,
+                  text: "Biểu đồ bài viết",
+                  position: "bottom",
+                },
+              },
             }}
           />
         </div>
@@ -214,6 +228,13 @@ const Dashboard = () => {
                 },
                 x: {
                   display: false,
+                },
+              },
+              plugins: {
+                title: {
+                  display: true,
+                  text: "Biểu đồ người dùng",
+                  position: "bottom",
                 },
               },
             }}
@@ -259,6 +280,13 @@ const Dashboard = () => {
                 },
                 x: {
                   display: false,
+                },
+              },
+              plugins: {
+                title: {
+                  display: true,
+                  text: "Biểu đồ hoá đơn",
+                  position: "bottom",
                 },
               },
             }}
