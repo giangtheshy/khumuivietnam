@@ -1,0 +1,53 @@
+@import "~scss/config";
+.create_post {
+  padding: 2rem;
+  .header {
+    margin: 1rem 0 2rem 0;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid $darkBlue;
+    h1 {
+      text-align: center;
+      color: $darkBlue;
+    }
+  }
+  .content {
+    display: flex;
+    .create {
+      width: 50%;
+      padding-right: 1rem;
+      &__header {
+        margin-bottom: 1rem;
+        padding-bottom: 1rem;
+        border-bottom: 1px solid $mainColor;
+        h4 {
+          text-align: center;
+          color: $mainColor;
+        }
+      }
+      &__content {
+        .form__header {
+          form {
+            // text-align-last: left;
+          }
+        }
+      }
+    }
+    .preview {
+      width: 50%;
+      border-left: 1px solid $mainGreen;
+      padding-left: 1rem;
+      &__header {
+        margin-bottom: 1rem;
+        padding-bottom: 1rem;
+        border-bottom: 1px solid $mainColor;
+        h4 {
+          text-align: center;
+          color: $mainColor;
+        }
+      }
+      &__content {
+        background-color: #fff;
+      }
+    }
+  }
+}

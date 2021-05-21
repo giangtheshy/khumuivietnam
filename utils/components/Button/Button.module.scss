@@ -13,6 +13,7 @@
   overflow: hidden;
   cursor: pointer;
   margin: 0.5rem;
+  display: block;
   &::before {
     content: (attr(data-hover));
     position: absolute;

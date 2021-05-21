@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import styles from "./SideBar.module.scss";
 import { RiHome7Fill, RiBillLine, RiUserSearchLine, RiArrowDropDownLine } from "react-icons/ri";
 import { BsListUl } from "react-icons/bs";
+import { MdPlaylistAdd } from "react-icons/md";
 import { AiOutlineCheckCircle } from "react-icons/ai";
 import { CgUserList } from "react-icons/cg";
 import { VscPreview, VscError } from "react-icons/vsc";
@@ -30,6 +31,8 @@ const SideBar = ({ isOpenBar }) => {
       setActiveSub("unverify");
     } else if (router.pathname.includes("/request")) {
       setActiveSub("request");
+    } else if (router.pathname.includes("/create_post")) {
+      setActiveSub("create_post");
     } else {
       setActiveSub("");
     }
@@ -93,7 +96,21 @@ const SideBar = ({ isOpenBar }) => {
           <li className={active === "post" ? styles.active : ""} onClick={() => router.push("/admin/post")}>
             <VscPreview className={styles.icon} />
             {isOpenBar && "Bài viết"}
+            <RiArrowDropDownLine className={styles.icon_arrow} />
           </li>
+          {active === "post" && (
+            <div className={styles.drop_box}>
+              <ul>
+                <li
+                  className={activeSub === "create_post" ? styles.active : ""}
+                  onClick={() => router.push("/admin/post/create_post")}
+                >
+                  <MdPlaylistAdd className={styles.icon} />
+                  {isOpenBar && "Thêm bài viết"}
+                </li>
+              </ul>
+            </div>
+          )}
         </ul>
       </div>
     </aside>
