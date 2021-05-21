@@ -17,6 +17,11 @@ export const verifyProduct = (id, token) =>
   axios.get(`/api/products/verify/${id}`, { headers: { Authorization: token } });
 
 // ===================API Post======================
+export const createPost = (post, token) =>
+  axios.post("/api/posts/createPost", post, { headers: { Authorization: token } });
+export const removePost = (id, token) => axios.delete(`/api/posts/delete/${id}`, { headers: { Authorization: token } });
+export const updatePost = (post, token) =>
+  axios.patch(`/api/posts/update`, post, { headers: { Authorization: token } });
 export const getPosts = () => axios.get("/api/posts/getPosts");
 export const getPost = (title) => axios.get(`/api/posts/getPost/${title}`);
 

@@ -2,24 +2,30 @@ import React, { useState } from "react";
 
 import styles from "./RowProduct.module.scss";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import convert from "utils/functions/convertLink";
 import { GoTrashcan } from "react-icons/go";
 import { BiEdit } from "react-icons/bi";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { editPost } from "store/actions/post.action";
 import * as apis from "apis";
 
 const RowPost = ({ post, index, actions, deleteActions }) => {
   const [showBox, setShowBox] = useState(false);
   const token = useSelector((state) => state.user.token);
-  const role = useSelector((state) => state.user.role);
-
+  const dispatch = useDispatch();
+  const router = useRouter();
   const handleRemove = async () => {
-    const c = confirm("Bạn có chắn muốn xóa tài khoản này?");
+    const c = confirm("Bạn có chắn muốn xóa bài viết này?");
     if (c) {
-      await apis.deleteUser(post._id, token);
+      await apis.removePost(post._id, token);
       deleteActions(post._id);
-      alert("Đã xóa sản phẩm!");
+      alert("Đã xóa bài viết!");
     }
+  };
+  const handleEdit = () => {
+    dispatch(editPost(post));
+    router.push("/admin/post/create_post");
   };
   const date = new Date(post.createdAt);
   return (
@@ -31,7 +37,7 @@ const RowPost = ({ post, index, actions, deleteActions }) => {
       <td>{`${date.getDate()}-${date.getMonth()}-${date.getFullYear()}`}</td>
 
       <td>
-        <BiEdit className={styles.iconEdit} onClick={() => setShowBox(!showBox)} />
+        <BiEdit className={styles.iconEdit} onClick={handleEdit} />
       </td>
       <td>
         {" "}

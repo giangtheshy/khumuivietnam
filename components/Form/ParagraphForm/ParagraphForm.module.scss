@@ -1,0 +1,12 @@
+@import "~scss/config";
+.paragraph_form {
+  margin-left: 2rem;
+  .btn_para {
+    padding: 0.3rem 1rem;
+    border-radius: 0.3rem;
+    color: #fff;
+    background-color: $mainGreen;
+    border: none;
+    cursor: pointer;
+  }
+}

@@ -9,3 +9,11 @@ export const getPosts = () => async (dispatch) => {
     console.log(error);
   }
 };
+
+export const editPost = (post) => async (dispatch) => {
+  try {
+    dispatch({ type: types.EDIT_POST, payload: post });
+  } catch (error) {
+    console.log(error);
+  }
+};

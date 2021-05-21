@@ -5,7 +5,7 @@
     margin: 1rem 0 2rem 0;
     padding-bottom: 1rem;
     border-bottom: 1px solid $darkBlue;
-    h1 {
+    &__title {
       text-align: center;
       color: $darkBlue;
     }
@@ -27,7 +27,37 @@
       &__content {
         .form__header {
           form {
-            // text-align-last: left;
+            .areaLabel {
+              width: 100%;
+              margin: 0.5rem 0;
+              textarea {
+                width: 100% !important;
+                min-height: 7rem;
+                border: 1px solid #bbb;
+                border-radius: 0.3rem;
+                padding: 0.5rem;
+                resize: vertical;
+                &:focus-within {
+                  border: 1px solid $darkBlue;
+                  box-shadow: 0 0 1px 1px $darkBlue;
+                }
+              }
+            }
+            .wrapper_btn {
+              margin: 3rem 0;
+              width: 100%;
+              display: grid;
+              place-items: center;
+            }
+            .btn_add_para {
+              padding: 0.6rem 1.5rem;
+              border-radius: 0.3rem;
+              color: #fff;
+              background-color: $darkBlue;
+              border: none;
+              cursor: pointer;
+              margin: 2rem 0;
+            }
           }
         }
       }
@@ -46,7 +76,119 @@
         }
       }
       &__content {
-        background-color: #fff;
+        .search_google {
+          padding: 1rem;
+          border: 1px dashed #bbb;
+          margin-bottom: 2rem;
+          &__title {
+            text-align: center;
+            color: $darkBlue;
+            margin-bottom: 1rem;
+          }
+          &__content {
+            .title {
+            }
+            .content {
+              display: flex;
+              justify-content: space-between;
+              img {
+                width: 30%;
+              }
+              .description {
+                width: 68%;
+                color: gray;
+              }
+            }
+          }
+        }
+        .postCenter {
+          width: 100%;
+          background: #fff;
+          border-radius: 0.5rem;
+          padding: 2rem;
+          .header {
+            margin-bottom: 2rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 1rem;
+            .title {
+              padding-bottom: 1rem;
+            }
+            .timer {
+              color: #ccc;
+              font-size: 0.8rem;
+            }
+          }
+          .introduce {
+            font-size: 0.9rem;
+            text-indent: 2rem;
+            line-height: 1.8;
+            margin-bottom: 3rem;
+          }
+          .paragraph {
+            position: relative;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            transition: $mainTransition;
+            border: 1px dashed transparent;
+            &:hover {
+              border: 1px dashed #ccc;
+              .delete_btn {
+                display: block;
+              }
+            }
+            .delete_btn {
+              position: absolute;
+              top: 1rem;
+              right: 0.5rem;
+              border: none;
+              display: none;
+              background: transparent;
+              color: $mainColor;
+              font-size: 1.5rem;
+              cursor: pointer;
+            }
+            .heading {
+              font-size: 1.1rem;
+              color: $darkBlue;
+              margin-bottom: 2rem;
+            }
+            .paraItem {
+              position: relative;
+              padding: 1rem 2rem;
+              border: 1px dashed transparent;
+              transition: $mainTransition;
+              margin-bottom: 1rem;
+
+              &:hover {
+                border: 1px dashed #ccc;
+              }
+              a {
+                color: $mainGreen;
+                font-size: 1rem;
+                transition: $mainTransition;
+                cursor: pointer;
+                font-weight: bold;
+                text-decoration: none;
+                &:hover {
+                  color: rgba($mainGreen, 0.8);
+                  text-decoration: underline;
+                }
+              }
+              .content {
+                display: flex;
+                margin: 1.5rem 0;
+                img {
+                  width: 40%;
+                  object-fit: cover;
+                }
+                .text {
+                  width: 59%;
+                  margin-left: 1rem;
+                }
+              }
+            }
+          }
+        }
       }
     }
   }

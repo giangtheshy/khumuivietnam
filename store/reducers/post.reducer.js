@@ -3,6 +3,7 @@ import { HYDRATE } from "next-redux-wrapper";
 const initState = {
   posts: [],
   post: {},
+  edit: null,
   loading: false,
   error: null,
 };
@@ -25,6 +26,8 @@ const post = (state = initState, action) => {
       return { ...state, posts: action.payload };
     case types.GET_POST:
       return { ...state, post: action.payload };
+    case types.EDIT_POST:
+      return { ...state, edit: action.payload };
 
     case types.SET_LOADING:
       return { ...state, loading: action.payload };
