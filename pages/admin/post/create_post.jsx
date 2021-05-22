@@ -24,6 +24,7 @@ const initItem = { heading: "", link: "", text: "", image: "" };
 const CreatePost = () => {
   const [post, setPost] = useState(initState);
   const [loading, setLoading] = useState(false);
+  const [showURL, setShowURL] = useState(false);
   const token = useSelector((state) => state.user.token);
   const edit = useSelector((state) => state.post.edit);
 
@@ -35,10 +36,11 @@ const CreatePost = () => {
     return () => dispatch(editPost(null));
   }, [edit]);
   const handelChange = (e) => {
-    setPost({ ...post, [e.target.name]: e.target.value });
+    setPost({ ...post, [e.target.name]: e.target.value.trim() });
   };
   const handleSubmitHeader = async (e) => {
     e.preventDefault();
+    console.log(post);
     try {
       if (edit) {
         setLoading(true);
@@ -86,7 +88,7 @@ const CreatePost = () => {
   const handleChangeTitleParagraph = (e, id) => {
     setPost({
       ...post,
-      contents: post.contents.map((ct, index) => (index === id ? { ...ct, title: e.target.value } : ct)),
+      contents: post.contents.map((ct, index) => (index === id ? { ...ct, title: e.target.value.trim() } : ct)),
     });
   };
   const handleChangeItem = (e, idPara, idItem) => {
@@ -97,7 +99,7 @@ const CreatePost = () => {
           ? {
               ...ct,
               content: ct.content.map((item, id) =>
-                id === idItem ? { ...item, [e.target.name]: e.target.value } : item
+                id === idItem ? { ...item, [e.target.name]: e.target.value.trim() } : item
               ),
             }
           : ct
@@ -111,7 +113,7 @@ const CreatePost = () => {
         index === idPara
           ? {
               ...ct,
-              content: ct.content.map((item, id) => (id === idItem ? { ...item, image: value } : item)),
+              content: ct.content.map((item, id) => (id === idItem ? { ...item, image: value.trim() } : item)),
             }
           : ct
       ),
@@ -161,7 +163,18 @@ const CreatePost = () => {
 
                   <textarea name="introduce" id="introduce" value={post.introduce} onChange={handelChange}></textarea>
                 </label>
-
+                {showURL && (
+                  <Input
+                    type="text"
+                    name="image"
+                    label="Ảnh đại diện bài viết"
+                    value={post.image}
+                    onChange={handelChange}
+                  />
+                )}
+                <button type="button" className={styles.btn_url} onClick={() => setShowURL(!showURL)}>
+                  Thêm image bằng URL
+                </button>
                 <File name="image" onChange={handleChangeFile} id="image" />
                 <div className={styles.paragraph}>
                   {post.contents.map((content, index) => {
@@ -219,8 +232,8 @@ const CreatePost = () => {
                     <button className={styles.delete_btn} onClick={() => handleDeleteParagraph(indexPara)}>
                       <TiDeleteOutline />
                     </button>
-                    <h2 className={styles.heading}>{para.title}</h2>
-                    {para.content.map((article, index) => {
+                    <h2 className={styles.heading}>{para?.title}</h2>
+                    {para?.content.map((article, index) => {
                       return (
                         <article className={styles.paraItem} key={index}>
                           <button className={styles.delete_btn} onClick={() => handleDeleteItem(index, indexPara)}>

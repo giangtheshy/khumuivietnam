@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import styles from "scss/Admin/User.module.scss";
 import * as apis from "apis";
 import RowUser from "components/Table/Row/RowUser";
-
+import LoadingPage from "utils/components/LoadingPage/LoadingPage";
 const User = () => {
   const [users, setUsers] = useState([]);
   const token = useSelector((state) => state.user.token);
@@ -17,7 +17,7 @@ const User = () => {
       fetchUsers();
     }
   }, [token]);
-  if (!users.length) return <h1>Loading...</h1>;
+  if (!users.length) return <LoadingPage/>;
   return (
     <div className={styles.user_admin}>
       <div className={styles.manager__right}>

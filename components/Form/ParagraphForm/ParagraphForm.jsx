@@ -16,13 +16,13 @@ const ParagraphForm = ({
     <div className={styles.paragraph_form}>
       <Input
         type="text"
-        value={content.title}
+        value={content?.title}
         onChange={(e) => handleChangeTitleParagraph(e, index)}
         label="Tiêu đề đoạn văn"
         name="title"
       />
       <div className={styles.content_container}>
-        {content.content.map((item, id) => {
+        {content?.content.map((item, id) => {
           return (
             <ContentForm
               key={id}

@@ -1,6 +1,6 @@
 import Head from "next/head";
 
-const Meta = ({ title, description, keywords, robots, image }) => {
+const Meta = ({ title, description, keywords, robots, image, ico }) => {
   return (
     <Head>
       <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -11,7 +11,7 @@ const Meta = ({ title, description, keywords, robots, image }) => {
       <meta key="robots" name="robots" content={robots} />
       <meta charSet="utf-8" />
       <meta property="og:locale" content="vi_VN" />
-      <link rel="icon" href="/favicon.ico" />
+      <link rel="icon" href={ico} />
       <meta property="og:image" content={image} />
 
       <meta name="google-site-verification" content="rnNS94UXgTKub_flILvvdXFyxxJchtJuF6PkAOcWnPY" />
@@ -28,5 +28,6 @@ Meta.defaultProps = {
   keywords: "khử mùi việt nam, khu mui viet nam, khumuivietnam, xịt khử mùi, xịt khử mùi nam, xịt khử mùi nữ",
   robots: "index,follow",
   image: "https://res.cloudinary.com/giangtheshy/image/upload/v1619963902/dev/khumuivietnam/drvbdmzs5agecqbecwzd.jpg",
+  ico: "/favicon.ico",
 };
 export default Meta;

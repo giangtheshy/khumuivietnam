@@ -5,6 +5,7 @@ import { AiOutlineCheckCircle } from "react-icons/ai";
 import { VscError } from "react-icons/vsc";
 import * as apis from "apis";
 import styles from "scss/Admin/Product/Product.module.scss";
+import LoadingPage from "utils/components/LoadingPage/LoadingPage";
 const Product = () => {
   const [products, setProducts] = useState([]);
   const [productsUnVerify, setProductsUnVerify] = useState([]);
@@ -21,7 +22,7 @@ const Product = () => {
     }
   }, [token]);
 
-  if (!products.length || !productsUnVerify.length) return <h1>Loading...</h1>;
+  if (!products.length || !productsUnVerify.length) return <LoadingPage />;
   const getArrayNumberOfProductsFromBrand = () => {
     if (getBrandFromProducts().length) {
       return getBrandFromProducts().map((brand) => products.filter((product) => product.brand === brand).length);

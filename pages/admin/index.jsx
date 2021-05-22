@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import { Line, Pie } from "react-chartjs-2";
 import { AiOutlineUser, AiFillDropboxCircle, AiFillCopy, AiTwotoneReconciliation } from "react-icons/ai";
 import styles from "scss/Admin/DashBoard.module.scss";
+import LoadingPage from "utils/components/LoadingPage/LoadingPage";
 
 const Dashboard = () => {
   const [users, setUsers] = useState([]);
@@ -27,7 +28,7 @@ const Dashboard = () => {
       fetchUsers();
     }
   }, [token]);
-  if (!products.length || !users.length || !posts.length || !bills.length) return <p>Loading...</p>;
+  if (!products.length || !users.length || !posts.length || !bills.length) return <LoadingPage />;
   const numberOfProductsOnMonth = (month) => {
     return products.filter((product) => {
       const monthCreated = new Date(product.createdAt).getMonth();

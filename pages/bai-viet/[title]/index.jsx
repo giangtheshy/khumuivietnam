@@ -40,7 +40,7 @@ const Post = ({ post, posts }) => {
             }-${date.getFullYear()}`}</span>
           </div>
           <div className={styles.introduce}>
-            <p>{post.introduce}</p>
+            <p dangerouslySetInnerHTML={{ __html: post.introduce }}></p>
           </div>
           {post.contents.map((para, index) => {
             return (

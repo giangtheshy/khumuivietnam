@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import styles from "scss/Admin/Post.module.scss";
 import * as apis from "apis";
 import RowPost from "components/Table/Row/RowPost";
+import LoadingPage from "utils/components/LoadingPage/LoadingPage";
 
 const Post = () => {
   const [posts, setPosts] = useState([]);
@@ -14,7 +15,7 @@ const Post = () => {
 
     fetchPosts();
   }, []);
-  if (!posts.length) return <h1>Loading...</h1>;
+  if (!posts.length) return <LoadingPage />;
   return (
     <div className={styles.user_admin}>
       <div className={styles.manager__right}>
