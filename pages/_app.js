@@ -43,10 +43,11 @@ const MyApp = ({ Component, pageProps }) => {
       router.events.off("routeChangeError", handleComplete);
     };
   }, [router.pathname]);
-  if (loading) return <LoadingPage />;
+
   return (
     <Provider store={store}>
       <Layout>
+        {loading && <LoadingPage />}
         <Component {...pageProps} />
       </Layout>
     </Provider>
