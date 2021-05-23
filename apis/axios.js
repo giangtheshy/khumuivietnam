@@ -16,8 +16,8 @@ axiosInstance.interceptors.response.use(
       });
     }
     if (error.response.status === 403) {
-      localStorage.removeItem("firstLogin");
-      window.location = "/tai-khoan/dang-nhap";
+      alert("Phiên đăng nhập đã hết hạn! Trang web sẽ tự động refresh để tiếp tục...");
+      window.location.reload();
     } else {
       return new Promise((resolve, reject) => {
         reject(error);
