@@ -14,11 +14,7 @@ const About = () => {
         ]}
       />
       <section className={styles.content}>
-        <div style="position: absolute; left:-9999px;">
-          <a href="https://www.zteamstore.xyz/" rel="dofollow noopener" target="_blank">
-            zteamstore
-          </a>
-        </div>
+        
         <div className={styles.header}>
           <h1>Thành viên sáng lập trang web khumuivietnam.com</h1>
         </div>

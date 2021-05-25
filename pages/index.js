@@ -20,7 +20,11 @@ export default function Home({ posts }) {
         keywords="khumuivietnam.com,khumuivietnam shop,khumuivietnam, xịt khử mùi nam, xịt khử mùi nữ, xịt khử mùi,"
         description="khumuivietnam shop chuyên bán các loại xịt khử mùi tốt và rẻ nhất dành cho mọi cấp bậc,lứa tuổi. Cam đoan không tốt không nhận tiền!"
       />
-     
+      <div style={{ position: "absolute", left: -9999 }}>
+        <a href="https://www.zteamstore.xyz/" rel="dofollow noopener" target="_blank">
+          zteamstore
+        </a>
+      </div>
       <section className={styles.bannerSection}>
         <Slides />
         <Events posts={posts} />
