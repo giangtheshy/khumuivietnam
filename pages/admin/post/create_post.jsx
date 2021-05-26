@@ -36,7 +36,7 @@ const CreatePost = () => {
     return () => dispatch(editPost(null));
   }, [edit]);
   const handelChange = (e) => {
-    setPost({ ...post, [e.target.name]: e.target.value.trim() });
+    setPost({ ...post, [e.target.name]: e.target.value });
   };
   const handleSubmitHeader = async (e) => {
     e.preventDefault();
@@ -88,7 +88,7 @@ const CreatePost = () => {
   const handleChangeTitleParagraph = (e, id) => {
     setPost({
       ...post,
-      contents: post.contents.map((ct, index) => (index === id ? { ...ct, title: e.target.value.trim() } : ct)),
+      contents: post.contents.map((ct, index) => (index === id ? { ...ct, title: e.target.value } : ct)),
     });
   };
   const handleChangeItem = (e, idPara, idItem) => {
@@ -99,7 +99,7 @@ const CreatePost = () => {
           ? {
               ...ct,
               content: ct.content.map((item, id) =>
-                id === idItem ? { ...item, [e.target.name]: e.target.value.trim() } : item
+                id === idItem ? { ...item, [e.target.name]: e.target.value } : item
               ),
             }
           : ct
