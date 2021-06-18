@@ -31,5 +31,5 @@
     "redux-thunk": "^2.3.0",
     "slick-carousel": "^1.8.1"
   },
-  "proxy": "https://khumuivietnam.herokuapp.com/"
+  "proxy": "https://giangtheshy.tech/"
 }
