@@ -14,7 +14,7 @@ const About = () => {
         ]}
       />
       <section className={styles.content}>
-        
+
         <div className={styles.header}>
           <h1>Thành viên sáng lập trang web khumuivietnam.com</h1>
         </div>
@@ -90,42 +90,7 @@ const About = () => {
             </p>
           </div>
         </article>
-        <article className={styles.adminAbout}>
-          <div className={styles.img}>
-            <a href="https://www.facebook.com/profile.php?id=100012137532323" className={styles.icon}>
-              <FaFacebook />
-            </a>
-            <img
-              src="https://res.cloudinary.com/giangtheshy/image/upload/v1621583476/dev/khumuivietnam/aczmzn8jhas52hb4o93u.jpg"
-              alt="avatar"
-            />
-          </div>
-          <div className={styles.detail}>
-            <h2>Đạt Nguyễn</h2>
-            <p className={styles.major}>Nghành Công Nghệ Thông Tin</p>
-            <p className={styles.description}>
-              Hiện là sinh viên năm 3 của trường đại học Công Nghệ Thông Tin - DHQG TP.HCM
-            </p>
-          </div>
-        </article>
-        <article className={styles.adminAbout}>
-          <div className={styles.img}>
-            <a href="https://www.facebook.com/godserena.1999" className={styles.icon}>
-              <FaFacebook />
-            </a>
-            <img
-              src="https://res.cloudinary.com/giangtheshy/image/upload/v1621583502/dev/khumuivietnam/mkebaaw0sv6dj4rmsxor.png"
-              alt="avatar"
-            />
-          </div>
-          <div className={styles.detail}>
-            <h2>Đang Thiên Tôn</h2>
-            <p className={styles.major}>Nghành Công Nghệ Thông Tin</p>
-            <p className={styles.description}>
-              Hiện là sinh viên năm 4 của trường đại học Công Nghệ Thông Tin - DHQG TP.HCM
-            </p>
-          </div>
-        </article>
+
       </section>
     </div>
   );
