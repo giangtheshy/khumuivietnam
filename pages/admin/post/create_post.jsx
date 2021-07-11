@@ -16,6 +16,7 @@ const initState = {
   title: "",
   description: "",
   introduce: "",
+  keywords: "",
   image: "",
   contents: [],
 };
@@ -99,10 +100,10 @@ const CreatePost = () => {
           ? {
               ...ct,
               content: ct.content.map((item, id) =>
-                id === idItem ? { ...item, [e.target.name]: e.target.value } : item
+                id === idItem ? { ...item, [e.target.name]: e.target.value } : item,
               ),
             }
-          : ct
+          : ct,
       ),
     });
   };
@@ -115,7 +116,7 @@ const CreatePost = () => {
               ...ct,
               content: ct.content.map((item, id) => (id === idItem ? { ...item, image: value.trim() } : item)),
             }
-          : ct
+          : ct,
       ),
     });
   };
@@ -126,7 +127,7 @@ const CreatePost = () => {
     setPost({
       ...post,
       contents: post.contents.map((ct, index) =>
-        index === id ? { ...ct, content: ct.content.filter((_, indexCt) => indexCt !== idDel) } : ct
+        index === id ? { ...ct, content: ct.content.filter((_, indexCt) => indexCt !== idDel) } : ct,
       ),
     });
   };
@@ -144,6 +145,13 @@ const CreatePost = () => {
             <div className={styles.form__header}>
               <form onSubmit={handleSubmitHeader}>
                 <Input type="text" value={post.title} onChange={handelChange} name="title" label="Tiêu đề bài viết" />
+                <Input
+                  type="text"
+                  value={post.keywords}
+                  onChange={handelChange}
+                  name="keywords"
+                  label="Từ khóa bài viết"
+                />
                 <label htmlFor="description" className={styles.areaLabel}>
                   <span className="bold" style={{ fontSize: 14 }}>
                     Mô tả bài viết<sup className="bold clr-main">*</sup>

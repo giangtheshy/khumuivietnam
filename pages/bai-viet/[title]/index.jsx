@@ -17,9 +17,7 @@ const Post = ({ post, posts }) => {
       <Meta
         title={`${post.title} | khumuivietnam.com`}
         description={post.description}
-        keywords={`${post.title} ,${post.contents.map(
-          (item) => `${item.title},`
-        )} khumuivietnam.com,khumuivietnam shop,khử mùi việt nam, khumuivietnam, xịt khử mùi nam, xịt khử mùi nữ, xịt khử mùi,review xịt khử mùi,đánh giá xịt khử mùi,khumui vietnam`}
+        keywords={`${post.title} ,${post?.keywords},khu mui viet nam`}
       />
       <BackLink
         list={[
