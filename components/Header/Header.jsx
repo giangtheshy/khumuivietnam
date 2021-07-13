@@ -121,11 +121,11 @@ const Header = () => {
               {showDropDown && (
                 <div className={styles.accountDetails}>
                   <button className={styles.__btn} onClick={() => router.push("/tai-khoan/dang-nhap")}>
-                    <FaSignInAlt className={styles.icon} />
+                    <FaSignInAlt className={styles.icon2} />
                     Đăng Nhập
                   </button>
                   <button className={styles.__btn} onClick={() => router.push("/tai-khoan/dang-ky")}>
-                    <FaSignOutAlt className={styles.icon} />
+                    <FaSignOutAlt className={styles.icon2} />
                     Đăng Ký
                   </button>
                 </div>
