@@ -8,7 +8,7 @@ import Logo from "../../utils/components/Logo/Logo";
 import { VscInfo } from "react-icons/vsc";
 import { FiSearch } from "react-icons/fi";
 import { IoMdArrowDropdown } from "react-icons/io";
-import { FaRegUser, FaSignInAlt, FaSignOutAlt, FaBars, FaListAlt } from "react-icons/fa";
+import { FaRegUser, FaSignInAlt, FaSignOutAlt,FaUserPlus, FaBars, FaListAlt } from "react-icons/fa";
 import { GiBottledBolt } from "react-icons/gi";
 import { MdContactPhone } from "react-icons/md";
 import { HiOutlineLogout } from "react-icons/hi";
@@ -125,7 +125,7 @@ const Header = () => {
                     Đăng Nhập
                   </button>
                   <button className={styles.__btn} onClick={() => router.push("/tai-khoan/dang-ky")}>
-                    <FaSignOutAlt className={styles.icon2} />
+                    <FaUserPlus className={styles.icon2} />
                     Đăng Ký
                   </button>
                 </div>
