@@ -6,11 +6,12 @@
   background-color: $mainColor;
   // width: 4rem;
   // height: 3rem;
-  border-radius: 0.3rem;
   color: #fff;
   cursor: pointer;
-  border-radius: 1rem;
+  border-radius: 10px;
+  border: 1px solid #e62e2e;
   overflow: hidden;
+  margin: 0 auto;
   img {
     width: 100%;
     object-fit: cover;

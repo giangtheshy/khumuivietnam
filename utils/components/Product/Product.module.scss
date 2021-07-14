@@ -79,10 +79,12 @@
       overflow: hidden;
       text-overflow: ellipsis;
       a {
-        color: gray;
+        color: #555;
+        text-decoration: none;
 
         &:hover {
           color: $mainColor;
+          text-decoration: underline;
         }
       }
     }
@@ -101,11 +103,11 @@
           display: flex;
           justify-content: space-between;
           align-items: center;
-          color: #bbb;
+          color: #777;
           font-size: 0.8rem;
         }
         .sold {
-          color: #bbb;
+          color: #777;
           font-size: 0.8rem;
           vertical-align: sub;
         }

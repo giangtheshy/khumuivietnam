@@ -13,8 +13,8 @@ const Footer = () => {
     <footer className={styles.footer} id="contact">
       <div className={styles.topFooter}>
         <div className={styles.left}>
-          <Logo width="10rem" />
-          <h2>khumuivietnam.com</h2>
+          <Logo width="12rem"/>
+          <h2>Khumuivietnam.com</h2>
           <p>Chuyên bán các sản phẩm xịt khử mùi tốt nhất và rẻ nhất</p>
           <p>
             <ImLocation /> Địa chỉ : Phường Linh Trung,Quận Thủ Đức, TP.HCM
