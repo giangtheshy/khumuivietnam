@@ -36,6 +36,18 @@ const Slides = () => {
             alt="banner image"
           />
         </div>
+        <div className={styles.slideItem} key="2">
+          <img
+            src="https://drscdn.500px.org/photo/1034521405/m%3D900/v2?sig=af4e244774bcf972f510b701f32cb23946a32625a216f323d19e55b064ef875e"
+            alt="banner image"
+          />
+        </div>
+        <div className={styles.slideItem} key="2">
+          <img
+            src="https://drscdn.500px.org/photo/1034521868/m%3D900/v2?sig=4aeda5e38c795c5b3e9cd235f7c497890935a4eac5ac9229a27cc1b1fcd20b03"
+            alt="banner image"
+          />
+        </div>
       </Slider>
     </div>
   );
