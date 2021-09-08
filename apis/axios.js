@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const axiosInstance = axios.create({
-  baseURL: process.env.NODE_ENV === "production" ? "https://giangtheshy.tech/api/" : "http://localhost:5000/",
+  baseURL: process.env.NODE_ENV === "production" ? "https://khumuivietnam.herokuapp.com/" : "http://localhost:5000/",
 });
 
 axiosInstance.interceptors.response.use(
